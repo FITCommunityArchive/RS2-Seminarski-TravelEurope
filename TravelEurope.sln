@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelEurope.WebAPI", "TravelEurope.WebAPI\TravelEurope.WebAPI.csproj", "{434148BC-1C8E-4DB9-A65A-DD6C5B01376F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelEurope.Model", "TravelEurope.Model\TravelEurope.Model.csproj", "{4C6BDA86-7541-410E-80F4-06B8DD243B84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelEurope.WinUI", "TravelEurope.WinUI\TravelEurope.WinUI.csproj", "{8CC6234E-61C0-4111-9D6C-E3E8C96FA3B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{434148BC-1C8E-4DB9-A65A-DD6C5B01376F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{434148BC-1C8E-4DB9-A65A-DD6C5B01376F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{434148BC-1C8E-4DB9-A65A-DD6C5B01376F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6BDA86-7541-410E-80F4-06B8DD243B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6BDA86-7541-410E-80F4-06B8DD243B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6BDA86-7541-410E-80F4-06B8DD243B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6BDA86-7541-410E-80F4-06B8DD243B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC6234E-61C0-4111-9D6C-E3E8C96FA3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC6234E-61C0-4111-9D6C-E3E8C96FA3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC6234E-61C0-4111-9D6C-E3E8C96FA3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC6234E-61C0-4111-9D6C-E3E8C96FA3B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
