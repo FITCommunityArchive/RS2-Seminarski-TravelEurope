@@ -32,10 +32,13 @@ namespace TravelEurope.WebAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddScoped<IKorisniciService, KorisniciService>();
+            services.AddScoped<IDrzavaService, DrzavaService>();
+            services.AddScoped<IGradService, GradService>();
+
 
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
-#pragma warning restore CS0618 // Type or member is obsolete
+            #pragma warning restore CS0618 // Type or member is obsolete
 
             services.AddSwaggerGen(c =>
             {

@@ -7,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TravelEurope.Model;
 
 namespace TravelEurope.WinUI
 {
-    public partial class Form1 : Form
+    public partial class frmIndex : Form
     {
-        public Form1()
+        public frmIndex()
         {
             InitializeComponent();
+        }
+
+        private void PregledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Korisnici.frmKorisnici();
+            frm.Show();
         }
     }
 }

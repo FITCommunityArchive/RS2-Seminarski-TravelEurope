@@ -9,7 +9,6 @@ namespace TravelEurope.WebAPI.Services
     {
         List<Model.Korisnici> Get(Model.Requests.KorisniciSearchRequest request);
         Model.Korisnici GetById(int id);
-
         Model.Korisnici Insert(Model.Requests.KorisniciInsertRequest request);
         Model.Korisnici Update(int id, Model.Requests.KorisniciUpdateRequest request);
     }

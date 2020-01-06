@@ -13,7 +13,6 @@ namespace TravelEurope.WebAPI.Database
         public int GradId { get; set; }
         public string Naziv { get; set; }
         public int DrzavaId { get; set; }
-
         public Drzava Drzava { get; set; }
         public ICollection<Korisnici> AspNetUsers { get; set; }
     }

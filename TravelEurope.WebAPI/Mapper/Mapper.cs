@@ -32,10 +32,15 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.Vozilo, Model.Vozilo>();
             CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
 
-            CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<Database.Administrator, Model.Administrator>().ReverseMap();
             CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
             CreateMap<Database.Radnik, Model.Radnik>().ReverseMap();
+
+            CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
+            CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
+
+            CreateMap<Database.Drzava, Model.Requests.DrzavaInsertRequest>().ReverseMap();
+            CreateMap<Database.Grad, Model.Requests.GradInsertRequest>().ReverseMap();
         }
     }
 }

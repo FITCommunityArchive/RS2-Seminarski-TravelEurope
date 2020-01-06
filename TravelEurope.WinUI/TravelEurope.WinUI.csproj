@@ -46,14 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="APIService.cs" />
+    <Compile Include="frmIndex.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmIndex.Designer.cs">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisnici.Designer.cs">
+      <DependentUpon>frmKorisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisniciDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Korisnici\frmKorisniciDetalji.Designer.cs">
+      <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmIndex.resx">
+      <DependentUpon>frmIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
+      <DependentUpon>frmKorisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Korisnici\frmKorisniciDetalji.resx">
+      <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,5 +98,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http">
+      <Version>2.4.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelEurope.Model\TravelEurope.Model.csproj">
+      <Project>{4c6bda86-7541-410e-80f4-06b8dd243b84}</Project>
+      <Name>TravelEurope.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
