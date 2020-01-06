@@ -61,6 +61,7 @@
             this.btnSnimi.TabIndex = 3;
             this.btnSnimi.Text = "Snimi";
             this.btnSnimi.UseVisualStyleBackColor = true;
+            this.btnSnimi.Click += new System.EventHandler(this.btnSnimi_Click);
             // 
             // groupBox1
             // 
@@ -171,6 +172,7 @@
             this.cmbDrzave.Name = "cmbDrzave";
             this.cmbDrzave.Size = new System.Drawing.Size(163, 21);
             this.cmbDrzave.TabIndex = 11;
+            this.cmbDrzave.SelectedIndexChanged += new System.EventHandler(this.cmbDrzave_SelectedIndexChanged);
             // 
             // txtLozinka
             // 
@@ -262,6 +264,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisniciDetalji";
             this.Text = "frmKorisniciDetalji";
+            this.Load += new System.EventHandler(this.frmKorisniciDetalji_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

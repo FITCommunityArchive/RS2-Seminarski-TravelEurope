@@ -50,6 +50,7 @@
             this.btnDodajKorisnika.TabIndex = 9;
             this.btnDodajKorisnika.Text = "Dodaj korisnika";
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
+            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
             // 
             // txtImePrezime
             // 
@@ -99,6 +100,7 @@
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKorisnici.Size = new System.Drawing.Size(675, 287);
             this.dgvKorisnici.TabIndex = 5;
+            this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             // 
             // KorisniciId
             // 
@@ -148,6 +150,7 @@
             this.Controls.Add(this.dgvKorisnici);
             this.Name = "frmKorisnici";
             this.Text = "frmKorisnici";
+            this.Load += new System.EventHandler(this.frmKorisnici_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
