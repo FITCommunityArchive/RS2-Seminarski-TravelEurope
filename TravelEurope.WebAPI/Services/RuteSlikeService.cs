@@ -24,9 +24,9 @@ namespace TravelEurope.WebAPI.Services
         {
             var query = _context.RuteSlike.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(request?.Naziv))
+            if (request?.RutaId != 0)
             {
-                query = query.Where(x => x.Opis.ToLower().Contains(request.Naziv.ToLower()));
+                query = query.Where(x => x.TuristRutaId == request.RutaId);
             }
 
             var list = query.ToList();

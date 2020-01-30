@@ -44,6 +44,8 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IVrstaGorivaService, VrstaGorivaService>();
             services.AddScoped<IStatusVozilaService, StatusVozilaService>();
             services.AddScoped<IStatusVozacaService, StatusVozacaService>();
+            services.AddScoped<IRuteSlikeService, RuteSlikeService>();
+
 
 
 

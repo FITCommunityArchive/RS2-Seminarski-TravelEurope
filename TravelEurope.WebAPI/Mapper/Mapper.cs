@@ -58,6 +58,9 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.Vozilo, Model.Requests.VoziloInsertRequest>().ReverseMap();
             CreateMap<Database.Vozac, Model.Requests.VozacInsertRequest>().ReverseMap();
 
+            CreateMap<Database.RuteSlike, Model.Requests.RuteSlikeInsertRequest>().ReverseMap();
+
+
 
 
         }

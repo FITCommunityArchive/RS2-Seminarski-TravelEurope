@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace TravelEurope.WinUI.TuristickeRute
 {
-    public partial class frmTuristickeRuteDetalji : Form
+    public partial class frmTuristickeRuteDodaj : Form
     {
         private readonly APIService _serviceTuristRuta = new APIService("TuristRuta");
         private readonly APIService _serviceDrzava = new APIService("Drzava");
@@ -20,7 +20,7 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private int _id;
 
-        public frmTuristickeRuteDetalji(int id = 0)
+        public frmTuristickeRuteDodaj(int id = 0)
         {
             _id = id;
             InitializeComponent();
@@ -46,9 +46,19 @@ namespace TravelEurope.WinUI.TuristickeRute
                     Close();
                 }
             }
+            //else
+            //{
+            //    Model.Korisnici entity = await _serviceTuristRuta.Update<Model.TuristRuta>(_id, request);
+            //    if (entity != null)
+            //    {
+            //        MessageBox.Show("Turist ruta uspješno izmijenjena.");
+            //        DialogResult = DialogResult.OK;
+            //        Close();
+            //    }
+            //}
         }
 
-        private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)
+        private async void frmTuristickeRuteDodaj_Load(object sender, EventArgs e)
         {
             var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
             var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodic>>(null);
@@ -58,8 +68,6 @@ namespace TravelEurope.WinUI.TuristickeRute
 
             cmbDrzave.DisplayMember = "Naziv";
             cmbVodici.DisplayMember = "ip";
-
-            await UcitajListuSlika();
 
             if (_id != 0)
                 await UcitajDetaljeAsync();
@@ -71,9 +79,9 @@ namespace TravelEurope.WinUI.TuristickeRute
 
             txtNaziv.Text = tr.Naziv;
             txtOpis.Text = tr.Opis;
-            //cmbDrzave.Text = tr.Drzava.Naziv;
-            //cmbVodici.Text = tr.TuristickiVodic.Ime;
-            
+            cmbDrzave.Text = tr.Drzava.Naziv;
+            cmbVodici.Text = tr.TuristickiVodic.Ime;
+
 
             foreach (Model.Drzava item in cmbDrzave.Items)
             {
@@ -102,57 +110,9 @@ namespace TravelEurope.WinUI.TuristickeRute
             var frm = new Lokacije.frmDodajDrzavu();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
+                var listDrzave = await _serviceVodici.Get<List<Model.Drzava>>(null);
                 cmbDrzave.DataSource = listDrzave;
             }
-        }
-
-        private async Task UcitajListuSlika()
-        {
-            var requestRuteSlike = new Model.Requests.RuteSlikeSearchRequest
-            {
-                RutaId = _id
-            };
-            var listRuteSlike = await _serviceRuteSlike.Get<List<Model.RuteSlike>>(requestRuteSlike);
-            dgvSlike.AutoGenerateColumns = false;
-            dgvSlike.DataSource = listRuteSlike;
-        }
-
-        private async void btnDodajSliku_Click(object sender, EventArgs e)
-        {
-            var frm = new frmTuristickeRuteDetaljiSlike(0, _id);
-            if (frm.ShowDialog() == DialogResult.OK)
-                await UcitajListuSlika();
-        }
-
-        private async void dgvSlike_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var id = int.Parse(dgvSlike.SelectedRows[0].Cells[0].Value.ToString());
-
-            var frm = new frmTuristickeRuteDetaljiSlike(id, _id);
-            if (frm.ShowDialog() == DialogResult.OK)
-                await UcitajListuSlika();
-        }
-
-        private async void btnIzbrisiSliku_Click(object sender, EventArgs e)
-        {
-            var id = int.Parse(dgvSlike.SelectedRows[0].Cells[0].Value.ToString());
-
-            var success = await _serviceRuteSlike.Remove(id);
-            if (success)
-            {
-                MessageBox.Show("Slika je izbrisana.");
-                await UcitajListuSlika();
-            }
-        }
-
-        private void dgvSlike_SelectionChanged(object sender, EventArgs e)
-        {
-            var rowsCount = dgvSlike.SelectedRows.Count;
-            if (rowsCount == 0)
-                btnIzbrisiSliku.Enabled = false;
-            else
-                btnIzbrisiSliku.Enabled = true;
         }
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="frmIndex.Designer.cs">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageHelper.cs" />
     <Compile Include="Korisnici\frmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +105,18 @@
     </Compile>
     <Compile Include="TuristickeRute\frmTuristickeRuteDetalji.Designer.cs">
       <DependentUpon>frmTuristickeRuteDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TuristickeRute\frmTuristickeRuteDodaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TuristickeRute\frmTuristickeRuteDodaj.Designer.cs">
+      <DependentUpon>frmTuristickeRuteDodaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.Designer.cs">
+      <DependentUpon>frmTuristickeRuteDetaljiSlike.cs</DependentUpon>
     </Compile>
     <Compile Include="TuristickiVodici\frmTuristickiVodici.cs">
       <SubType>Form</SubType>
@@ -176,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDetalji.resx">
       <DependentUpon>frmTuristickeRuteDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.resx">
+      <DependentUpon>frmTuristickeRuteDetaljiSlike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDodaj.resx">
+      <DependentUpon>frmTuristickeRuteDodaj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TuristickiVodici\frmTuristickiVodici.resx">
       <DependentUpon>frmTuristickiVodici.cs</DependentUpon>

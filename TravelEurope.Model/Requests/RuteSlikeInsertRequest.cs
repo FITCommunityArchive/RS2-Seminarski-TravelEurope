@@ -7,7 +7,9 @@ namespace TravelEurope.Model.Requests
 {
     public class RuteSlikeInsertRequest
     {
-        [Required]
-        public string Naziv { get; set; }
+        public int RutaId { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
+        public string Opis { get; set; }
     }
 }

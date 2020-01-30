@@ -44,7 +44,7 @@ namespace TravelEurope.WinUI
 
         private void dodajTuristRutuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frm = new TuristickeRute.frmTuristickeRuteDetalji();
+            var frm = new TuristickeRute.frmTuristickeRuteDodaj();
             frm.Show();
         }
 
@@ -89,6 +89,11 @@ namespace TravelEurope.WinUI
         {
             var frm = new Vozaci.frmVozacDetalji();
             frm.Show();
+        }
+
+        private void pregledToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

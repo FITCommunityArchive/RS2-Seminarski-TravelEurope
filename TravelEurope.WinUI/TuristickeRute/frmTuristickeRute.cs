@@ -46,9 +46,18 @@ namespace TravelEurope.WinUI.TuristickeRute
         private async void btnDodajRutu_Click(object sender, EventArgs e)
         {
 
-            var frm = new frmTuristickeRuteDetalji();
+            var frm = new frmTuristickeRuteDodaj();
             if (frm.ShowDialog() == DialogResult.OK)
                 await UcitajFormu();
+        }
+
+        private async void dgvTuristRuta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = int.Parse(dgvTuristRuta.SelectedRows[0].Cells[0].Value.ToString());
+
+            var frm = new frmTuristickeRuteDetalji(id);
+            frm.ShowDialog();
+            await UcitajFormu();
         }
     }
 }

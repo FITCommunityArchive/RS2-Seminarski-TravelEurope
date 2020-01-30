@@ -1,6 +1,6 @@
 ﻿namespace TravelEurope.WinUI.TuristickeRute
 {
-    partial class frmTuristickeRuteDetalji
+    partial class frmTuristickeRuteDodaj
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnIzbrisiSliku = new System.Windows.Forms.Button();
             this.btnDodajSliku = new System.Windows.Forms.Button();
-            this.dgvSlike = new System.Windows.Forms.DataGridView();
-            this.RuteSlikeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSnimi = new System.Windows.Forms.Button();
             this.txtOpis = new System.Windows.Forms.TextBox();
             this.btnDodajVodica = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,15 +46,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSlike)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnIzbrisiSliku);
             this.groupBox1.Controls.Add(this.btnDodajSliku);
-            this.groupBox1.Controls.Add(this.dgvSlike);
+            this.groupBox1.Controls.Add(this.btnSnimi);
             this.groupBox1.Controls.Add(this.txtOpis);
             this.groupBox1.Controls.Add(this.btnDodajVodica);
             this.groupBox1.Controls.Add(this.label7);
@@ -71,12 +66,12 @@
             this.groupBox1.Controls.Add(this.txtNaziv);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(19, 16);
+            this.groupBox1.Location = new System.Drawing.Point(25, 26);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(689, 852);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(563, 445);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
             // 
@@ -89,9 +84,8 @@
             this.btnIzbrisiSliku.Name = "btnIzbrisiSliku";
             this.btnIzbrisiSliku.Size = new System.Drawing.Size(129, 28);
             this.btnIzbrisiSliku.TabIndex = 23;
-            this.btnIzbrisiSliku.Text = "Izbriši sliku";
+            this.btnIzbrisiSliku.Text = "Izbriši Sliku";
             this.btnIzbrisiSliku.UseVisualStyleBackColor = true;
-            this.btnIzbrisiSliku.Click += new System.EventHandler(this.btnIzbrisiSliku_Click);
             // 
             // btnDodajSliku
             // 
@@ -101,58 +95,23 @@
             this.btnDodajSliku.Name = "btnDodajSliku";
             this.btnDodajSliku.Size = new System.Drawing.Size(129, 28);
             this.btnDodajSliku.TabIndex = 22;
-            this.btnDodajSliku.Text = "Dodaj sliku";
+            this.btnDodajSliku.Text = "Dodaj Sliku";
             this.btnDodajSliku.UseVisualStyleBackColor = true;
-            this.btnDodajSliku.Click += new System.EventHandler(this.btnDodajSliku_Click);
             // 
-            // dgvSlike
+            // btnSnimi
             // 
-            this.dgvSlike.AllowUserToAddRows = false;
-            this.dgvSlike.AllowUserToDeleteRows = false;
-            this.dgvSlike.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSlike.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RuteSlikeId,
-            this.Slika,
-            this.Opis});
-            this.dgvSlike.Location = new System.Drawing.Point(41, 448);
-            this.dgvSlike.Margin = new System.Windows.Forms.Padding(5);
-            this.dgvSlike.MultiSelect = false;
-            this.dgvSlike.Name = "dgvSlike";
-            this.dgvSlike.ReadOnly = true;
-            this.dgvSlike.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvSlike.RowTemplate.Height = 100;
-            this.dgvSlike.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSlike.Size = new System.Drawing.Size(615, 318);
-            this.dgvSlike.TabIndex = 18;
-            // 
-            // RuteSlikeId
-            // 
-            this.RuteSlikeId.DataPropertyName = "RuteSlikeId";
-            this.RuteSlikeId.HeaderText = "RuteSlikeId";
-            this.RuteSlikeId.Name = "RuteSlikeId";
-            this.RuteSlikeId.ReadOnly = true;
-            this.RuteSlikeId.Visible = false;
-            // 
-            // Slika
-            // 
-            this.Slika.DataPropertyName = "SlikaThumb";
-            this.Slika.HeaderText = "Slika";
-            this.Slika.Name = "Slika";
-            this.Slika.ReadOnly = true;
-            this.Slika.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Slika.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Opis
-            // 
-            this.Opis.DataPropertyName = "Opis";
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.ReadOnly = true;
-            this.Opis.Width = 420;
+            this.btnSnimi.ForeColor = System.Drawing.Color.Black;
+            this.btnSnimi.Location = new System.Drawing.Point(676, 791);
+            this.btnSnimi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSnimi.Name = "btnSnimi";
+            this.btnSnimi.Size = new System.Drawing.Size(129, 28);
+            this.btnSnimi.TabIndex = 17;
+            this.btnSnimi.Text = "Snimi";
+            this.btnSnimi.UseVisualStyleBackColor = true;
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(190, 74);
+            this.txtOpis.Location = new System.Drawing.Point(169, 89);
             this.txtOpis.Margin = new System.Windows.Forms.Padding(5);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
@@ -162,19 +121,18 @@
             // btnDodajVodica
             // 
             this.btnDodajVodica.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajVodica.Location = new System.Drawing.Point(542, 234);
+            this.btnDodajVodica.Location = new System.Drawing.Point(521, 249);
             this.btnDodajVodica.Margin = new System.Windows.Forms.Padding(5);
             this.btnDodajVodica.Name = "btnDodajVodica";
             this.btnDodajVodica.Size = new System.Drawing.Size(28, 26);
             this.btnDodajVodica.TabIndex = 14;
             this.btnDodajVodica.Text = "+";
             this.btnDodajVodica.UseVisualStyleBackColor = true;
-            this.btnDodajVodica.Click += new System.EventHandler(this.btnDodajVodica_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(56, 77);
+            this.label7.Location = new System.Drawing.Point(35, 92);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 17);
@@ -184,19 +142,18 @@
             // btnDodajDrzavu
             // 
             this.btnDodajDrzavu.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajDrzavu.Location = new System.Drawing.Point(542, 269);
+            this.btnDodajDrzavu.Location = new System.Drawing.Point(521, 284);
             this.btnDodajDrzavu.Margin = new System.Windows.Forms.Padding(5);
             this.btnDodajDrzavu.Name = "btnDodajDrzavu";
             this.btnDodajDrzavu.Size = new System.Drawing.Size(28, 26);
             this.btnDodajDrzavu.TabIndex = 13;
             this.btnDodajDrzavu.Text = "+";
             this.btnDodajDrzavu.UseVisualStyleBackColor = true;
-            this.btnDodajDrzavu.Click += new System.EventHandler(this.btnDodajDrzavu_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 317);
+            this.label5.Location = new System.Drawing.Point(67, 332);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 17);
@@ -206,7 +163,7 @@
             // clbKategorije
             // 
             this.clbKategorije.FormattingEnabled = true;
-            this.clbKategorije.Location = new System.Drawing.Point(190, 317);
+            this.clbKategorije.Location = new System.Drawing.Point(169, 332);
             this.clbKategorije.Margin = new System.Windows.Forms.Padding(5);
             this.clbKategorije.Name = "clbKategorije";
             this.clbKategorije.Size = new System.Drawing.Size(340, 89);
@@ -216,7 +173,7 @@
             // 
             this.cmbDrzave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDrzave.FormattingEnabled = true;
-            this.cmbDrzave.Location = new System.Drawing.Point(190, 271);
+            this.cmbDrzave.Location = new System.Drawing.Point(169, 286);
             this.cmbDrzave.Margin = new System.Windows.Forms.Padding(5);
             this.cmbDrzave.Name = "cmbDrzave";
             this.cmbDrzave.Size = new System.Drawing.Size(340, 24);
@@ -225,7 +182,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(100, 275);
+            this.label4.Location = new System.Drawing.Point(79, 290);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 17);
@@ -236,7 +193,7 @@
             // 
             this.cmbVodici.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVodici.FormattingEnabled = true;
-            this.cmbVodici.Location = new System.Drawing.Point(190, 235);
+            this.cmbVodici.Location = new System.Drawing.Point(169, 250);
             this.cmbVodici.Margin = new System.Windows.Forms.Padding(5);
             this.cmbVodici.Name = "cmbVodici";
             this.cmbVodici.Size = new System.Drawing.Size(340, 24);
@@ -245,7 +202,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 239);
+            this.label3.Location = new System.Drawing.Point(35, 254);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 17);
@@ -254,7 +211,7 @@
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(190, 39);
+            this.txtNaziv.Location = new System.Drawing.Point(169, 54);
             this.txtNaziv.Margin = new System.Windows.Forms.Padding(5);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(340, 22);
@@ -263,7 +220,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(114, 48);
+            this.label1.Location = new System.Drawing.Point(93, 63);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 17);
@@ -273,28 +230,27 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(527, 791);
+            this.button1.Location = new System.Drawing.Point(459, 490);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 28);
-            this.button1.TabIndex = 24;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Snimi";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnSnimi_Click);
             // 
-            // frmTuristickeRuteDetalji
+            // frmTuristickeRuteDodaj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 885);
+            this.ClientSize = new System.Drawing.Size(616, 541);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmTuristickeRuteDetalji";
-            this.Text = "frmTuristickeRuteDetalji";
-            this.Load += new System.EventHandler(this.frmTuristickeRuteDetalji_Load);
+            this.Name = "frmTuristickeRuteDodaj";
+            this.Text = "frmTuristickeRuteDodaj";
+            this.Load += new System.EventHandler(this.frmTuristickeRuteDodaj_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSlike)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +258,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnIzbrisiSliku;
+        private System.Windows.Forms.Button btnDodajSliku;
+        private System.Windows.Forms.Button btnSnimi;
+        private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.Button btnDodajVodica;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnDodajDrzavu;
@@ -313,13 +273,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtOpis;
-        private System.Windows.Forms.DataGridView dgvSlike;
-        private System.Windows.Forms.Button btnIzbrisiSliku;
-        private System.Windows.Forms.Button btnDodajSliku;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RuteSlikeId;
-        private System.Windows.Forms.DataGridViewImageColumn Slika;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.Button button1;
     }
 }
