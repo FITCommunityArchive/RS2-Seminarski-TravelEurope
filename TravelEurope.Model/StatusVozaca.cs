@@ -12,7 +12,10 @@ namespace TravelEurope.Model
 
         public int StatusVozacaId { get; set; }
         public bool Dostupan { get; set; }
-
+        public override string ToString()
+        {
+            return Dostupan.ToString();
+        }
         public ICollection<Vozac> Vozac { get; set; }
     }
 }

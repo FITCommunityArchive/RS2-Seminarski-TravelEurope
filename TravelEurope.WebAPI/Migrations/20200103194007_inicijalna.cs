@@ -89,10 +89,10 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TuristickiVodic",
+                name: "TuristRuta",
                 columns: table => new
                 {
-                    TuristickiVodicId = table.Column<int>(nullable: false)
+                    TuristRutaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Ime = table.Column<string>(nullable: true),
                     Prezime = table.Column<string>(nullable: true),
@@ -100,7 +100,7 @@ namespace TravelEurope.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TuristickiVodic", x => x.TuristickiVodicId);
+                    table.PrimaryKey("PK_TuristRuta", x => x.TuristRutaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,10 +199,10 @@ namespace TravelEurope.WebAPI.Migrations
                         principalColumn: "DrzavaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TuristRuta_TuristickiVodic_TuristickiVodicId",
-                        column: x => x.TuristickiVodicId,
-                        principalTable: "TuristickiVodic",
-                        principalColumn: "TuristickiVodicId",
+                        name: "FK_TuristRuta_TuristRuta_TuristRutaId",
+                        column: x => x.TuristRutaId,
+                        principalTable: "TuristRuta",
+                        principalColumn: "TuristRutaId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -214,7 +214,7 @@ namespace TravelEurope.WebAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Naziv = table.Column<string>(nullable: true),
                     TipVozilaId = table.Column<int>(nullable: false),
-                    GodinaProizvodnje = table.Column<DateTime>(nullable: false),
+                    GodinaProizvodnje = table.Column<int>(nullable: false),
                     MarkaVozilaId = table.Column<int>(nullable: false),
                     StatusVozilaId = table.Column<int>(nullable: false),
                     VrstaGorivaId = table.Column<int>(nullable: false),
@@ -481,9 +481,9 @@ namespace TravelEurope.WebAPI.Migrations
                 column: "DrzavaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TuristRuta_TuristickiVodicId",
+                name: "IX_TuristRuta_TuristRutaId",
                 table: "TuristRuta",
-                column: "TuristickiVodicId");
+                column: "TuristRutaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vozac_StatusVozacaId",
@@ -581,7 +581,7 @@ namespace TravelEurope.WebAPI.Migrations
                 name: "Vozilo");
 
             migrationBuilder.DropTable(
-                name: "TuristickiVodic");
+                name: "TuristRuta");
 
             migrationBuilder.DropTable(
                 name: "StatusVozaca");

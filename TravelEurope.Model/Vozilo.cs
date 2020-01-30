@@ -13,7 +13,7 @@ namespace TravelEurope.Model
         public int VoziloId { get; set; }
         public string Naziv { get; set; }
         public int TipVozilaId { get; set; }
-        public DateTime GodinaProizvodnje { get; set; }
+        public int GodinaProizvodnje { get; set; }
         public int MarkaVozilaId { get; set; }
         public int StatusVozilaId { get; set; }
         public int VrstaGorivaId { get; set; }

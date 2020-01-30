@@ -70,7 +70,7 @@ namespace TravelEurope.WebAPI.Services
 
             _context.Grad.Attach(entity);
             _context.Grad.Update(entity);
-            
+
             entity = _mapper.Map(request, entity);
 
             _context.SaveChanges();
@@ -78,7 +78,6 @@ namespace TravelEurope.WebAPI.Services
             return _mapper.Map<Model.Grad>(entity);
 
         }
-
     }
 
 }

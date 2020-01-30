@@ -34,6 +34,17 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IKorisniciService, KorisniciService>();
             services.AddScoped<IDrzavaService, DrzavaService>();
             services.AddScoped<IGradService, GradService>();
+            services.AddScoped<ITuristickaRutaServices, TuristickaRutaServices>();
+            services.AddScoped<ITuristickiVodicServices, TuristickiVodicServices>();
+            services.AddScoped<IStraniJezikService, StraniJezikService>();
+            services.AddScoped<IVoziloService, VoziloService>();
+            services.AddScoped<IVozacService, VozacService>();
+            services.AddScoped<ITipVozilaService, TipVozilaService>();
+            services.AddScoped<IMarkaVozilaService, MarkaVozilaService>();
+            services.AddScoped<IVrstaGorivaService, VrstaGorivaService>();
+            services.AddScoped<IStatusVozilaService, StatusVozilaService>();
+            services.AddScoped<IStatusVozacaService, StatusVozacaService>();
+
 
 
 #pragma warning disable CS0618 // Type or member is obsolete

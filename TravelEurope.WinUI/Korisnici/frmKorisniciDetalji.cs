@@ -14,9 +14,8 @@ namespace TravelEurope.WinUI.Korisnici
     public partial class frmKorisniciDetalji : Form
     {
         private readonly APIService _serviceKorisnici = new APIService("Korisnici");
-        private readonly APIService _serviceUloge = new APIService("Uloge");
-        private readonly APIService _serviceDrzave = new APIService("Drzave");
-        private readonly APIService _serviceGradovi = new APIService("Gradovi");
+        private readonly APIService _serviceDrzava = new APIService("Drzava");
+        private readonly APIService _serviceGrad = new APIService("Grad");
 
         private int _id;
 
@@ -32,6 +31,10 @@ namespace TravelEurope.WinUI.Korisnici
             {
                 Ime = txtIme.Text,
                 Prezime = txtPrezime.Text,
+                Jmbg = txtJMBG.Text,
+                Adresa = txtAdresa.Text,
+                Spol = txtSpol.Text,
+                Telefon = txtTelefon.Text,
                 UserName = txtKorisnickoIme.Text,
                 Email = txtEmail.Text,
                 Password = txtLozinka.Text,
@@ -63,9 +66,10 @@ namespace TravelEurope.WinUI.Korisnici
 
         private async void frmKorisniciDetalji_Load(object sender, EventArgs e)
         {
-            var listDrzave = await _serviceDrzave.Get<List<Model.Drzava>>(null);
+            var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
 
             cmbDrzave.DataSource = listDrzave;
+            cmbDrzave.DisplayMember = "Naziv";
 
             await RefreshGradovi();
 
@@ -81,6 +85,7 @@ namespace TravelEurope.WinUI.Korisnici
             txtPrezime.Text = korisnik.Prezime;
             txtEmail.Text = korisnik.Email;
             txtKorisnickoIme.Text = korisnik.UserName;
+            txtAdresa.Text = korisnik.Adresa;
 
             foreach (Model.Drzava item in cmbDrzave.Items)
             {
@@ -92,7 +97,6 @@ namespace TravelEurope.WinUI.Korisnici
             {
                 if (item.GradId == korisnik.GradId)
                     cmbGradovi.SelectedItem = item;
-
             }
         }
 
@@ -107,8 +111,9 @@ namespace TravelEurope.WinUI.Korisnici
                 DrzavaId = Drzava.DrzavaId
             };
 
-            var listGradovi = await _serviceGradovi.Get<List<Model.Grad>>(request);
+            var listGradovi = await _serviceGrad.Get<List<Model.Grad>>(request);
             cmbGradovi.DataSource = listGradovi;
+            cmbGradovi.DisplayMember = "Naziv";
         }
 
         private async void cmbDrzave_SelectedIndexChanged(object sender, EventArgs e)

@@ -18,9 +18,76 @@ namespace TravelEurope.WinUI
             InitializeComponent();
         }
 
-        private void PregledToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PregledKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var frm = new Korisnici.frmKorisnici();
+            frm.Show();
+        }
+
+        private void PregledDrzavaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var frm = new Lokacije.frmDrzava();
+            frm.Show();
+        }
+
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Korisnici.frmKorisniciDetalji();
+            frm.Show();
+        }
+
+        private void pregledToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickeRute.frmTuristickeRute();
+            frm.Show();
+        }
+
+        private void dodajTuristRutuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickeRute.frmTuristickeRuteDetalji();
+            frm.Show();
+        }
+
+
+        private void dodajVoziloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Vozilo.frmVozilaDetalji();
+            frm.Show();
+        }
+
+        private void dodajDržavuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Lokacije.frmDodajDrzavu();
+            frm.Show();
+        }
+
+        private void pregl_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickiVodici.frmTuristickiVodici();
+            frm.Show();
+        }
+
+        private void dodajTurističkogVodičaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickiVodici.frmTuristickiVodiciDetalji();
+            frm.Show();
+        }
+
+        private void pregledToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            var frm = new Vozilo.frmVozila();
+            frm.Show();
+        }
+
+        private void pregledToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            var frm = new Vozaci.frmVozaci();
+            frm.Show();
+        }
+
+        private void dodajVozačaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new Vozaci.frmVozacDetalji();
             frm.Show();
         }
     }

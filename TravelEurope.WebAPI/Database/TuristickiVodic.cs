@@ -13,8 +13,8 @@ namespace TravelEurope.WebAPI.Database
         public int TuristickiVodicId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        public string StraniJezik { get; set; }
-
+        public StraniJezik StraniJezik { get; set; }
+        public int StraniJezikId { get; set; }
         public ICollection<TuristRuta> TuristRuta { get; set; }
     }
 }

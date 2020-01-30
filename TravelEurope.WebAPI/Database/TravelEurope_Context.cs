@@ -30,6 +30,9 @@ namespace TravelEurope.WebAPI.Database
         public virtual DbSet<Vozac> Vozac { get; set; }
         public virtual DbSet<Vozilo> Vozilo { get; set; }
         public virtual DbSet<VrstaGoriva> VrstaGoriva { get; set; }
+        public virtual DbSet<StraniJezik> StraniJezik { get; set; }
+        public virtual DbSet<Kategorija> Kategorija { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -9,6 +9,7 @@ namespace TravelEurope.Model.Requests
     {
         [Required]
         public string Naziv { get; set; }
+        [Required]
         public int DrzavaId { get; set; }
     }
 }

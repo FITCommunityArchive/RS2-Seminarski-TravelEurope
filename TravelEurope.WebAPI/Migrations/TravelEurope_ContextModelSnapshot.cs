@@ -60,6 +60,19 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("Grad");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Kategorija", b =>
+                {
+                    b.Property<int>("KategorijaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("KategorijaId");
+
+                    b.ToTable("Kategorija");
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Klijent", b =>
                 {
                     b.Property<int>("KlijentId");
@@ -272,6 +285,19 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("StatusVozila");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.StraniJezik", b =>
+                {
+                    b.Property<int>("StraniJezikId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("StraniJezikId");
+
+                    b.ToTable("StraniJezik");
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TipVozila", b =>
                 {
                     b.Property<int>("TipId")
@@ -295,9 +321,11 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<string>("Prezime");
 
-                    b.Property<string>("StraniJezik");
+                    b.Property<int>("StraniJezikId");
 
                     b.HasKey("TuristickiVodicId");
+
+                    b.HasIndex("StraniJezikId");
 
                     b.ToTable("TuristickiVodic");
                 });
@@ -358,7 +386,7 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<int>("BrojVrata");
 
-                    b.Property<DateTime>("GodinaProizvodnje");
+                    b.Property<int>("GodinaProizvodnje");
 
                     b.Property<int>("MarkaVozilaId");
 
@@ -486,6 +514,14 @@ namespace TravelEurope.WebAPI.Migrations
                     b.HasOne("TravelEurope.WebAPI.Database.Vozilo", "Vozilo")
                         .WithMany("Rezervacija")
                         .HasForeignKey("VoziloId");
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.StraniJezik", "StraniJezik")
+                        .WithMany()
+                        .HasForeignKey("StraniJezikId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>

@@ -26,11 +26,19 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.StatusVozaca, Model.StatusVozaca>();
             CreateMap<Database.StatusVozila, Model.StatusVozila>();
             CreateMap<Database.TipVozila, Model.TipVozila>();
-            CreateMap<Database.TuristickiVodic, Model.TuristickiVodic>();
             CreateMap<Database.TuristRuta, Model.TuristRuta>();
+            CreateMap<Database.TuristickiVodic, Model.TuristickiVodic>();
             CreateMap<Database.Vozac, Model.Vozac>();
             CreateMap<Database.Vozilo, Model.Vozilo>();
             CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
+            CreateMap<Database.StraniJezik, Model.StraniJezik>();
+            CreateMap<Database.TipVozila, Model.TipVozila>();
+            CreateMap<Database.MarkaVozila, Model.MarkaVozila>();
+            CreateMap<Database.StatusVozila, Model.StatusVozila>();
+            CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
+            CreateMap<Database.Kategorija, Model.Kategorija>();
+
+
 
             CreateMap<Database.Administrator, Model.Administrator>().ReverseMap();
             CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
@@ -41,6 +49,15 @@ namespace TravelEurope.WebAPI.Mapper
 
             CreateMap<Database.Drzava, Model.Requests.DrzavaInsertRequest>().ReverseMap();
             CreateMap<Database.Grad, Model.Requests.GradInsertRequest>().ReverseMap();
+
+            CreateMap<Database.TuristRuta, Model.Requests.TuristickeRuteInsertRequest>().ReverseMap();
+            CreateMap<Database.TuristickiVodic, Model.Requests.TuristickiVodicInsertRequest>().ReverseMap();
+
+            CreateMap<Database.Vozilo, Model.Requests.VoziloInsertRequest>().ReverseMap();
+            CreateMap<Database.Vozac, Model.Requests.VozacInsertRequest>().ReverseMap();
+
+
+
         }
     }
 }

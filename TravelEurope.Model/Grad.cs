@@ -8,7 +8,10 @@ namespace TravelEurope.Model
         public int GradId { get; set; }
         public string Naziv { get; set; }
         public int DrzavaId { get; set; }
-
         public Drzava Drzava { get; set; }
+        public override string ToString()
+        {
+            return Naziv.ToString();
+        }
     }
 }

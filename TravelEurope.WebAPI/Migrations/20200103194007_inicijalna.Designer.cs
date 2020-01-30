@@ -287,9 +287,9 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("TipVozila");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
                 {
-                    b.Property<int>("TuristickiVodicId")
+                    b.Property<int>("TuristRutaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -299,9 +299,9 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<string>("StraniJezik");
 
-                    b.HasKey("TuristickiVodicId");
+                    b.HasKey("TuristRutaId");
 
-                    b.ToTable("TuristickiVodic");
+                    b.ToTable("TuristRuta");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
@@ -316,13 +316,13 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<string>("Opis");
 
-                    b.Property<int>("TuristickiVodicId");
+                    b.Property<int>("TuristRutaId");
 
                     b.HasKey("TuristRutaId");
 
                     b.HasIndex("DrzavaId");
 
-                    b.HasIndex("TuristickiVodicId");
+                    b.HasIndex("TuristRutaId");
 
                     b.ToTable("TuristRuta");
                 });
@@ -497,9 +497,9 @@ namespace TravelEurope.WebAPI.Migrations
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelEurope.WebAPI.Database.TuristickiVodic", "TuristickiVodic")
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRuta", "TuristRuta")
                         .WithMany("TuristRuta")
-                        .HasForeignKey("TuristickiVodicId")
+                        .HasForeignKey("TuristRutaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

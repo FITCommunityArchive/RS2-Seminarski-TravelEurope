@@ -33,18 +33,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.KorisniciId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDodajKorisnika
             // 
             this.btnDodajKorisnika.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(380, 24);
+            this.btnDodajKorisnika.Location = new System.Drawing.Point(356, 30);
             this.btnDodajKorisnika.Name = "btnDodajKorisnika";
             this.btnDodajKorisnika.Size = new System.Drawing.Size(99, 23);
             this.btnDodajKorisnika.TabIndex = 9;
@@ -54,7 +55,7 @@
             // 
             // txtImePrezime
             // 
-            this.txtImePrezime.Location = new System.Drawing.Point(139, 26);
+            this.txtImePrezime.Location = new System.Drawing.Point(104, 32);
             this.txtImePrezime.Name = "txtImePrezime";
             this.txtImePrezime.Size = new System.Drawing.Size(143, 20);
             this.txtImePrezime.TabIndex = 8;
@@ -62,8 +63,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(65, 29);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(30, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 7;
@@ -72,7 +73,7 @@
             // btnPretraga
             // 
             this.btnPretraga.ForeColor = System.Drawing.Color.Black;
-            this.btnPretraga.Location = new System.Drawing.Point(288, 24);
+            this.btnPretraga.Location = new System.Drawing.Point(264, 30);
             this.btnPretraga.Name = "btnPretraga";
             this.btnPretraga.Size = new System.Drawing.Size(75, 23);
             this.btnPretraga.TabIndex = 6;
@@ -83,32 +84,33 @@
             // 
             this.dgvKorisnici.AllowUserToAddRows = false;
             this.dgvKorisnici.AllowUserToDeleteRows = false;
-            this.dgvKorisnici.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgvKorisnici.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KorisniciId,
+            this.KorisnikId,
             this.Ime,
             this.Prezime,
             this.Email,
-            this.Grad});
-            this.dgvKorisnici.Location = new System.Drawing.Point(17, 62);
+            this.Grad,
+            this.Adresa});
+            this.dgvKorisnici.Location = new System.Drawing.Point(12, 114);
             this.dgvKorisnici.MultiSelect = false;
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.dgvKorisnici.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(675, 287);
+            this.dgvKorisnici.Size = new System.Drawing.Size(560, 235);
             this.dgvKorisnici.TabIndex = 5;
             this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             // 
-            // KorisniciId
+            // KorisnikId
             // 
-            this.KorisniciId.DataPropertyName = "KorisniciId";
-            this.KorisniciId.HeaderText = "KorisniciId";
-            this.KorisniciId.Name = "KorisniciId";
-            this.KorisniciId.ReadOnly = true;
-            this.KorisniciId.Visible = false;
+            this.KorisnikId.DataPropertyName = "KorisnikId";
+            this.KorisnikId.HeaderText = "KorisnikId";
+            this.KorisnikId.Name = "KorisnikId";
+            this.KorisnikId.ReadOnly = true;
+            this.KorisnikId.Visible = false;
             // 
             // Ime
             // 
@@ -138,11 +140,18 @@
             this.Grad.Name = "Grad";
             this.Grad.ReadOnly = true;
             // 
+            // Adresa
+            // 
+            this.Adresa.DataPropertyName = "Adresa";
+            this.Adresa.HeaderText = "Adresa";
+            this.Adresa.Name = "Adresa";
+            this.Adresa.ReadOnly = true;
+            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 361);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label1);
@@ -164,10 +173,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.DataGridView dgvKorisnici;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KorisniciId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Grad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
     }
 }
