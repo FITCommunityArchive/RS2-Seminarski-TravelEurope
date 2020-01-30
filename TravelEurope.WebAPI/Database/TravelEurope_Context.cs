@@ -32,6 +32,7 @@ namespace TravelEurope.WebAPI.Database
         public virtual DbSet<VrstaGoriva> VrstaGoriva { get; set; }
         public virtual DbSet<StraniJezik> StraniJezik { get; set; }
         public virtual DbSet<Kategorija> Kategorija { get; set; }
+        public virtual DbSet<RuteSlike> RuteSlike { get; set; }
 
 
 

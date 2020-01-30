@@ -93,5 +93,25 @@ namespace TravelEurope.WinUI.TuristickeRute
                     cmbVodici.SelectedItem = item;
             }
         }
+
+        private async void btnDodajVodica_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickiVodici.frmTuristickiVodiciDetalji();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodic>>(null);
+                cmbVodici.DataSource = listVodici;
+            }
+        }
+
+        private async void btnDodajDrzavu_Click(object sender, EventArgs e)
+        {
+            var frm = new Lokacije.frmDodajDrzavu();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var listDrzave = await _serviceVodici.Get<List<Model.Drzava>>(null);
+                cmbDrzave.DataSource = listDrzave;
+            }
+        }
     }
 }

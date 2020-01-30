@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelEurope.WebAPI.Database;
 
 namespace TravelEurope.WebAPI.Migrations
 {
     [DbContext(typeof(TravelEurope_Context))]
-    partial class TravelEurope_ContextModelSnapshot : ModelSnapshot
+    [Migration("20200130042349_IgreSlike")]
+    partial class IgreSlike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -37,6 +37,8 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.StatusVozila, Model.StatusVozila>();
             CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
             CreateMap<Database.Kategorija, Model.Kategorija>();
+            CreateMap<Database.RuteKategorije, Model.RuteKategorije>();
+            CreateMap<Database.RuteSlike, Model.RuteSlike>();
 
 
 

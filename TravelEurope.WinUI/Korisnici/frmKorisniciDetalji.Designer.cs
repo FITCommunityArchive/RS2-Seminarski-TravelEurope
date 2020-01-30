@@ -70,7 +70,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.txtTelefon);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtSpol);

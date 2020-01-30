@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\RuteKategorijeController.cs" />
     <Compile Remove="Migrations\20200129133650_Jezici.cs" />
     <Compile Remove="Migrations\20200129134605_Jezici2.cs" />
   </ItemGroup>
