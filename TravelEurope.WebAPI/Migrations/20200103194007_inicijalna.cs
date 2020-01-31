@@ -22,6 +22,19 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Kategorija",
+                columns: table => new
+                {
+                    KategorijaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kategorija", x => x.KategorijaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MarkaVozila",
                 columns: table => new
                 {
@@ -76,6 +89,19 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StraniJezik",
+                columns: table => new
+                {
+                    StraniJezikId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StraniJezik", x => x.StraniJezikId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipVozila",
                 columns: table => new
                 {
@@ -86,21 +112,6 @@ namespace TravelEurope.WebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TipVozila", x => x.TipId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TuristRuta",
-                columns: table => new
-                {
-                    TuristRutaId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Ime = table.Column<string>(nullable: true),
-                    Prezime = table.Column<string>(nullable: true),
-                    StraniJezik = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TuristRuta", x => x.TuristRutaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,30 +190,23 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TuristRuta",
+                name: "TuristickiVodic",
                 columns: table => new
                 {
-                    TuristRutaId = table.Column<int>(nullable: false)
+                    TuristickiVodicId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Naziv = table.Column<string>(nullable: true),
-                    Opis = table.Column<string>(nullable: true),
-                    TuristickiVodicId = table.Column<int>(nullable: false),
-                    DrzavaId = table.Column<int>(nullable: false)
+                    Ime = table.Column<string>(nullable: true),
+                    Prezime = table.Column<string>(nullable: true),
+                    StraniJezikId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TuristRuta", x => x.TuristRutaId);
+                    table.PrimaryKey("PK_TuristickiVodic", x => x.TuristickiVodicId);
                     table.ForeignKey(
-                        name: "FK_TuristRuta_Drzava_DrzavaId",
-                        column: x => x.DrzavaId,
-                        principalTable: "Drzava",
-                        principalColumn: "DrzavaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TuristRuta_TuristRuta_TuristRutaId",
-                        column: x => x.TuristRutaId,
-                        principalTable: "TuristRuta",
-                        principalColumn: "TuristRutaId",
+                        name: "FK_TuristickiVodic_StraniJezik_StraniJezikId",
+                        column: x => x.StraniJezikId,
+                        principalTable: "StraniJezik",
+                        principalColumn: "StraniJezikId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -284,6 +288,34 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TuristRuta",
+                columns: table => new
+                {
+                    TuristRutaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(nullable: true),
+                    Opis = table.Column<string>(nullable: true),
+                    TuristickiVodicId = table.Column<int>(nullable: false),
+                    DrzavaId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TuristRuta", x => x.TuristRutaId);
+                    table.ForeignKey(
+                        name: "FK_TuristRuta_Drzava_DrzavaId",
+                        column: x => x.DrzavaId,
+                        principalTable: "Drzava",
+                        principalColumn: "DrzavaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TuristRuta_TuristickiVodic_TuristickiVodicId",
+                        column: x => x.TuristickiVodicId,
+                        principalTable: "TuristickiVodic",
+                        principalColumn: "TuristickiVodicId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Administrator",
                 columns: table => new
                 {
@@ -340,6 +372,28 @@ namespace TravelEurope.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RuteSlike",
+                columns: table => new
+                {
+                    RuteSlikeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TuristRutaId = table.Column<int>(nullable: false),
+                    Slika = table.Column<byte[]>(nullable: true),
+                    SlikaThumb = table.Column<byte[]>(nullable: true),
+                    Opis = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RuteSlike", x => x.RuteSlikeId);
+                    table.ForeignKey(
+                        name: "FK_RuteSlike_TuristRuta_TuristRutaId",
+                        column: x => x.TuristRutaId,
+                        principalTable: "TuristRuta",
+                        principalColumn: "TuristRutaId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Rezervacija",
                 columns: table => new
                 {
@@ -370,7 +424,7 @@ namespace TravelEurope.WebAPI.Migrations
                         column: x => x.RadnikId,
                         principalTable: "Radnik",
                         principalColumn: "RadnikId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Rezervacija_TuristRuta_TuristRutaId",
                         column: x => x.TuristRutaId,
@@ -476,14 +530,24 @@ namespace TravelEurope.WebAPI.Migrations
                 column: "VoziloId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_RuteSlike_TuristRutaId",
+                table: "RuteSlike",
+                column: "TuristRutaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TuristickiVodic_StraniJezikId",
+                table: "TuristickiVodic",
+                column: "StraniJezikId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TuristRuta_DrzavaId",
                 table: "TuristRuta",
                 column: "DrzavaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TuristRuta_TuristRutaId",
+                name: "IX_TuristRuta_TuristickiVodicId",
                 table: "TuristRuta",
-                column: "TuristRutaId");
+                column: "TuristickiVodicId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vozac_StatusVozacaId",
@@ -545,7 +609,13 @@ namespace TravelEurope.WebAPI.Migrations
                 name: "Administrator");
 
             migrationBuilder.DropTable(
+                name: "Kategorija");
+
+            migrationBuilder.DropTable(
                 name: "Lokacija");
+
+            migrationBuilder.DropTable(
+                name: "RuteSlike");
 
             migrationBuilder.DropTable(
                 name: "Korisnici");
@@ -581,7 +651,7 @@ namespace TravelEurope.WebAPI.Migrations
                 name: "Vozilo");
 
             migrationBuilder.DropTable(
-                name: "TuristRuta");
+                name: "TuristickiVodic");
 
             migrationBuilder.DropTable(
                 name: "StatusVozaca");
@@ -597,6 +667,9 @@ namespace TravelEurope.WebAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "VrstaGoriva");
+
+            migrationBuilder.DropTable(
+                name: "StraniJezik");
         }
     }
 }

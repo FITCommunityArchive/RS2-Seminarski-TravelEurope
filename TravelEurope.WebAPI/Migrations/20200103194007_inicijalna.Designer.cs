@@ -62,6 +62,19 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("Grad");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Kategorija", b =>
+                {
+                    b.Property<int>("KategorijaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("KategorijaId");
+
+                    b.ToTable("Kategorija");
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Klijent", b =>
                 {
                     b.Property<int>("KlijentId");
@@ -244,6 +257,27 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("Rezervacija");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.RuteSlike", b =>
+                {
+                    b.Property<int>("RuteSlikeId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Opis");
+
+                    b.Property<byte[]>("Slika");
+
+                    b.Property<byte[]>("SlikaThumb");
+
+                    b.Property<int>("TuristRutaId");
+
+                    b.HasKey("RuteSlikeId");
+
+                    b.HasIndex("TuristRutaId");
+
+                    b.ToTable("RuteSlike");
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.StatusVozaca", b =>
                 {
                     b.Property<int>("StatusVozacaId")
@@ -274,6 +308,19 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("StatusVozila");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.StraniJezik", b =>
+                {
+                    b.Property<int>("StraniJezikId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Naziv");
+
+                    b.HasKey("StraniJezikId");
+
+                    b.ToTable("StraniJezik");
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TipVozila", b =>
                 {
                     b.Property<int>("TipId")
@@ -287,9 +334,9 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("TipVozila");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
                 {
-                    b.Property<int>("TuristRutaId")
+                    b.Property<int>("TuristickiVodicId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -297,11 +344,13 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<string>("Prezime");
 
-                    b.Property<string>("StraniJezik");
+                    b.Property<int>("StraniJezikId");
 
-                    b.HasKey("TuristRutaId");
+                    b.HasKey("TuristickiVodicId");
 
-                    b.ToTable("TuristRuta");
+                    b.HasIndex("StraniJezikId");
+
+                    b.ToTable("TuristickiVodic");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
@@ -316,13 +365,13 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<string>("Opis");
 
-                    b.Property<int>("TuristRutaId");
+                    b.Property<int>("TuristickiVodicId");
 
                     b.HasKey("TuristRutaId");
 
                     b.HasIndex("DrzavaId");
 
-                    b.HasIndex("TuristRutaId");
+                    b.HasIndex("TuristickiVodicId");
 
                     b.ToTable("TuristRuta");
                 });
@@ -360,7 +409,7 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<int>("BrojVrata");
 
-                    b.Property<DateTime>("GodinaProizvodnje");
+                    b.Property<int>("GodinaProizvodnje");
 
                     b.Property<int>("MarkaVozilaId");
 
@@ -490,6 +539,22 @@ namespace TravelEurope.WebAPI.Migrations
                         .HasForeignKey("VoziloId");
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.RuteSlike", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRuta", "TuristRuta")
+                        .WithMany()
+                        .HasForeignKey("TuristRutaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.StraniJezik", "StraniJezik")
+                        .WithMany()
+                        .HasForeignKey("StraniJezikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
                 {
                     b.HasOne("TravelEurope.WebAPI.Database.Drzava", "Drzava")
@@ -497,9 +562,9 @@ namespace TravelEurope.WebAPI.Migrations
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelEurope.WebAPI.Database.TuristRuta", "TuristRuta")
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristickiVodic", "TuristickiVodic")
                         .WithMany("TuristRuta")
-                        .HasForeignKey("TuristRutaId")
+                        .HasForeignKey("TuristickiVodicId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
