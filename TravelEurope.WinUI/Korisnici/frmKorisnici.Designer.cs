@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnPretraga = new System.Windows.Forms.Button();
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.KorisnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,7 +87,7 @@
             this.dgvKorisnici.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KorisnikId,
+            this.Id,
             this.Ime,
             this.Prezime,
             this.Email,
@@ -104,13 +104,13 @@
             this.dgvKorisnici.TabIndex = 5;
             this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             // 
-            // KorisnikId
+            // Id
             // 
-            this.KorisnikId.DataPropertyName = "KorisnikId";
-            this.KorisnikId.HeaderText = "KorisnikId";
-            this.KorisnikId.Name = "KorisnikId";
-            this.KorisnikId.ReadOnly = true;
-            this.KorisnikId.Visible = false;
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // Ime
             // 
@@ -173,7 +173,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.DataGridView dgvKorisnici;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;

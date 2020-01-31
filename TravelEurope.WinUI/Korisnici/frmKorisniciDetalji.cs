@@ -86,6 +86,9 @@ namespace TravelEurope.WinUI.Korisnici
             txtEmail.Text = korisnik.Email;
             txtKorisnickoIme.Text = korisnik.UserName;
             txtAdresa.Text = korisnik.Adresa;
+            txtJMBG.Text = korisnik.Jmbg;
+            txtSpol.Text = korisnik.Spol;
+            txtTelefon.Text = korisnik.Telefon;
 
             foreach (Model.Drzava item in cmbDrzave.Items)
             {
