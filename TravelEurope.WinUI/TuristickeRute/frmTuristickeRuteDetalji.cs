@@ -46,6 +46,16 @@ namespace TravelEurope.WinUI.TuristickeRute
                     Close();
                 }
             }
+            else
+            {
+                Model.TuristRuta entity = await _serviceTuristRuta.Update<Model.TuristRuta>(_id, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Turist ruta uspješno izmijenjena.");
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
 
         private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)

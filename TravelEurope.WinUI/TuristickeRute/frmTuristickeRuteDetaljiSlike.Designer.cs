@@ -28,20 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pbSlika = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSnimi = new System.Windows.Forms.Button();
             this.txtOpis = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlika)).BeginInit();
             this.SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Image files|*.jpg;*.jpeg;*.png;*.tif;*.gif;*.bmp";
+            this.openFileDialog1.Title = "Odaberite sliku";
             // 
             // pbSlika
             // 
             this.pbSlika.BackColor = System.Drawing.Color.Gainsboro;
             this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbSlika.Location = new System.Drawing.Point(79, 100);
+            this.pbSlika.Location = new System.Drawing.Point(82, 98);
             this.pbSlika.Margin = new System.Windows.Forms.Padding(4);
             this.pbSlika.Name = "pbSlika";
             this.pbSlika.Size = new System.Drawing.Size(192, 168);
@@ -53,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 100);
+            this.label2.Location = new System.Drawing.Point(34, 98);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 17);
@@ -63,7 +69,7 @@
             // btnSnimi
             // 
             this.btnSnimi.ForeColor = System.Drawing.Color.Black;
-            this.btnSnimi.Location = new System.Drawing.Point(349, 240);
+            this.btnSnimi.Location = new System.Drawing.Point(352, 238);
             this.btnSnimi.Margin = new System.Windows.Forms.Padding(4);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(129, 28);
@@ -74,7 +80,7 @@
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(79, 25);
+            this.txtOpis.Location = new System.Drawing.Point(82, 23);
             this.txtOpis.Margin = new System.Windows.Forms.Padding(4);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
@@ -84,18 +90,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 29);
+            this.label1.Location = new System.Drawing.Point(37, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Opis";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Image files|*.jpg;*.jpeg;*.png;*.tif;*.gif;*.bmp";
-            this.openFileDialog1.Title = "Odabrite sliku";
             // 
             // frmTuristickeRuteDetaljiSlike
             // 
@@ -117,12 +117,11 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pbSlika;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.TextBox txtOpis;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

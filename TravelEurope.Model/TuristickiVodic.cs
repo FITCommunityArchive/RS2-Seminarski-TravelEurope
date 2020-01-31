@@ -18,7 +18,7 @@ namespace TravelEurope.Model
         public ICollection<TuristRuta> TuristRuta { get; set; }
         public override string ToString()
         {
-            string ip = Ime + " " + Prezime;
+            string ip = Ime + " " + Prezime + ", " + StraniJezik.Naziv;
             return ip.ToString();
         }
     }
