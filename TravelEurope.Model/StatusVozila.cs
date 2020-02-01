@@ -5,11 +5,6 @@ namespace TravelEurope.Model
 {
     public partial class StatusVozila
     {
-        public StatusVozila()
-        {
-            Vozilo = new HashSet<Vozilo>();
-        }
-
         public int StatusVozilaId { get; set; }
         public string Status { get; set; }
         public bool Ispravnost { get; set; }
@@ -18,6 +13,5 @@ namespace TravelEurope.Model
         {
             return Status.ToString();
         }
-        public ICollection<Vozilo> Vozilo { get; set; }
     }
 }

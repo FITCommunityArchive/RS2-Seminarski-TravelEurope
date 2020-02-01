@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnIzbrisiSliku = new System.Windows.Forms.Button();
             this.btnDodajSliku = new System.Windows.Forms.Button();
             this.dgvSlike = new System.Windows.Forms.DataGridView();
@@ -47,13 +49,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSlike)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnIzbrisiSliku);
             this.groupBox1.Controls.Add(this.btnDodajSliku);
@@ -80,9 +82,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
             // 
+            // button2
+            // 
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(339, 791);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(129, 28);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Izbriši Sliku";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnIzbrisiSliku_Click);
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(527, 791);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 28);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Snimi";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnSnimi_Click);
+            // 
             // btnIzbrisiSliku
             // 
-            this.btnIzbrisiSliku.Enabled = false;
             this.btnIzbrisiSliku.ForeColor = System.Drawing.Color.Black;
             this.btnIzbrisiSliku.Location = new System.Drawing.Point(190, 791);
             this.btnIzbrisiSliku.Margin = new System.Windows.Forms.Padding(4);
@@ -270,18 +295,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv";
             // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(527, 791);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 28);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Snimi";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnSnimi_Click);
-            // 
             // frmTuristickeRuteDetalji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -321,5 +334,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Slika;
         private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

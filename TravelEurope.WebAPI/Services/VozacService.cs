@@ -23,7 +23,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Vozac> Get(VozacSearchRequest request)
         {
-            var query = _context.Vozac.AsQueryable();
+            var query = _context.Vozac.Include(a=>a.StatusVozaca).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {

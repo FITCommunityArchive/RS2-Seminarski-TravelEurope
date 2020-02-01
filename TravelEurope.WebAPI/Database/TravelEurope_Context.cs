@@ -178,9 +178,6 @@ namespace TravelEurope.WebAPI.Database
                     .WithMany(p => p.TuristRuta)
                     .HasForeignKey(d => d.DrzavaId);
 
-                entity.HasOne(d => d.TuristickiVodic)
-                    .WithMany(p => p.TuristRuta)
-                    .HasForeignKey(d => d.TuristickiVodicId);
             });
 
             modelBuilder.Entity<Vozac>(entity =>
@@ -210,9 +207,9 @@ namespace TravelEurope.WebAPI.Database
                     .WithMany(p => p.Vozilo)
                     .HasForeignKey(d => d.StatusVozilaId);
 
-                entity.HasOne(d => d.TipVozila)
-                    .WithMany(p => p.Vozilo)
-                    .HasForeignKey(d => d.TipVozilaId);
+                //entity.HasOne(d => d.TipVozila)
+                //    .WithMany(p => p.Vozilo)
+                //    .HasForeignKey(d => d.TipVozilaId);
 
                 entity.HasOne(d => d.VrstaGoriva)
                     .WithMany(p => p.Vozilo)

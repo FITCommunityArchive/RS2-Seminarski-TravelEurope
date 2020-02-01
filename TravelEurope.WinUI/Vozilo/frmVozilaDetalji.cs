@@ -1,11 +1,5 @@
-﻿using TravelEurope.Model.Requests;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,16 +47,16 @@ namespace TravelEurope.WinUI.Vozilo
                     Close();
                 }
             }
-            //else
-            //{
-            //    Model.Korisnici entity = await _serviceVozila.Update<Model.Vozilo>(_id, request);
-            //    if (entity != null)
-            //    {
-            //        MessageBox.Show("Vozilo ruta uspješno izmijenjeno.");
-            //        DialogResult = DialogResult.OK;
-            //        Close();
-            //    }
-            //}
+            else
+            {
+                Model.Vozilo entity = await _serviceVozila.Update<Model.Vozilo>(_id, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Vozilo uspješno izmijenjeno.");
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
 
         private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)

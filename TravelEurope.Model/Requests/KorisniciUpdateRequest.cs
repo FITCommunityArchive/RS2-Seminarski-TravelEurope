@@ -30,7 +30,6 @@ namespace TravelEurope.Model.Requests
         [Required]
         public string Telefon { get; set; }
         
-        [MinLength(3)]
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
 

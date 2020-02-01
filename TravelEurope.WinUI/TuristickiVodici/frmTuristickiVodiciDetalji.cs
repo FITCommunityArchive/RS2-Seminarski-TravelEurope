@@ -45,16 +45,16 @@ namespace TravelEurope.WinUI.TuristickiVodici
                     Close();
                 }
             }
-            //else
-            //{
-            //    Model.Korisnici entity = await _serviceTuristRuta.Update<Model.TuristRuta>(_id, request);
-            //    if (entity != null)
-            //    {
-            //        MessageBox.Show("Turist ruta uspješno izmijenjena.");
-            //        DialogResult = DialogResult.OK;
-            //        Close();
-            //    }
-            //}
+            else
+            {
+                Model.TuristickiVodic entity = await _serviceVodici.Update<Model.TuristickiVodic>(_id, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Turistički vodič uspješno izmijenjen.");
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
 
         private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)
@@ -74,7 +74,11 @@ namespace TravelEurope.WinUI.TuristickiVodici
 
             txtIme.Text = tr.Ime;
             txtPrezime.Text = tr.Prezime;
-            cmbJezici.Text = tr.StraniJezik.Naziv;
+            foreach (Model.StraniJezik item in cmbJezici.Items)
+            {
+                if (item.StraniJezikId == tr.StraniJezikId)
+                    cmbJezici.SelectedItem = item;
+            }
         }
     }
 }

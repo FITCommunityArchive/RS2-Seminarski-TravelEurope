@@ -45,7 +45,7 @@
             // 
             this.btnDodajRutu.ForeColor = System.Drawing.Color.Black;
             this.btnDodajRutu.Location = new System.Drawing.Point(460, 37);
-            this.btnDodajRutu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDodajRutu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajRutu.Name = "btnDodajRutu";
             this.btnDodajRutu.Size = new System.Drawing.Size(132, 28);
             this.btnDodajRutu.TabIndex = 14;
@@ -56,7 +56,7 @@
             // txtNazivRute
             // 
             this.txtNazivRute.Location = new System.Drawing.Point(139, 39);
-            this.txtNazivRute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNazivRute.Margin = new System.Windows.Forms.Padding(4);
             this.txtNazivRute.Name = "txtNazivRute";
             this.txtNazivRute.Size = new System.Drawing.Size(189, 22);
             this.txtNazivRute.TabIndex = 13;
@@ -76,7 +76,7 @@
             // 
             this.btnPretraga.ForeColor = System.Drawing.Color.Black;
             this.btnPretraga.Location = new System.Drawing.Point(337, 37);
-            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4);
             this.btnPretraga.Name = "btnPretraga";
             this.btnPretraga.Size = new System.Drawing.Size(100, 28);
             this.btnPretraga.TabIndex = 11;
@@ -97,7 +97,7 @@
             this.TuristickiVodic,
             this.Drzava});
             this.dgvTuristRuta.Location = new System.Drawing.Point(16, 140);
-            this.dgvTuristRuta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTuristRuta.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTuristRuta.MultiSelect = false;
             this.dgvTuristRuta.Name = "dgvTuristRuta";
             this.dgvTuristRuta.ReadOnly = true;
@@ -156,7 +156,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.dgvTuristRuta);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTuristickeRute";
             this.Text = "frmTuristickeRute";
             this.Load += new System.EventHandler(this.frmTuristRuta_Load);

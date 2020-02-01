@@ -49,9 +49,10 @@
             // btnDodajKorisnika
             // 
             this.btnDodajKorisnika.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(358, 32);
+            this.btnDodajKorisnika.Location = new System.Drawing.Point(477, 39);
+            this.btnDodajKorisnika.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(99, 23);
+            this.btnDodajKorisnika.Size = new System.Drawing.Size(132, 28);
             this.btnDodajKorisnika.TabIndex = 14;
             this.btnDodajKorisnika.Text = "Dodaj vozilo";
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
@@ -59,27 +60,30 @@
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(106, 33);
+            this.txtNaziv.Location = new System.Drawing.Point(141, 41);
+            this.txtNaziv.Margin = new System.Windows.Forms.Padding(4);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(143, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(189, 22);
             this.txtNaziv.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(32, 37);
+            this.label1.Location = new System.Drawing.Point(43, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Naziv vozila";
             // 
             // btnPretraga
             // 
             this.btnPretraga.ForeColor = System.Drawing.Color.Black;
-            this.btnPretraga.Location = new System.Drawing.Point(266, 32);
+            this.btnPretraga.Location = new System.Drawing.Point(355, 39);
+            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4);
             this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(75, 23);
+            this.btnPretraga.Size = new System.Drawing.Size(100, 28);
             this.btnPretraga.TabIndex = 11;
             this.btnPretraga.Text = "Pretraga";
             this.btnPretraga.UseVisualStyleBackColor = true;
@@ -102,15 +106,17 @@
             this.BrojSjedista,
             this.BrojVrata,
             this.Boja});
-            this.dgvVozila.Location = new System.Drawing.Point(14, 115);
+            this.dgvVozila.Location = new System.Drawing.Point(19, 142);
+            this.dgvVozila.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVozila.MultiSelect = false;
             this.dgvVozila.Name = "dgvVozila";
             this.dgvVozila.ReadOnly = true;
             this.dgvVozila.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.dgvVozila.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dgvVozila.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVozila.Size = new System.Drawing.Size(735, 235);
+            this.dgvVozila.Size = new System.Drawing.Size(980, 289);
             this.dgvVozila.TabIndex = 10;
+            this.dgvVozila.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             // 
             // VoziloId
             // 
@@ -196,15 +202,15 @@
             // 
             // frmVozila
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 370);
+            this.ClientSize = new System.Drawing.Size(1015, 455);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.dgvVozila);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmVozila";
             this.Text = "frmVozila";
             this.Load += new System.EventHandler(this.frmVozila_Load);

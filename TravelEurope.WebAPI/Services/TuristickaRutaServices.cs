@@ -23,7 +23,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.TuristRuta> Get(TuristickeRuteSearchRequest request)
         {
-            var query = _context.TuristRuta.Include(a=>a.Drzava).AsQueryable();
+            var query = _context.TuristRuta.Include(a=>a.Drzava).Include(b=>b.TuristickiVodic).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {

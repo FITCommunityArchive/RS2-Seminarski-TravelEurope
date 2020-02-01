@@ -6,6 +6,6 @@ namespace TravelEurope.Model.Requests
 {
     public class RuteSlikeSearchRequest
     {
-        public int RutaId { get; set; }
+        public int TuristRutaId { get; set; }
     }
 }

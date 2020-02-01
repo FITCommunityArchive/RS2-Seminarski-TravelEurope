@@ -121,7 +121,7 @@ namespace TravelEurope.WinUI.TuristickeRute
         {
             var requestRuteSlike = new Model.Requests.RuteSlikeSearchRequest
             {
-                RutaId = _id
+                TuristRutaId = _id
             };
             var listRuteSlike = await _serviceRuteSlike.Get<List<Model.RuteSlike>>(requestRuteSlike);
             dgvSlike.AutoGenerateColumns = false;
@@ -146,9 +146,9 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async void btnIzbrisiSliku_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(dgvSlike.SelectedRows[0].Cells[0].Value.ToString());
+            var RuteSlikeId = int.Parse(dgvSlike.SelectedRows[0].Cells[0].Value.ToString());
 
-            var success = await _serviceRuteSlike.Remove(id);
+            var success = await _serviceRuteSlike.Remove(RuteSlikeId);
             if (success)
             {
                 MessageBox.Show("Slika je izbrisana.");
@@ -163,6 +163,18 @@ namespace TravelEurope.WinUI.TuristickeRute
                 btnIzbrisiSliku.Enabled = false;
             else
                 btnIzbrisiSliku.Enabled = true;
+        }
+
+        private async Task button2_ClickAsync(object sender, EventArgs e)
+        {
+            var id = int.Parse(dgvSlike.SelectedRows[0].Cells[0].Value.ToString());
+
+            var success = await _serviceRuteSlike.Remove(id);
+            if (success)
+            {
+                MessageBox.Show("Slika je izbrisana.");
+                await UcitajListuSlika();
+            }
         }
     }
 }

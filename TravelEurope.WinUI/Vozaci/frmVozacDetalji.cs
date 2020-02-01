@@ -1,11 +1,5 @@
-﻿using TravelEurope.Model.Requests;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,16 +43,16 @@ namespace TravelEurope.WinUI.Vozaci
                     Close();
                 }
             }
-            //else
-            //{
-            //    Model.Korisnici entity = await _serviceVozac.Update<Model.Vozac>(_id, request);
-            //    if (entity != null)
-            //    {
-            //        MessageBox.Show("Vozac ruta uspješno izmijenjeno.");
-            //        DialogResult = DialogResult.OK;
-            //        Close();
-            //    }
-            //}
+            else
+            {
+                Model.Vozac entity = await _serviceVozac.Update<Model.Vozac>(_id, request);
+                if (entity != null)
+                {
+                    MessageBox.Show("Vozač uspješno izmijenjen.");
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
 
         private async void frmVozaciDetalji_Load(object sender, EventArgs e)

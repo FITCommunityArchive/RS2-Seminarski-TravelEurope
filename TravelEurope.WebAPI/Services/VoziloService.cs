@@ -23,7 +23,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Vozilo> Get(VoziloSearchRequest request)
         {
-            var query = _context.Vozilo.AsQueryable();
+            var query = _context.Vozilo.Include(a=>a.TipVozila).Include(b=>b.MarkaVozila).Include(c=>c.StatusVozila).Include(d=>d.VrstaGoriva).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {

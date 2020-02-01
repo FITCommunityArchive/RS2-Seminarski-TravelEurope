@@ -54,5 +54,10 @@ namespace TravelEurope.WinUI.Korisnici
             if (frm.ShowDialog() == DialogResult.OK)
                 await UcitajFormu();
         }
+
+        private async void btnPretraga_ClickAsync(object sender, EventArgs e)
+        {
+            await UcitajFormu();
+        }
     }
 }

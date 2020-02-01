@@ -17,14 +17,14 @@ namespace TravelEurope.WinUI.TuristickeRute
     {
         private readonly APIService _serviceRuteSlike = new APIService("RuteSlike");
         private int _id;
-        private int _RutaId;
+        private int _TuristRutaId;
 
         private RuteSlikeInsertRequest request = new RuteSlikeInsertRequest();
 
-        public frmTuristickeRuteDetaljiSlike(int id, int RutaId)
+        public frmTuristickeRuteDetaljiSlike(int id, int TuristRutaId)
         {
             _id = id;
-            _RutaId = RutaId;
+            _TuristRutaId = TuristRutaId;
             InitializeComponent();
         }
 
@@ -38,7 +38,7 @@ namespace TravelEurope.WinUI.TuristickeRute
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
             request.Opis = txtOpis.Text;
-            request.RutaId = _RutaId;
+            request.TuristRutaId = _TuristRutaId;
 
             if (_id == 0)
             {

@@ -45,9 +45,10 @@
             // btnDodajKorisnika
             // 
             this.btnDodajKorisnika.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(356, 30);
+            this.btnDodajKorisnika.Location = new System.Drawing.Point(475, 37);
+            this.btnDodajKorisnika.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(99, 23);
+            this.btnDodajKorisnika.Size = new System.Drawing.Size(132, 28);
             this.btnDodajKorisnika.TabIndex = 9;
             this.btnDodajKorisnika.Text = "Dodaj korisnika";
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
@@ -55,30 +56,34 @@
             // 
             // txtImePrezime
             // 
-            this.txtImePrezime.Location = new System.Drawing.Point(104, 32);
+            this.txtImePrezime.Location = new System.Drawing.Point(139, 39);
+            this.txtImePrezime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtImePrezime.Name = "txtImePrezime";
-            this.txtImePrezime.Size = new System.Drawing.Size(143, 20);
+            this.txtImePrezime.Size = new System.Drawing.Size(189, 22);
             this.txtImePrezime.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(30, 35);
+            this.label1.Location = new System.Drawing.Point(40, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Ime i prezime";
             // 
             // btnPretraga
             // 
             this.btnPretraga.ForeColor = System.Drawing.Color.Black;
-            this.btnPretraga.Location = new System.Drawing.Point(264, 30);
+            this.btnPretraga.Location = new System.Drawing.Point(352, 37);
+            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(75, 23);
+            this.btnPretraga.Size = new System.Drawing.Size(100, 28);
             this.btnPretraga.TabIndex = 6;
             this.btnPretraga.Text = "Pretraga";
             this.btnPretraga.UseVisualStyleBackColor = true;
+            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_ClickAsync);
             // 
             // dgvKorisnici
             // 
@@ -93,14 +98,15 @@
             this.Email,
             this.Grad,
             this.Adresa});
-            this.dgvKorisnici.Location = new System.Drawing.Point(12, 114);
+            this.dgvKorisnici.Location = new System.Drawing.Point(16, 140);
+            this.dgvKorisnici.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvKorisnici.MultiSelect = false;
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.dgvKorisnici.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(560, 235);
+            this.dgvKorisnici.Size = new System.Drawing.Size(747, 289);
             this.dgvKorisnici.TabIndex = 5;
             this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
             // 
@@ -149,14 +155,15 @@
             // 
             // frmKorisnici
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(779, 444);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.dgvKorisnici);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmKorisnici";
             this.Text = "frmKorisnici";
             this.Load += new System.EventHandler(this.frmKorisnici_Load);
