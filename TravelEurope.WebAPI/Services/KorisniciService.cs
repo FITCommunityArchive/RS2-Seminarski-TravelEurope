@@ -117,12 +117,8 @@ namespace TravelEurope.WebAPI.Services
 
         private static IQueryable<Database.Korisnici> IncludeUserDetails(IQueryable<Database.Korisnici> query)
         {
-            query = query.Include(x => x.Administrator);
-            query = query.Include(x => x.Radnik);
-            query = query.Include(x => x.Klijent);
             query = query.Include(x => x.Grad.Drzava);
             return query;
         }
-
     }
 }

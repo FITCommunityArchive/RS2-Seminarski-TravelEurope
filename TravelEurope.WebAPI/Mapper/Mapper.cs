@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelEurope.WebAPI.Database;
 
 namespace TravelEurope.WebAPI.Mapper
 {
@@ -15,14 +16,12 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.Administrator, Model.Administrator>();
             CreateMap<Database.Klijent, Model.Klijent>();
             CreateMap<Database.Radnik, Model.Radnik>();
-            
             CreateMap<Database.Drzava, Model.Drzava>();
             CreateMap<Database.Grad, Model.Grad>();
             CreateMap<Database.Lokacija, Model.Lokacija>();
             CreateMap<Database.MarkaVozila, Model.MarkaVozila>();
             CreateMap<Database.NacinPlacanja, Model.NacinPlacanja>();
             CreateMap<Database.Racun, Model.Racun>();
-            CreateMap<Database.Rezervacija, Model.Rezervacija>();
             CreateMap<Database.StatusVozaca, Model.StatusVozaca>();
             CreateMap<Database.StatusVozila, Model.StatusVozila>();
             CreateMap<Database.TipVozila, Model.TipVozila>();
@@ -36,15 +35,16 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.MarkaVozila, Model.MarkaVozila>();
             CreateMap<Database.StatusVozila, Model.StatusVozila>();
             CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
-            CreateMap<Database.Kategorija, Model.Kategorija>();
-            CreateMap<Database.RuteKategorije, Model.RuteKategorije>();
+            CreateMap<Database.Rezervacija, Model.Rezervacija>();
             CreateMap<Database.RuteSlike, Model.RuteSlike>();
 
-
-
             CreateMap<Database.Administrator, Model.Administrator>().ReverseMap();
-            CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
             CreateMap<Database.Radnik, Model.Radnik>().ReverseMap();
+            CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
+            CreateMap<Database.Klijent, Model.Klijent>().ForMember(a => a.ImePrezime,
+            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e=>e.Klijent).FirstOrDefault().Ime)).ReverseMap();
+            CreateMap<Database.Rezervacija, Model.Rezervacija>().ReverseMap();
+
 
             CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
@@ -59,10 +59,6 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.Vozac, Model.Requests.VozacInsertRequest>().ReverseMap();
 
             CreateMap<Database.RuteSlike, Model.Requests.RuteSlikeInsertRequest>().ReverseMap();
-
-
-
-
         }
     }
 }

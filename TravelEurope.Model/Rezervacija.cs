@@ -20,14 +20,14 @@ namespace TravelEurope.Model
         public int? VozacId { get; set; }
         public int? VoziloId { get; set; }
         public int? TuristRutaId { get; set; }
-        public int RacunId { get; set; }
+        public int? RacunId { get; set; }
 
         public Klijent Klijent { get; set; }
-        public Racun RacunNavigation { get; set; }
         public Radnik Radnik { get; set; }
         public TuristRuta TuristRuta { get; set; }
         public Vozac Vozac { get; set; }
         public Vozilo Vozilo { get; set; }
+        public Racun RacunNavigation { get; set; }
         public ICollection<Racun> Racun { get; set; }
     }
 }

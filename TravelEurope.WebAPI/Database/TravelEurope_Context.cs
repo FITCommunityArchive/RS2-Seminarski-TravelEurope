@@ -6,8 +6,12 @@ namespace TravelEurope.WebAPI.Database
 {
     public partial class TravelEurope_Context : DbContext
     {
+ 
         public TravelEurope_Context(DbContextOptions<TravelEurope_Context> options)
             : base(options)
+        {
+        }
+        public TravelEurope_Context()
         {
         }
 
@@ -31,9 +35,7 @@ namespace TravelEurope.WebAPI.Database
         public virtual DbSet<Vozilo> Vozilo { get; set; }
         public virtual DbSet<VrstaGoriva> VrstaGoriva { get; set; }
         public virtual DbSet<StraniJezik> StraniJezik { get; set; }
-        public virtual DbSet<Kategorija> Kategorija { get; set; }
         public virtual DbSet<RuteSlike> RuteSlike { get; set; }
-
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -207,9 +209,9 @@ namespace TravelEurope.WebAPI.Database
                     .WithMany(p => p.Vozilo)
                     .HasForeignKey(d => d.StatusVozilaId);
 
-                //entity.HasOne(d => d.TipVozila)
-                //    .WithMany(p => p.Vozilo)
-                //    .HasForeignKey(d => d.TipVozilaId);
+                entity.HasOne(d => d.TipVozila)
+                    .WithMany(p => p.Vozilo)
+                    .HasForeignKey(d => d.TipVozilaId);
 
                 entity.HasOne(d => d.VrstaGoriva)
                     .WithMany(p => p.Vozilo)

@@ -45,8 +45,7 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IStatusVozilaService, StatusVozilaService>();
             services.AddScoped<IStatusVozacaService, StatusVozacaService>();
             services.AddScoped<IRuteSlikeService, RuteSlikeService>();
-
-
+            services.AddScoped<IRezervacijaService, RezervacijaService>();
 
 
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -57,11 +56,17 @@ namespace TravelEurope.WebAPI
             {
                 c.SwaggerDoc("v1", new Info { Title = "TravelEurope API v1", Version = "v1" });
             });
+            services.AddScoped(p => new TravelEurope_Context(p.GetService<DbContextOptions<TravelEurope_Context>>()));
 
-            var connection = Configuration.GetConnectionString("LocalDB");
-
+            var connection = @"Server=.;Database=TravelEurope_RS2-1;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<TravelEurope_Context>(options => options.UseSqlServer(connection));
         }
+
+        //protected void OnConfiguring(DbContextOptionsBuilder builder)
+        //{
+        //    builder.UseSqlServer("Server=.;Database=TravelEurope_RS2-1;Trusted_Connection=True;ConnectRetryCount=0");
+        //    base.OnConfiguring(builder);
+        //}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

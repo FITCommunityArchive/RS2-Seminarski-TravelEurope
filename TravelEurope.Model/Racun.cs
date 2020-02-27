@@ -7,18 +7,15 @@ namespace TravelEurope.Model
     {
         public Racun()
         {
-            RezervacijaNavigation = new HashSet<Rezervacija>();
+            Rezervacija = new HashSet<Rezervacija>();
         }
-
+        public ICollection<Rezervacija> Rezervacija { get; set; }
         public int RacunId { get; set; }
         public int RezervacijaId { get; set; }
         public DateTime DatumIzdavanja { get; set; }
         public int TrajanjeRentanjaDani { get; set; }
         public int NacinPlacanjaId { get; set; }
         public int CijenaUslugeSaPdvom { get; set; }
-
         public NacinPlacanja NacinPlacanja { get; set; }
-        public Rezervacija Rezervacija { get; set; }
-        public ICollection<Rezervacija> RezervacijaNavigation { get; set; }
     }
 }

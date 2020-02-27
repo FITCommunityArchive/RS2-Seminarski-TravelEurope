@@ -60,19 +60,6 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("Grad");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Kategorija", b =>
-                {
-                    b.Property<int>("KategorijaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Naziv");
-
-                    b.HasKey("KategorijaId");
-
-                    b.ToTable("Kategorija");
-                });
-
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Klijent", b =>
                 {
                     b.Property<int>("KlijentId");
@@ -228,7 +215,7 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<int>("KlijentId");
 
-                    b.Property<int>("RacunId");
+                    b.Property<int?>("RacunId");
 
                     b.Property<int>("RadnikId");
 
@@ -511,7 +498,7 @@ namespace TravelEurope.WebAPI.Migrations
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacija", b =>
                 {
                     b.HasOne("TravelEurope.WebAPI.Database.Klijent", "Klijent")
-                        .WithMany("Rezervacija")
+                        .WithMany()
                         .HasForeignKey("KlijentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -561,7 +548,7 @@ namespace TravelEurope.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TravelEurope.WebAPI.Database.TuristickiVodic", "TuristickiVodic")
-                        .WithMany("TuristRuta")
+                        .WithMany()
                         .HasForeignKey("TuristickiVodicId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -587,7 +574,7 @@ namespace TravelEurope.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("TravelEurope.WebAPI.Database.TipVozila", "TipVozila")
-                        .WithMany("Vozilo")
+                        .WithMany()
                         .HasForeignKey("TipVozilaId")
                         .OnDelete(DeleteBehavior.Cascade);
 

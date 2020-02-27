@@ -93,7 +93,8 @@ namespace TravelEurope.WinUI
 
         private void pregledToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-
+            var frm = new Rezervacija.frmRezervacija();
+            frm.Show();
         }
     }
 }

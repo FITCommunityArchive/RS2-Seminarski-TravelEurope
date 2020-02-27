@@ -13,6 +13,12 @@ namespace TravelEurope.Model
         public int VozacId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
+
+        public override string ToString()
+        {
+            var atif = Ime + " " + Prezime;
+            return atif.ToString();
+        }
         public string BrVozackeDozvole { get; set; }
         public int StatusVozacaId { get; set; }
 

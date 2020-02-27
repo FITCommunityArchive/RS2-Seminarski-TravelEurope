@@ -6,6 +6,18 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\RuteKategorijeController.cs" />
+    <Compile Remove="Migrations\20200208143544_x.cs" />
+    <Compile Remove="Migrations\20200211160147_Cijena.cs" />
+    <Compile Remove="Migrations\20200211201230_KlijentKorisnik.cs" />
+    <Compile Remove="Migrations\20200211202803_KlijentKorisnik1.cs" />
+    <Compile Remove="Migrations\20200211202843_Proba.cs" />
+    <Compile Remove="Migrations\20200211203023_KlijentKorisnikž.cs" />
+    <Compile Remove="Migrations\20200226151125_test.cs" />
+    <Compile Remove="Migrations\20200226153224_AddKlijent.cs" />
+    <Compile Remove="Migrations\20200226153745_AddKlijent.cs" />
+    <Compile Remove="Migrations\20200226154213_Klijnet.cs" />
+    <Compile Remove="Migrations\20200226154433_Proba.cs" />
+    <Compile Remove="Migrations\20200226154954_test.cs" />
   </ItemGroup>
 
   <ItemGroup>

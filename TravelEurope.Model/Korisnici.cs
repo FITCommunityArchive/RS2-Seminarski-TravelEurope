@@ -23,5 +23,9 @@ namespace TravelEurope.Model
         public Klijent Klijent { get; set; }
         public Radnik Radnik { get; set; }
 
+        public override string ToString()
+        {
+            return (Ime + " " + Prezime).ToString();
+        }
     }
 }

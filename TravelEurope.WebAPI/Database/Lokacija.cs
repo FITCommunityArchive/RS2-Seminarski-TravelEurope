@@ -8,7 +8,6 @@ namespace TravelEurope.WebAPI.Database
         public int LokacijaId { get; set; }
         public string Naziv { get; set; }
         public int DrzavaId { get; set; }
-
         public Drzava Drzava { get; set; }
     }
 }

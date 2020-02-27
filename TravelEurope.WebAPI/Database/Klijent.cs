@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TravelEurope.WebAPI.Database
 {
-    public partial class Klijent
+    public partial class Klijent 
     {
         public Klijent()
         {

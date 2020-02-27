@@ -14,5 +14,10 @@ namespace TravelEurope.Model
         public string Naziv { get; set; }
 
         public ICollection<Racun> Racun { get; set; }
+
+        public override string ToString()
+        {
+            return Naziv.ToString();
+        }
     }
 }
