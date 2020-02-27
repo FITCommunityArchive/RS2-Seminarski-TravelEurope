@@ -40,9 +40,11 @@ namespace TravelEurope.WebAPI.Mapper
 
             CreateMap<Database.Administrator, Model.Administrator>().ReverseMap();
             CreateMap<Database.Radnik, Model.Radnik>().ReverseMap();
+            CreateMap<Database.Radnik, Model.Radnik>().ForMember(a => a.ImePrezime,
+            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.RadnikId).Include(e => e.Radnik).FirstOrDefault().Ime + " " + new TravelEurope_Context().Korisnici.Where(d => d.Id == c.RadnikId).Include(e => e.Radnik).FirstOrDefault().Prezime)).ReverseMap();
             CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
             CreateMap<Database.Klijent, Model.Klijent>().ForMember(a => a.ImePrezime,
-            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e=>e.Klijent).FirstOrDefault().Ime)).ReverseMap();
+            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e=>e.Klijent).FirstOrDefault().Ime + " " + new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e => e.Klijent).FirstOrDefault().Prezime)).ReverseMap();
             CreateMap<Database.Rezervacija, Model.Rezervacija>().ReverseMap();
 
 

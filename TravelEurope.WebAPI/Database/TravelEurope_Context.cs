@@ -15,6 +15,14 @@ namespace TravelEurope.WebAPI.Database
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(@"Server=.;Database=TravelEurope_RS2-1;Trusted_Connection=True;ConnectRetryCount=0");
+            }
+        }
+
         public virtual DbSet<Administrator> Administrator { get; set; }
         public virtual DbSet<Korisnici> Korisnici { get; set; }
         public virtual DbSet<Drzava> Drzava { get; set; }

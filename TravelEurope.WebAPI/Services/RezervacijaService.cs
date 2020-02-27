@@ -23,7 +23,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Rezervacija> Get(RezervacijaSearchRequest request)
         {
-            var query = _context.Rezervacija.Include(b=>b.TuristRuta).Include(c=>c.Klijent).AsQueryable();
+            var query = _context.Rezervacija.Include(b=>b.TuristRuta).Include(c=>c.Klijent).Include(d=>d.Radnik).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {
