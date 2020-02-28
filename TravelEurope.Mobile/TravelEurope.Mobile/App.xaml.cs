@@ -14,7 +14,7 @@ namespace TravelEurope.Mobile
             InitializeComponent();
 
 
-            MainPage = new MainPage();
+            MainPage = new TuristRutePage();
         }
 
         protected override void OnStart()

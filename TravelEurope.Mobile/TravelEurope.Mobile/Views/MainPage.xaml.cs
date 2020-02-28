@@ -1,5 +1,4 @@
 ﻿using TravelEurope.Mobile.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -17,7 +16,7 @@ namespace TravelEurope.Mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Ponuda, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,11 +25,23 @@ namespace TravelEurope.Mobile.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //case (int)MenuItemType.Friends:
+                    //    MenuPages.Add(id, new NavigationPage(new FriendsPage()));
+                    //    break;
+                    //case (int)MenuItemType.Games:
+                    //    MenuPages.Add(id, new NavigationPage(new GamesPage()));
+                    //    break;
+                    //case (int)MenuItemType.Logout:
+                    //    MenuPages.Add(id, new NavigationPage(new LoginPage()));
+                    //    break;
+                    //case (int)MenuItemType.Favorites:
+                    //    MenuPages.Add(id, new NavigationPage(new FavoritesPage()));
+                    //    break;
+                    //case (int)MenuItemType.Recommendations:
+                    //    MenuPages.Add(id, new NavigationPage(new RecommendedGamesPage()));
+                    //    break;
+                    case (int)MenuItemType.Ponuda:
+                        MenuPages.Add(id, new NavigationPage(new TuristRutePage()));
                         break;
                 }
             }

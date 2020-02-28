@@ -1,7 +1,5 @@
 ﻿using TravelEurope.Mobile.Models;
-using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,8 +16,12 @@ namespace TravelEurope.Mobile.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Prijatelji, Title="Prijatelji" },
+                new HomeMenuItem {Id = MenuItemType.Ponuda, Title="Ponuda turist ruta" },
+                new HomeMenuItem {Id = MenuItemType.Pretplate, Title="Pretplate" },
+                new HomeMenuItem {Id = MenuItemType.Preporuke, Title="Preporuke" },
+                new HomeMenuItem {Id = MenuItemType.Profil, Title="Profil" },
+                new HomeMenuItem {Id = MenuItemType.Logout, Title="Logout" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -31,6 +33,14 @@ namespace TravelEurope.Mobile.Views
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                if (id == (int)MenuItemType.Logout)
+                {
+                    APIService.PrijavljeniKorisnik = null;
+                    APIService.Username = null;
+                    APIService.Password = null;
+                    Application.Current.MainPage = new MainPage();
+                    return;
+                }
                 await RootPage.NavigateFromMenu(id);
             };
         }
