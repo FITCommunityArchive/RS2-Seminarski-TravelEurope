@@ -12,7 +12,7 @@ namespace TravelEurope.WinUI.TuristickiVodici
 {
     public partial class frmTuristickiVodici : Form
     {
-        private readonly APIService _serviceVodici = new APIService("TuristickiVodic");
+        private readonly APIService _serviceVodici = new APIService("TuristickiVodici");
 
         public frmTuristickiVodici()
         {
@@ -26,12 +26,12 @@ namespace TravelEurope.WinUI.TuristickiVodici
 
         private async Task UcitajFormu()
         {
-            var request = new Model.Requests.TuristickiVodicSearchRequest
+            var request = new Model.Requests.TuristickiVodiciSearchRequest
             {
                 Ime = txtIme.Text
             };
 
-            List<Model.TuristickiVodic> lista = await _serviceVodici.Get<List<Model.TuristickiVodic>>(request);
+            List<Model.TuristickiVodici> lista = await _serviceVodici.Get<List<Model.TuristickiVodici>>(request);
 
             dgvVodici.AutoGenerateColumns = false;
             dgvVodici.DataSource = lista;

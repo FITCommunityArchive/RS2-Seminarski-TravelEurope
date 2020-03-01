@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TravelEurope.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TravelEurope.WebAPI.Services;
 
 namespace TravelEurope.WebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class KorisniciController : ControllerBase
     {
@@ -20,9 +22,30 @@ namespace TravelEurope.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public List<Model.Korisnici> Get([FromQuery]Model.Requests.KorisniciSearchRequest request)
         {
             return _service.Get(request);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        public Model.Korisnici Insert([FromBody]Model.Requests.KorisniciInsertRequest request)
+        {
+            return _service.Insert(request);
+        }
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Administrator")]
+        public Model.Korisnici Update(int id, [FromBody]Model.Requests.KorisniciUpdateRequest request)
+        {
+            return _service.Update(id, request);
+        }
+
+        [Authorize]
+        [HttpPost("UpdateProfile")]
+        public Model.Korisnici UpdateProfile([FromBody]Model.Requests.KorisniciUpdateProfilRequest request)
+        {
+            return _service.UpdateProfile(request);
         }
 
         [HttpGet("{id}")]
@@ -31,16 +54,11 @@ namespace TravelEurope.WebAPI.Controllers
             return _service.GetById(id);
         }
 
-        [HttpPost]
-        public Model.Korisnici Insert(Model.Requests.KorisniciInsertRequest request)
+        [HttpGet("MyProfile")]
+        [Authorize]
+        public Model.Korisnici MyProfile()
         {
-            return _service.Insert(request);
-        }
-
-        [HttpPut("{id}")]
-        public Model.Korisnici Update(int id, Model.Requests.KorisniciUpdateRequest request)
-        {
-            return _service.Update(id, request);
+            return _service.MyProfile();
         }
     }
 }

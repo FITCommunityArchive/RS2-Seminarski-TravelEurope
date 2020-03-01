@@ -14,8 +14,9 @@ namespace TravelEurope.WinUI.Korisnici
     public partial class frmKorisniciDetalji : Form
     {
         private readonly APIService _serviceKorisnici = new APIService("Korisnici");
-        private readonly APIService _serviceDrzava = new APIService("Drzava");
-        private readonly APIService _serviceGrad = new APIService("Grad");
+        private readonly APIService _serviceUloge = new APIService("Uloge");
+        private readonly APIService _serviceDrzave = new APIService("Drzave");
+        private readonly APIService _serviceGradovi = new APIService("Gradovi");
 
         private int _id;
 
@@ -31,15 +32,13 @@ namespace TravelEurope.WinUI.Korisnici
             {
                 Ime = txtIme.Text,
                 Prezime = txtPrezime.Text,
-                Jmbg = txtJMBG.Text,
-                Adresa = txtAdresa.Text,
-                Spol = txtSpol.Text,
-                Telefon = txtTelefon.Text,
-                UserName = txtKorisnickoIme.Text,
+                KorisnickoIme = txtKorisnickoIme.Text,
                 Email = txtEmail.Text,
-                Password = txtLozinka.Text,
-                PasswordConfirmation = txtLozinkaPotvrda.Text,
-                GradId = (cmbGradovi.SelectedItem as Model.Grad).GradId,
+                Lozinka = txtLozinka.Text,
+                LozinkaPotvrda = txtLozinkaPotvrda.Text,
+                GradId = (cmbGradovi.SelectedItem as Model.Gradovi).GradId,
+                Status = chbAktivan.Checked,
+                UlogaId = (cmbUloge.SelectedItem as Model.Uloge).UlogaId
             };
 
             if (_id == 0)
@@ -66,10 +65,11 @@ namespace TravelEurope.WinUI.Korisnici
 
         private async void frmKorisniciDetalji_Load(object sender, EventArgs e)
         {
-            var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
+            var listUloge = await _serviceUloge.Get<List<Model.Uloge>>(null);
+            var listDrzave = await _serviceDrzave.Get<List<Model.Drzave>>(null);
 
+            cmbUloge.DataSource = listUloge;
             cmbDrzave.DataSource = listDrzave;
-            cmbDrzave.DisplayMember = "Naziv";
 
             await RefreshGradovi();
 
@@ -84,39 +84,43 @@ namespace TravelEurope.WinUI.Korisnici
             txtIme.Text = korisnik.Ime;
             txtPrezime.Text = korisnik.Prezime;
             txtEmail.Text = korisnik.Email;
-            txtKorisnickoIme.Text = korisnik.UserName;
-            txtAdresa.Text = korisnik.Adresa;
-            txtJMBG.Text = korisnik.Jmbg;
-            txtSpol.Text = korisnik.Spol;
-            txtTelefon.Text = korisnik.Telefon;
+            txtKorisnickoIme.Text = korisnik.KorisnickoIme;
 
-            foreach (Model.Drzava item in cmbDrzave.Items)
+            foreach (Model.Drzave item in cmbDrzave.Items)
             {
                 if (item.DrzavaId == korisnik.Grad.DrzavaId)
                     cmbDrzave.SelectedItem = item;
             }
             await RefreshGradovi();
-            foreach (Model.Grad item in cmbGradovi.Items)
+            foreach (Model.Gradovi item in cmbGradovi.Items)
             {
                 if (item.GradId == korisnik.GradId)
                     cmbGradovi.SelectedItem = item;
+
             }
+
+            foreach (Model.Uloge item in cmbUloge.Items)
+            {
+                if (item.UlogaId == korisnik.UlogaId)
+                    cmbUloge.SelectedItem = item;
+            }
+
+            chbAktivan.Checked = korisnik.Status;
         }
 
         private async Task RefreshGradovi()
         {
-            Model.Drzava Drzava = cmbDrzave.SelectedItem as Model.Drzava;
+            Model.Drzave Drzava = cmbDrzave.SelectedItem as Model.Drzave;
             if (Drzava == null)
                 return;
 
-            var request = new GradSearchRequest
+            var request = new GradoviSearchRequest
             {
                 DrzavaId = Drzava.DrzavaId
             };
 
-            var listGradovi = await _serviceGrad.Get<List<Model.Grad>>(request);
+            var listGradovi = await _serviceGradovi.Get<List<Model.Gradovi>>(request);
             cmbGradovi.DataSource = listGradovi;
-            cmbGradovi.DisplayMember = "Naziv";
         }
 
         private async void cmbDrzave_SelectedIndexChanged(object sender, EventArgs e)

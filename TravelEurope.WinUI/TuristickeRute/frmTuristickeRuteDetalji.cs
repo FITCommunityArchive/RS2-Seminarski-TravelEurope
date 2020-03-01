@@ -13,9 +13,9 @@ namespace TravelEurope.WinUI.TuristickeRute
 {
     public partial class frmTuristickeRuteDetalji : Form
     {
-        private readonly APIService _serviceTuristRuta = new APIService("TuristRuta");
-        private readonly APIService _serviceDrzava = new APIService("Drzava");
-        private readonly APIService _serviceVodici = new APIService("TuristickiVodic");
+        private readonly APIService _serviceTuristRute = new APIService("TuristRute");
+        private readonly APIService _serviceDrzave = new APIService("Drzave");
+        private readonly APIService _serviceVodici = new APIService("TuristickiVodici");
         private readonly APIService _serviceRuteSlike = new APIService("RuteSlike");
 
         private int _id;
@@ -28,17 +28,17 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            var request = new Model.Requests.TuristickeRuteInsertRequest
+            var request = new Model.Requests.TuristRuteInsertRequest
             {
                 Naziv = txtNaziv.Text,
                 Opis = txtOpis.Text,
-                DrzavaId = (cmbDrzave.SelectedItem as Model.Drzava).DrzavaId,
-                TuristickiVodicId = (cmbVodici.SelectedItem as Model.TuristickiVodic).TuristickiVodicId,
+                DrzavaId = (cmbDrzave.SelectedItem as Model.Drzave).DrzavaId,
+                TuristickiVodicId = (cmbVodici.SelectedItem as Model.TuristickiVodici).TuristickiVodicId,
             };
 
             if (_id == 0)
             {
-                Model.TuristRuta entity = await _serviceTuristRuta.Insert<Model.TuristRuta>(request);
+                Model.TuristRute entity = await _serviceTuristRute.Insert<Model.TuristRute>(request);
                 if (entity != null)
                 {
                     MessageBox.Show("Turist ruta uspješno dodana.");
@@ -48,7 +48,7 @@ namespace TravelEurope.WinUI.TuristickeRute
             }
             else
             {
-                Model.TuristRuta entity = await _serviceTuristRuta.Update<Model.TuristRuta>(_id, request);
+                Model.TuristRute entity = await _serviceTuristRute.Update<Model.TuristRute>(_id, request);
                 if (entity != null)
                 {
                     MessageBox.Show("Turist ruta uspješno izmijenjena.");
@@ -60,8 +60,8 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)
         {
-            var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
-            var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodic>>(null);
+            var listDrzave = await _serviceDrzave.Get<List<Model.Drzave>>(null);
+            var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodici>>(null);
 
             cmbDrzave.DataSource = listDrzave;
             cmbVodici.DataSource = listVodici;
@@ -77,7 +77,7 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async Task UcitajDetaljeAsync()
         {
-            var tr = await _serviceTuristRuta.GetById<Model.TuristRuta>(_id);
+            var tr = await _serviceTuristRute.GetById<Model.TuristRute>(_id);
 
             txtNaziv.Text = tr.Naziv;
             txtOpis.Text = tr.Opis;
@@ -85,12 +85,12 @@ namespace TravelEurope.WinUI.TuristickeRute
             //cmbVodici.Text = tr.TuristickiVodic.Ime;
             
 
-            foreach (Model.Drzava item in cmbDrzave.Items)
-            {
-                if (item.DrzavaId == tr.DrzavaId)
-                    cmbDrzave.SelectedItem = item;
-            }
-            foreach (Model.TuristickiVodic item in cmbVodici.Items)
+            //foreach (Model.Drzave item in cmbDrzave.Items)
+            //{
+            //    if (item.DrzavaId == tr.DrzavaId)
+            //        cmbDrzave.SelectedItem = item;
+            //}
+            foreach (Model.TuristickiVodici item in cmbVodici.Items)
             {
                 if (item.TuristickiVodicId == tr.TuristickiVodicId)
                     cmbVodici.SelectedItem = item;
@@ -102,7 +102,7 @@ namespace TravelEurope.WinUI.TuristickeRute
             var frm = new TuristickiVodici.frmTuristickiVodiciDetalji();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodic>>(null);
+                var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodici>>(null);
                 cmbVodici.DataSource = listVodici;
             }
         }
@@ -112,7 +112,7 @@ namespace TravelEurope.WinUI.TuristickeRute
             var frm = new Lokacije.frmDodajDrzavu();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                var listDrzave = await _serviceDrzava.Get<List<Model.Drzava>>(null);
+                var listDrzave = await _serviceDrzave.Get<List<Model.Drzave>>(null);
                 cmbDrzave.DataSource = listDrzave;
             }
         }

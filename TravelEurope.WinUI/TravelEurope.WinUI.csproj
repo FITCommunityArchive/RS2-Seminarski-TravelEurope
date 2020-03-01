@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.WinForms">
-      <HintPath>C:\Users\Atif\Desktop\Microsoft.ReportViewer.WinForms.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -53,11 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="Helper\ComboBoxLoad.cs" />
     <Compile Include="frmIndex.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIndex.Designer.cs">
       <DependentUpon>frmIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageHelper.cs" />
     <Compile Include="Korisnici\frmKorisnici.cs">
@@ -78,17 +82,17 @@
     <Compile Include="Lokacije\frmDodajDrzavu.Designer.cs">
       <DependentUpon>frmDodajDrzavu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lokacije\frmDrzava.cs">
+    <Compile Include="Lokacije\frmDrzave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lokacije\frmDrzava.Designer.cs">
-      <DependentUpon>frmDrzava.cs</DependentUpon>
+    <Compile Include="Lokacije\frmDrzave.Designer.cs">
+      <DependentUpon>frmDrzave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lokacije\frmGradDetalji.cs">
+    <Compile Include="Lokacije\frmGradoviDetalji.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lokacije\frmGradDetalji.Designer.cs">
-      <DependentUpon>frmGradDetalji.cs</DependentUpon>
+    <Compile Include="Lokacije\frmGradoviDetalji.Designer.cs">
+      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
     </Compile>
     <Compile Include="Lokacije\frmUrediDrzavu.cs">
       <SubType>Form</SubType>
@@ -98,35 +102,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rezervacija\frmRezervacija.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rezervacija\frmRezervacija.Designer.cs">
-      <DependentUpon>frmRezervacija.cs</DependentUpon>
-    </Compile>
     <Compile Include="TuristickeRute\frmTuristickeRute.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TuristickeRute\frmTuristickeRute.Designer.cs">
       <DependentUpon>frmTuristickeRute.cs</DependentUpon>
     </Compile>
-    <Compile Include="TuristickeRute\frmTuristickeRuteDetalji.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TuristickeRute\frmTuristickeRuteDetalji.Designer.cs">
-      <DependentUpon>frmTuristickeRuteDetalji.cs</DependentUpon>
-    </Compile>
     <Compile Include="TuristickeRute\frmTuristickeRuteDodaj.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TuristickeRute\frmTuristickeRuteDodaj.Designer.cs">
       <DependentUpon>frmTuristickeRuteDodaj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.Designer.cs">
-      <DependentUpon>frmTuristickeRuteDetaljiSlike.cs</DependentUpon>
     </Compile>
     <Compile Include="TuristickiVodici\frmTuristickiVodici.cs">
       <SubType>Form</SubType>
@@ -140,32 +126,11 @@
     <Compile Include="TuristickiVodici\frmTuristickiVodiciDetalji.Designer.cs">
       <DependentUpon>frmTuristickiVodiciDetalji.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vozaci\frmVozaci.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vozaci\frmVozaci.Designer.cs">
-      <DependentUpon>frmVozaci.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Vozaci\frmVozacDetalji.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vozaci\frmVozacDetalji.Designer.cs">
-      <DependentUpon>frmVozacDetalji.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Vozilo\frmVozila.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vozilo\frmVozila.Designer.cs">
-      <DependentUpon>frmVozila.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Vozilo\frmVozilaDetalji.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vozilo\frmVozilaDetalji.Designer.cs">
-      <DependentUpon>frmVozilaDetalji.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>
@@ -176,11 +141,11 @@
     <EmbeddedResource Include="Lokacije\frmDodajDrzavu.resx">
       <DependentUpon>frmDodajDrzavu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lokacije\frmDrzava.resx">
-      <DependentUpon>frmDrzava.cs</DependentUpon>
+    <EmbeddedResource Include="Lokacije\frmDrzave.resx">
+      <DependentUpon>frmDrzave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lokacije\frmGradDetalji.resx">
-      <DependentUpon>frmGradDetalji.cs</DependentUpon>
+    <EmbeddedResource Include="Lokacije\frmGradoviDetalji.resx">
+      <DependentUpon>frmGradoviDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lokacije\frmUrediDrzavu.resx">
       <DependentUpon>frmUrediDrzavu.cs</DependentUpon>
@@ -194,17 +159,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Rezervacija\frmRezervacija.resx">
-      <DependentUpon>frmRezervacija.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TuristickeRute\frmTuristickeRute.resx">
       <DependentUpon>frmTuristickeRute.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDetalji.resx">
-      <DependentUpon>frmTuristickeRuteDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDetaljiSlike.resx">
-      <DependentUpon>frmTuristickeRuteDetaljiSlike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TuristickeRute\frmTuristickeRuteDodaj.resx">
       <DependentUpon>frmTuristickeRuteDodaj.cs</DependentUpon>
@@ -214,20 +170,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TuristickiVodici\frmTuristickiVodiciDetalji.resx">
       <DependentUpon>frmTuristickiVodiciDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vozaci\frmVozaci.resx">
-      <DependentUpon>frmVozaci.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vozaci\frmVozacDetalji.resx">
-      <DependentUpon>frmVozacDetalji.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vozilo\frmVozila.resx">
-      <DependentUpon>frmVozila.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vozilo\frmVozilaDetalji.resx">
-      <DependentUpon>frmVozilaDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\TravelEurope.Model.Grad.datasource" />

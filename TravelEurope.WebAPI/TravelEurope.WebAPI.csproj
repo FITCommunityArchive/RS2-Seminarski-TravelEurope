@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\RuteKategorijeController.cs" />
+    <Compile Remove="Controllers\RezervacijeController.cs" />
     <Compile Remove="Migrations\20200208143544_x.cs" />
     <Compile Remove="Migrations\20200211160147_Cijena.cs" />
     <Compile Remove="Migrations\20200211201230_KlijentKorisnik.cs" />
@@ -18,6 +18,15 @@
     <Compile Remove="Migrations\20200226154213_Klijnet.cs" />
     <Compile Remove="Migrations\20200226154433_Proba.cs" />
     <Compile Remove="Migrations\20200226154954_test.cs" />
+    <Compile Remove="Migrations\20200228204428_Kategorija.cs" />
+    <Compile Remove="Migrations\20200301172011_VelikaPromjenaUBazi.cs" />
+    <Compile Remove="Migrations\20200301212215_Promjene.cs" />
+    <Compile Remove="Services\IRezervacijeService.cs" />
+    <Compile Remove="Services\RezervacijeService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Database\ItemKategorije.cs~RFb8b1edd.TMP" />
   </ItemGroup>
 
   <ItemGroup>

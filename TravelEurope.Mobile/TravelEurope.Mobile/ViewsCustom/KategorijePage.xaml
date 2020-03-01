@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TravelEurope.Mobile.ViewModels;assembly=TravelEurope.Mobile"
+             xmlns:local="clr-namespace:TravelEurope.Mobile.Converters"
+             x:Class="TravelEurope.Mobile.Views.KategorijePage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:KategorijeVM></vm:KategorijeVM>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
+            <ToolbarItem.Icon>
+                <FileImageSource File="search.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Filter" Clicked="FilterToolbarItem_Clicked">
+            <ToolbarItem.Icon>
+                <FileImageSource File="filter.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="More">
+            <ToolbarItem.Icon>
+                <FileImageSource File="more.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Turist rute"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding KategorijeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Naziv}"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       FontSize="16"/>
+                                <Button Text="Pretplatite se"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <!--<ScrollView>
+
+            <StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="5">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" >
+                        <Image Source="{Binding FeaturedGame.SlikaThumb, Converter={StaticResource imgConv}}" WidthRequest="150" HeightRequest="200" />
+                        -->
+        <!--<Label Text="*****"/>-->
+        <!--
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="{Binding FeaturedGame.Naziv}" FontSize="24" />
+                        <Label Text="{Binding FeaturedGame.Opis}" FontSize="16" />
+                    </StackLayout>
+                    
+                </StackLayout>
+
+                <CollectionView ItemsSource="{Binding RuteList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" HeightRequest="100" />
+                                    </StackLayout>
+                                    -->
+        <!--<Label Text="*****"/>-->
+        <!--
+                                    <Label Text="{Binding Naziv}" FontSize="22"/>
+                                    -->
+        <!--<Label Text="{Binding Opis}" FontSize="14"/>-->
+        <!--
+                                </StackLayout>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="2"/>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>-->
+    </ContentPage.Content>
+</ContentPage>

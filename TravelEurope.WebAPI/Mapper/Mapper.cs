@@ -13,54 +13,42 @@ namespace TravelEurope.WebAPI.Mapper
         public Mapper()
         {
             CreateMap<Database.Korisnici, Model.Korisnici>();
-            CreateMap<Database.Administrator, Model.Administrator>();
-            CreateMap<Database.Klijent, Model.Klijent>();
-            CreateMap<Database.Radnik, Model.Radnik>();
-            CreateMap<Database.Drzava, Model.Drzava>();
-            CreateMap<Database.Grad, Model.Grad>();
-            CreateMap<Database.Lokacija, Model.Lokacija>();
-            CreateMap<Database.MarkaVozila, Model.MarkaVozila>();
-            CreateMap<Database.NacinPlacanja, Model.NacinPlacanja>();
-            CreateMap<Database.Racun, Model.Racun>();
-            CreateMap<Database.StatusVozaca, Model.StatusVozaca>();
-            CreateMap<Database.StatusVozila, Model.StatusVozila>();
-            CreateMap<Database.TipVozila, Model.TipVozila>();
-            CreateMap<Database.TuristRuta, Model.TuristRuta>();
-            CreateMap<Database.TuristickiVodic, Model.TuristickiVodic>();
-            CreateMap<Database.Vozac, Model.Vozac>();
-            CreateMap<Database.Vozilo, Model.Vozilo>();
-            CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
-            CreateMap<Database.StraniJezik, Model.StraniJezik>();
-            CreateMap<Database.TipVozila, Model.TipVozila>();
-            CreateMap<Database.MarkaVozila, Model.MarkaVozila>();
-            CreateMap<Database.StatusVozila, Model.StatusVozila>();
-            CreateMap<Database.VrstaGoriva, Model.VrstaGoriva>();
-            CreateMap<Database.Rezervacija, Model.Rezervacija>();
+            CreateMap<Database.KorisniciFriends, Model.KorisniciFriends>();
+            CreateMap<Database.Ocjene, Model.Ocjene>();
+            CreateMap<Database.Poruke, Model.Poruke>();
+            CreateMap<Database.Uloge, Model.Uloge>();
+            CreateMap<Database.Drzave, Model.Drzave>();
+            CreateMap<Database.Gradovi, Model.Gradovi>();
+            CreateMap<Database.Lokacije, Model.Lokacije>();
+            CreateMap<Database.TuristRute, Model.TuristRute>();
+            CreateMap<Database.TuristickiVodici, Model.TuristickiVodici>();
+            CreateMap<Database.StraniJezici, Model.StraniJezici>();
             CreateMap<Database.RuteSlike, Model.RuteSlike>();
+            CreateMap<Database.Pretplate, Model.Pretplate>();
+            CreateMap<Database.Kategorije, Model.Kategorije>();
 
-            CreateMap<Database.Administrator, Model.Administrator>().ReverseMap();
-            CreateMap<Database.Radnik, Model.Radnik>().ReverseMap();
-            CreateMap<Database.Radnik, Model.Radnik>().ForMember(a => a.ImePrezime,
-            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.RadnikId).Include(e => e.Radnik).FirstOrDefault().Ime + " " + new TravelEurope_Context().Korisnici.Where(d => d.Id == c.RadnikId).Include(e => e.Radnik).FirstOrDefault().Prezime)).ReverseMap();
-            CreateMap<Database.Klijent, Model.Klijent>().ReverseMap();
-            CreateMap<Database.Klijent, Model.Klijent>().ForMember(a => a.ImePrezime,
-            b => b.MapFrom(c => new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e=>e.Klijent).FirstOrDefault().Ime + " " + new TravelEurope_Context().Korisnici.Where(d => d.Id == c.KlijentId).Include(e => e.Klijent).FirstOrDefault().Prezime)).ReverseMap();
-            CreateMap<Database.Rezervacija, Model.Rezervacija>().ReverseMap();
+
+            CreateMap<Database.Korisnici, Model.Korisnici>().ReverseMap();
+            CreateMap<Database.TuristRute, Model.TuristRute>().ReverseMap();
+            CreateMap<Database.TuristickiVodici, Model.TuristickiVodici>().ReverseMap();
+            CreateMap<Database.Kategorije, Model.Kategorije>().ReverseMap();
 
 
             CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();
             CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateRequest>().ReverseMap();
+            CreateMap<Database.Korisnici, Model.Requests.KorisniciUpdateProfilRequest>().ReverseMap();
 
-            CreateMap<Database.Drzava, Model.Requests.DrzavaInsertRequest>().ReverseMap();
-            CreateMap<Database.Grad, Model.Requests.GradInsertRequest>().ReverseMap();
+            CreateMap<Database.TuristRute, Model.Requests.TuristRuteInsertRequest>().ReverseMap();
+            CreateMap<Database.TuristickiVodici, Model.Requests.TuristickiVodiciInsertRequest>().ReverseMap();
 
-            CreateMap<Database.TuristRuta, Model.Requests.TuristickeRuteInsertRequest>().ReverseMap();
-            CreateMap<Database.TuristickiVodic, Model.Requests.TuristickiVodicInsertRequest>().ReverseMap();
-
-            CreateMap<Database.Vozilo, Model.Requests.VoziloInsertRequest>().ReverseMap();
-            CreateMap<Database.Vozac, Model.Requests.VozacInsertRequest>().ReverseMap();
-
+            CreateMap<Database.Uloge, Model.Requests.UlogeInsertRequest>().ReverseMap();
+            CreateMap<Database.Drzave, Model.Requests.DrzaveInsertRequest>().ReverseMap();
+            CreateMap<Database.Gradovi, Model.Requests.GradoviInsertRequest>().ReverseMap();
+            CreateMap<Database.Lokacije, Model.Requests.LokacijeInsertRequest>().ReverseMap();
             CreateMap<Database.RuteSlike, Model.Requests.RuteSlikeInsertRequest>().ReverseMap();
+            CreateMap<Database.Kategorije, Model.Requests.KategorijeInsertRequest>().ReverseMap();
+            CreateMap<Database.Pretplate, Model.Requests.PretplateInsertRequest>().ReverseMap();
+            CreateMap<Database.KorisniciFriends, Model.Requests.KorisniciFriendsInsertRequest>().ReverseMap();
         }
     }
 }

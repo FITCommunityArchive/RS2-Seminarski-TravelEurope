@@ -12,14 +12,14 @@ namespace TravelEurope.WinUI.Lokacije
 {
     public partial class frmDodajDrzavu : Form
     {
-        private readonly APIService _serviceDrzava = new APIService("Drzava");
+        private readonly APIService _serviceDrzave = new APIService("Drzave");
         public frmDodajDrzavu()
         {
             InitializeComponent();
         }
         private async void btnDodaj_Click(object sender, EventArgs e)
         {
-            var request = new Model.Requests.DrzavaInsertRequest
+            var request = new Model.Requests.DrzaveInsertRequest
             {
                 Naziv = txtNaziv.Text,
 
@@ -28,7 +28,7 @@ namespace TravelEurope.WinUI.Lokacije
             btnDodaj.Enabled = false;
 
 
-            var entity = await _serviceDrzava.Insert<Model.Drzava>(request);
+            var entity = await _serviceDrzave.Insert<Model.Drzave>(request);
             if (entity != null)
             {
                 MessageBox.Show("Država uspješno dodana.");

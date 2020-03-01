@@ -13,7 +13,7 @@ namespace TravelEurope.WinUI.TuristickeRute
 {
     public partial class frmTuristickeRute : Form
     {
-        private readonly APIService _serviceTuristRuta = new APIService("TuristRuta");
+        private readonly APIService _serviceTuristRute = new APIService("TuristRute");
 
         public frmTuristickeRute()
         {
@@ -27,12 +27,12 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async Task UcitajFormu()
         {
-            var request = new Model.Requests.TuristickeRuteSearchRequest
+            var request = new Model.Requests.TuristRuteSearchRequest
             {
                 Naziv = txtNazivRute.Text
             };
 
-            List<Model.TuristRuta> lista = await _serviceTuristRuta.Get<List<Model.TuristRuta>>(request);
+            List<Model.TuristRute> lista = await _serviceTuristRute.Get<List<Model.TuristRute>>(request);
 
             dgvTuristRuta.AutoGenerateColumns = false;
             dgvTuristRuta.DataSource = lista;
@@ -53,11 +53,11 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async void dgvTuristRuta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var id = int.Parse(dgvTuristRuta.SelectedRows[0].Cells[0].Value.ToString());
+            //var id = int.Parse(dgvTuristRuta.SelectedRows[0].Cells[0].Value.ToString());
 
-            var frm = new frmTuristickeRuteDetalji(id);
-            frm.ShowDialog();
-            await UcitajFormu();
+            //var frm = new frmTuristickeRuteDetalji(id);
+            //frm.ShowDialog();
+            //await UcitajFormu();
         }
     }
 }

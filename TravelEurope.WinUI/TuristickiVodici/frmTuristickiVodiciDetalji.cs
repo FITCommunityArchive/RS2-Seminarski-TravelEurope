@@ -13,9 +13,9 @@ namespace TravelEurope.WinUI.TuristickiVodici
 {
     public partial class frmTuristickiVodiciDetalji : Form
     {
-        private readonly APIService _serviceVodici = new APIService("TuristickiVodic");
-        private readonly APIService _serviceDrzava = new APIService("Drzava");
-        private readonly APIService _serviceJezici = new APIService("StraniJezik");
+        private readonly APIService _serviceVodici = new APIService("TuristickiVodici");
+        private readonly APIService _serviceDrzave = new APIService("Drzave");
+        private readonly APIService _serviceJezici = new APIService("StraniJezici");
 
 
         private int _id;
@@ -28,16 +28,16 @@ namespace TravelEurope.WinUI.TuristickiVodici
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            var request = new Model.Requests.TuristickiVodicInsertRequest
+            var request = new Model.Requests.TuristickiVodiciInsertRequest
             {
                 Ime = txtIme.Text,
                 Prezime = txtPrezime.Text,
-                StraniJezikId = (cmbJezici.SelectedItem as Model.StraniJezik).StraniJezikId,
+                StraniJezikId = (cmbJezici.SelectedItem as Model.StraniJezici).StraniJezikId,
             };
 
             if (_id == 0)
             {
-                Model.TuristickiVodic entity = await _serviceVodici.Insert<Model.TuristickiVodic>(request);
+                Model.TuristickiVodici entity = await _serviceVodici.Insert<Model.TuristickiVodici>(request);
                 if (entity != null)
                 {
                     MessageBox.Show("Turistički vodič uspješno dodan.");
@@ -47,7 +47,7 @@ namespace TravelEurope.WinUI.TuristickiVodici
             }
             else
             {
-                Model.TuristickiVodic entity = await _serviceVodici.Update<Model.TuristickiVodic>(_id, request);
+                Model.TuristickiVodici entity = await _serviceVodici.Update<Model.TuristickiVodici>(_id, request);
                 if (entity != null)
                 {
                     MessageBox.Show("Turistički vodič uspješno izmijenjen.");
@@ -59,7 +59,7 @@ namespace TravelEurope.WinUI.TuristickiVodici
 
         private async void frmTuristickeRuteDetalji_Load(object sender, EventArgs e)
         {
-            var listJezici = await _serviceJezici.Get<List<Model.StraniJezik>>(null);
+            var listJezici = await _serviceJezici.Get<List<Model.StraniJezici>>(null);
 
             cmbJezici.DataSource = listJezici;
             cmbJezici.DisplayMember = "Naziv";
@@ -70,11 +70,11 @@ namespace TravelEurope.WinUI.TuristickiVodici
 
         private async Task UcitajDetaljeAsync()
         {
-            var tr = await _serviceVodici.GetById<Model.TuristickiVodic>(_id);
+            var tr = await _serviceVodici.GetById<Model.TuristickiVodici>(_id);
 
             txtIme.Text = tr.Ime;
             txtPrezime.Text = tr.Prezime;
-            foreach (Model.StraniJezik item in cmbJezici.Items)
+            foreach (Model.StraniJezici item in cmbJezici.Items)
             {
                 if (item.StraniJezikId == tr.StraniJezikId)
                     cmbJezici.SelectedItem = item;

@@ -8,7 +8,7 @@ namespace TravelEurope.Model
         public int RuteSlikeId { get; set; }
 
         public int TuristRutaId { get; set; }
-        public TuristRuta TuristRuta { get; set; }
+        public TuristRute TuristRuta { get; set; }
 
         public byte[] Slika { get; set; }
         public byte[] SlikaThumb { get; set; }

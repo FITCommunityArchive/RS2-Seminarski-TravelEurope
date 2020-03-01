@@ -14,6 +14,8 @@ namespace TravelEurope.Mobile.Models
         public Drzava Drzava { get; set; }
         public int TuristickiVodicId { get; set; }
         public TuristickiVodic TuristickiVodic { get; set; }
+        public byte[] Slika { get; set; }
+        public byte[] SlikaThumb { get; set; }
         public float OcjenaKriticara { get; set; }
         public float OcjenaKorisnika { get; set; }
         public override string ToString()

@@ -19,18 +19,7 @@ namespace TravelEurope.WebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Administrator", b =>
-                {
-                    b.Property<int>("AdministratorId");
-
-                    b.Property<string>("IzjavaZastitaPodataka");
-
-                    b.HasKey("AdministratorId");
-
-                    b.ToTable("Administrator");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Drzava", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Drzave", b =>
                 {
                     b.Property<int>("DrzavaId")
                         .ValueGeneratedOnAdd()
@@ -40,10 +29,10 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.HasKey("DrzavaId");
 
-                    b.ToTable("Drzava");
+                    b.ToTable("Drzave");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Grad", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Gradovi", b =>
                 {
                     b.Property<int>("GradId")
                         .ValueGeneratedOnAdd()
@@ -57,64 +46,76 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.HasIndex("DrzavaId");
 
-                    b.ToTable("Grad");
+                    b.ToTable("Gradovi");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Klijent", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Kategorije", b =>
                 {
-                    b.Property<int>("KlijentId");
+                    b.Property<int>("KategorijaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BrVozackeDozvole");
+                    b.Property<string>("Naziv");
 
-                    b.Property<string>("BrojPasosa");
+                    b.HasKey("KategorijaId");
 
-                    b.HasKey("KlijentId");
-
-                    b.ToTable("Klijent");
+                    b.ToTable("Kategorije");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Korisnici", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("KorisniciId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Adresa");
-
-                    b.Property<DateTime>("DatumRodjenja")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValueSql("('0001-01-01T00:00:00.0000000')");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
+                    b.Property<string>("Email");
 
                     b.Property<int>("GradId");
 
                     b.Property<string>("Ime");
 
-                    b.Property<string>("Jmbg")
-                        .HasColumnName("JMBG");
+                    b.Property<string>("KorisnickoIme");
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("LozinkaHash");
 
-                    b.Property<string>("PasswordSalt");
+                    b.Property<string>("LozinkaSalt");
 
                     b.Property<string>("Prezime");
 
                     b.Property<byte[]>("Slika");
 
-                    b.Property<string>("Spol");
+                    b.Property<bool>("Status");
 
-                    b.Property<string>("Telefon");
+                    b.Property<int>("UlogaId");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
+                    b.Property<DateTime>("ZadnjaAktivnost");
 
-                    b.HasKey("Id");
+                    b.HasKey("KorisniciId");
 
                     b.HasIndex("GradId");
 
+                    b.HasIndex("UlogaId");
+
                     b.ToTable("Korisnici");
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.KorisniciFriends", b =>
+                {
+                    b.Property<int>("KorisniciFriendsId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FriendId");
+
+                    b.Property<int>("KorisnikId");
+
+                    b.HasKey("KorisniciFriendsId");
+
+                    b.HasIndex("FriendId");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.ToTable("KorisniciFriends");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacija", b =>
@@ -131,115 +132,95 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.HasIndex("DrzavaId");
 
-                    b.ToTable("Lokacija");
+                    b.ToTable("Lokacije");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.MarkaVozila", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Ocjene", b =>
                 {
-                    b.Property<int>("MarkaId")
+                    b.Property<int>("OcjenaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Naziv");
+                    b.Property<DateTime>("DatumOcjene");
 
-                    b.HasKey("MarkaId");
+                    b.Property<string>("Komentar");
 
-                    b.ToTable("MarkaVozila");
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<int>("Ocjena");
+
+                    b.Property<int>("TuristRutaId");
+
+                    b.HasKey("OcjenaId");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.HasIndex("TuristRutaId");
+
+                    b.ToTable("Ocjene");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.NacinPlacanja", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Poruke", b =>
                 {
-                    b.Property<int>("NacinPlacanjaId")
+                    b.Property<int>("PorukaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Naziv");
+                    b.Property<DateTime>("DatumVrijeme");
 
-                    b.HasKey("NacinPlacanjaId");
+                    b.Property<int>("PosiljalacId");
 
-                    b.ToTable("NacinPlacanja");
+                    b.Property<int>("PrimalacId");
+
+                    b.Property<string>("Sadrzaj");
+
+                    b.HasKey("PorukaId");
+
+                    b.HasIndex("PosiljalacId");
+
+                    b.HasIndex("PrimalacId");
+
+                    b.ToTable("Poruke");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Racun", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Pretplate", b =>
                 {
-                    b.Property<int>("RacunId")
+                    b.Property<int>("PretplataId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CijenaUslugeSaPdvom")
-                        .HasColumnName("CijenaUslugeSaPDVom");
+                    b.Property<int>("KategorijaId");
 
-                    b.Property<DateTime>("DatumIzdavanja");
+                    b.Property<int>("KorisnikId");
 
-                    b.Property<int>("NacinPlacanjaId");
+                    b.HasKey("PretplataId");
 
-                    b.Property<int>("RezervacijaId");
+                    b.HasIndex("KategorijaId");
 
-                    b.Property<int>("TrajanjeRentanjaDani");
+                    b.HasIndex("KorisnikId");
 
-                    b.HasKey("RacunId");
-
-                    b.HasIndex("NacinPlacanjaId");
-
-                    b.HasIndex("RezervacijaId");
-
-                    b.ToTable("Racun");
+                    b.ToTable("Pretplate");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Radnik", b =>
-                {
-                    b.Property<int>("RadnikId");
-
-                    b.Property<int>("GodineStaza");
-
-                    b.Property<string>("Pozicija");
-
-                    b.HasKey("RadnikId");
-
-                    b.ToTable("Radnik");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacija", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacije", b =>
                 {
                     b.Property<int>("RezervacijaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("CijenaOsiguranja");
+                    b.Property<DateTime>("DatumRezervacije");
 
-                    b.Property<double>("CijenaUslugePoDanu");
+                    b.Property<int>("KorisnikId");
 
-                    b.Property<DateTime>("DatumPreuzimanja");
-
-                    b.Property<DateTime>("DatumVracanja");
-
-                    b.Property<int>("KlijentId");
-
-                    b.Property<int?>("RacunId");
-
-                    b.Property<int>("RadnikId");
-
-                    b.Property<int?>("TuristRutaId");
-
-                    b.Property<int?>("VozacId");
-
-                    b.Property<int?>("VoziloId");
+                    b.Property<int>("TuristRutaId");
 
                     b.HasKey("RezervacijaId");
 
-                    b.HasIndex("KlijentId");
-
-                    b.HasIndex("RacunId");
-
-                    b.HasIndex("RadnikId");
+                    b.HasIndex("KorisnikId");
 
                     b.HasIndex("TuristRutaId");
 
-                    b.HasIndex("VozacId");
-
-                    b.HasIndex("VoziloId");
-
-                    b.ToTable("Rezervacija");
+                    b.ToTable("Rezervacije");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.RuteSlike", b =>
@@ -263,37 +244,7 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("RuteSlike");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.StatusVozaca", b =>
-                {
-                    b.Property<int>("StatusVozacaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Dostupan");
-
-                    b.HasKey("StatusVozacaId");
-
-                    b.ToTable("StatusVozaca");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.StatusVozila", b =>
-                {
-                    b.Property<int>("StatusVozilaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ispravnost");
-
-                    b.Property<bool>("Rezervisano");
-
-                    b.Property<string>("Status");
-
-                    b.HasKey("StatusVozilaId");
-
-                    b.ToTable("StatusVozila");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.StraniJezik", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.StraniJezici", b =>
                 {
                     b.Property<int>("StraniJezikId")
                         .ValueGeneratedOnAdd()
@@ -303,23 +254,10 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.HasKey("StraniJezikId");
 
-                    b.ToTable("StraniJezik");
+                    b.ToTable("StraniJezici");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TipVozila", b =>
-                {
-                    b.Property<int>("TipId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Naziv");
-
-                    b.HasKey("TipId");
-
-                    b.ToTable("TipVozila");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodici", b =>
                 {
                     b.Property<int>("TuristickiVodicId")
                         .ValueGeneratedOnAdd()
@@ -335,252 +273,184 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.HasIndex("StraniJezikId");
 
-                    b.ToTable("TuristickiVodic");
+                    b.ToTable("TuristickiVodici");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRute", b =>
                 {
                     b.Property<int>("TuristRutaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DrzavaId");
+                    b.Property<decimal>("CijenaOsiguranja");
+
+                    b.Property<decimal>("CijenaPaketa");
+
+                    b.Property<DateTime>("DatumPutovanja");
+
+                    b.Property<int>("KategorijaId");
+
+                    b.Property<int>("LokacijaId");
 
                     b.Property<string>("Naziv");
 
                     b.Property<string>("Opis");
 
+                    b.Property<int>("TrajanjePutovanja");
+
                     b.Property<int>("TuristickiVodicId");
 
                     b.HasKey("TuristRutaId");
 
-                    b.HasIndex("DrzavaId");
+                    b.HasIndex("KategorijaId");
+
+                    b.HasIndex("LokacijaId");
 
                     b.HasIndex("TuristickiVodicId");
 
-                    b.ToTable("TuristRuta");
+                    b.ToTable("TuristRute");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Vozac", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Uloge", b =>
                 {
-                    b.Property<int>("VozacId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BrVozackeDozvole");
-
-                    b.Property<string>("Ime");
-
-                    b.Property<string>("Prezime");
-
-                    b.Property<int>("StatusVozacaId");
-
-                    b.HasKey("VozacId");
-
-                    b.HasIndex("StatusVozacaId");
-
-                    b.ToTable("Vozac");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Vozilo", b =>
-                {
-                    b.Property<int>("VoziloId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Boja");
-
-                    b.Property<int>("BrojSjedista");
-
-                    b.Property<int>("BrojVrata");
-
-                    b.Property<int>("GodinaProizvodnje");
-
-                    b.Property<int>("MarkaVozilaId");
-
-                    b.Property<string>("Naziv");
-
-                    b.Property<byte[]>("Slika");
-
-                    b.Property<int>("StatusVozilaId");
-
-                    b.Property<int>("TipVozilaId");
-
-                    b.Property<int>("VrstaGorivaId");
-
-                    b.HasKey("VoziloId");
-
-                    b.HasIndex("MarkaVozilaId");
-
-                    b.HasIndex("StatusVozilaId");
-
-                    b.HasIndex("TipVozilaId");
-
-                    b.HasIndex("VrstaGorivaId");
-
-                    b.ToTable("Vozilo");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.VrstaGoriva", b =>
-                {
-                    b.Property<int>("GorivoId")
+                    b.Property<int>("UlogaId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Naziv");
 
-                    b.HasKey("GorivoId");
+                    b.Property<string>("Opis");
 
-                    b.ToTable("VrstaGoriva");
+                    b.HasKey("UlogaId");
+
+                    b.ToTable("Uloge");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Administrator", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Gradovi", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "AdministratorNavigation")
-                        .WithOne("Administrator")
-                        .HasForeignKey("TravelEurope.WebAPI.Database.Administrator", "AdministratorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Grad", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.Drzava", "Drzava")
-                        .WithMany("Grad")
+                    b.HasOne("TravelEurope.WebAPI.Database.Drzave", "Drzava")
+                        .WithMany()
                         .HasForeignKey("DrzavaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Klijent", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "KlijentNavigation")
-                        .WithOne("Klijent")
-                        .HasForeignKey("TravelEurope.WebAPI.Database.Klijent", "KlijentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Korisnici", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.Grad", "Grad")
-                        .WithMany("AspNetUsers")
+                    b.HasOne("TravelEurope.WebAPI.Database.Gradovi", "Grad")
+                        .WithMany()
                         .HasForeignKey("GradId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.Uloge", "Uloga")
+                        .WithMany()
+                        .HasForeignKey("UlogaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.KorisniciFriends", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Friend")
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacija", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.Drzava", "Drzava")
-                        .WithMany("Lokacija")
+                    b.HasOne("TravelEurope.WebAPI.Database.Drzave", "Drzava")
+                        .WithMany()
                         .HasForeignKey("DrzavaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Racun", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Ocjene", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.NacinPlacanja", "NacinPlacanja")
-                        .WithMany("Racun")
-                        .HasForeignKey("NacinPlacanjaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.Rezervacija", "Rezervacija")
-                        .WithMany("Racun")
-                        .HasForeignKey("RezervacijaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Radnik", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "RadnikNavigation")
-                        .WithOne("Radnik")
-                        .HasForeignKey("TravelEurope.WebAPI.Database.Radnik", "RadnikId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacija", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.Klijent", "Klijent")
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
                         .WithMany()
-                        .HasForeignKey("KlijentId")
+                        .HasForeignKey("KorisnikId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelEurope.WebAPI.Database.Racun", "RacunNavigation")
-                        .WithMany("RezervacijaNavigation")
-                        .HasForeignKey("RacunId");
-
-                    b.HasOne("TravelEurope.WebAPI.Database.Radnik", "Radnik")
-                        .WithMany("Rezervacija")
-                        .HasForeignKey("RadnikId")
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRute", "TuristRuta")
+                        .WithMany("Ocjene")
+                        .HasForeignKey("TuristRutaId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.TuristRuta", "TuristRuta")
-                        .WithMany("Rezervacija")
-                        .HasForeignKey("TuristRutaId");
-
-                    b.HasOne("TravelEurope.WebAPI.Database.Vozac", "Vozac")
-                        .WithMany("Rezervacija")
-                        .HasForeignKey("VozacId");
-
-                    b.HasOne("TravelEurope.WebAPI.Database.Vozilo", "Vozilo")
-                        .WithMany("Rezervacija")
-                        .HasForeignKey("VoziloId");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.RuteSlike", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Poruke", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.TuristRuta", "TuristRuta")
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Posiljalac")
+                        .WithMany()
+                        .HasForeignKey("PosiljalacId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Primalac")
+                        .WithMany()
+                        .HasForeignKey("PrimalacId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Pretplate", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.Kategorije", "Kategorija")
+                        .WithMany()
+                        .HasForeignKey("KategorijaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacije", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRute", "TuristRuta")
                         .WithMany()
                         .HasForeignKey("TuristRutaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodic", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.RuteSlike", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.StraniJezik", "StraniJezik")
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRute", "TuristRuta")
+                        .WithMany("RuteSlike")
+                        .HasForeignKey("TuristRutaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristickiVodici", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.StraniJezici", "StraniJezik")
                         .WithMany()
                         .HasForeignKey("StraniJezikId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRuta", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.TuristRute", b =>
                 {
-                    b.HasOne("TravelEurope.WebAPI.Database.Drzava", "Drzava")
-                        .WithMany("TuristRuta")
-                        .HasForeignKey("DrzavaId")
+                    b.HasOne("TravelEurope.WebAPI.Database.Kategorije", "Kategorija")
+                        .WithMany()
+                        .HasForeignKey("KategorijaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelEurope.WebAPI.Database.TuristickiVodic", "TuristickiVodic")
+                    b.HasOne("TravelEurope.WebAPI.Database.Lokacija", "Lokacija")
+                        .WithMany()
+                        .HasForeignKey("LokacijaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristickiVodici", "TuristickiVodic")
                         .WithMany()
                         .HasForeignKey("TuristickiVodicId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Vozac", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.StatusVozaca", "StatusVozaca")
-                        .WithMany("Vozac")
-                        .HasForeignKey("StatusVozacaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Vozilo", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.MarkaVozila", "MarkaVozila")
-                        .WithMany("Vozilo")
-                        .HasForeignKey("MarkaVozilaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.StatusVozila", "StatusVozila")
-                        .WithMany("Vozilo")
-                        .HasForeignKey("StatusVozilaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.TipVozila", "TipVozila")
-                        .WithMany()
-                        .HasForeignKey("TipVozilaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.VrstaGoriva", "VrstaGoriva")
-                        .WithMany("Vozilo")
-                        .HasForeignKey("VrstaGorivaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

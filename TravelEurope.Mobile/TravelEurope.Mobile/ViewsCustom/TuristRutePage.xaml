@@ -5,11 +5,11 @@
              xmlns:local="clr-namespace:TravelEurope.Mobile.Converters"
              x:Class="TravelEurope.Mobile.Views.TuristRutePage"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:TuristRutaVM></vm:TuristRutaVM>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
@@ -33,7 +33,7 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>-->
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Turist rute"
@@ -65,7 +65,9 @@
                 <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="5">
                     <StackLayout Orientation="Vertical" HeightRequest="200" >
                         <Image Source="{Binding FeaturedGame.SlikaThumb, Converter={StaticResource imgConv}}" WidthRequest="150" HeightRequest="200" />
-                        --><!--<Label Text="*****"/>--><!--
+                        -->
+        <!--<Label Text="*****"/>-->
+        <!--
                     </StackLayout>
                     <StackLayout Orientation="Vertical">
                         <Label Text="{Binding FeaturedGame.Naziv}" FontSize="24" />
@@ -82,9 +84,13 @@
                                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" HeightRequest="100" />
                                     </StackLayout>
-                                    --><!--<Label Text="*****"/>--><!--
+                                    -->
+        <!--<Label Text="*****"/>-->
+        <!--
                                     <Label Text="{Binding Naziv}" FontSize="22"/>
-                                    --><!--<Label Text="{Binding Opis}" FontSize="14"/>--><!--
+                                    -->
+        <!--<Label Text="{Binding Opis}" FontSize="14"/>-->
+        <!--
                                 </StackLayout>
                             </StackLayout>
                         </DataTemplate>

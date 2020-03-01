@@ -1,124 +1,184 @@
 ﻿using AutoMapper;
+using TravelEurope.Model;
+using TravelEurope.Model.Requests;
+using TravelEurope.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
-using TravelEurope.Model;
-using TravelEurope.Model.Requests;
-using TravelEurope.WebAPI.Database;
-using TravelEurope.WebAPI.Helper;
 
 namespace TravelEurope.WebAPI.Services
 {
     public class KorisniciService : IKorisniciService
     {
-        private readonly TravelEurope_Context _db;
+        private readonly TravelEurope_Context _context;
+
         private readonly IMapper _mapper;
 
-        public KorisniciService(TravelEurope_Context db, IMapper mapper)
+        public KorisniciService(TravelEurope_Context context, IMapper mapper)
         {
-            _db = db;
+            _context = context;
             _mapper = mapper;
         }
 
         public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
-            var query = _db.Korisnici.AsQueryable();
+            var query = _context.Korisnici.AsQueryable();
 
-            if(!string.IsNullOrEmpty(request.Pretraga))
+            if (!string.IsNullOrWhiteSpace(request?.ImePrezime))
             {
-                query = query.Where(x => (x.Ime + " " + x.Prezime).Contains(request.Pretraga));
+                query = query.Where(x => (x.Ime + " " + x.Prezime).ToLower().Contains(request.ImePrezime.ToLower()) ||
+                                          x.KorisnickoIme.Contains(request.ImePrezime.ToLower()));
             }
 
-            query = IncludeUserDetails(query);
+            query = query.Include(x => x.Grad.Drzava);
+            query = query.Include(x => x.Uloga);
 
             var list = query.ToList();
 
             return _mapper.Map<List<Model.Korisnici>>(list);
         }
 
+        public Model.Korisnici Insert(KorisniciInsertRequest request)
+        {
+            Database.Korisnici entity = _mapper.Map<Database.Korisnici>(request);
+            if (request.Lozinka != request.LozinkaPotvrda)
+            {
+                throw new Exception("Passwordi se ne slažu");
+            }
+
+            entity.LozinkaSalt = GenerateSalt();
+            entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
+
+            _context.Korisnici.Add(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
+
+        public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
+        {
+            Database.Korisnici entity = _context.Korisnici.Where(x => x.KorisniciId == id).FirstOrDefault();
+
+            _context.Korisnici.Attach(entity);
+            _context.Korisnici.Update(entity);
+
+            if (request.Lozinka != string.Empty)
+            {
+                if (request.Lozinka != request.LozinkaPotvrda)
+                {
+                    throw new Exception("Passwordi se ne slažu");
+                }
+
+                entity.LozinkaSalt = GenerateSalt();
+                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
+            }
+
+            entity = _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Korisnici>(entity);
+        }
+
+        public static string GenerateSalt()
+        {
+            var buf = new byte[16];
+            (new RNGCryptoServiceProvider()).GetBytes(buf);
+            return Convert.ToBase64String(buf);
+        }
+
+        public static string GenerateHash(string salt, string password)
+        {
+            byte[] src = Convert.FromBase64String(salt);
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] dst = new byte[src.Length + bytes.Length];
+
+            System.Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            System.Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
+
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+            byte[] inArray = algorithm.ComputeHash(dst);
+            return Convert.ToBase64String(inArray);
+        }
+
         public Model.Korisnici GetById(int id)
         {
-            var query = _db.Korisnici.Where(x => x.Id == id);
-            query = IncludeUserDetails(query);
+            var query = _context.Korisnici.AsQueryable();
+
+            query = query.Where(x => x.KorisniciId == id);
+
+            query = query.Include(x => x.Grad.Drzava);
+            query = query.Include(x => x.Uloga);
 
             var entity = query.FirstOrDefault();
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
-        public Model.Korisnici Insert(KorisniciInsertRequest request)
+        public Model.Korisnici MyProfile()
         {
-            var entity = _mapper.Map<Database.Korisnici>(request);
-            if (request.Password != request.PasswordConfirmation)
-            {
-                throw new Exception("Passwordi se ne slažu");
-            }
+            var query = _context.Korisnici.AsQueryable();
 
-            entity.PasswordSalt = UserPasswordHelper.GenerateSalt();
-            entity.PasswordHash = UserPasswordHelper.GenerateHash(entity.PasswordSalt, request.Password);
+            query = query.Where(x => x.KorisniciId == Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId);
 
-            _db.Korisnici.Add(entity);
-            _db.SaveChanges();
+            query = query.Include(x => x.Grad.Drzava);
+            query = query.Include(x => x.Uloga);
+
+            var entity = query.FirstOrDefault();
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
-        public Model.Korisnici Update(int id, KorisniciUpdateRequest request)
+        public Model.Korisnici UpdateProfile(KorisniciUpdateProfilRequest request)
         {
-            Database.Korisnici entity = _db.Korisnici.Where(x => x.Id == id)
-                .Include(x=>x.Radnik)
-                .Include(x=>x.Klijent)
-                .FirstOrDefault();
+            int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
-            _db.Korisnici.Attach(entity);
-            _db.Korisnici.Update(entity);
+            Database.Korisnici entity = _context.Korisnici.Where(x => x.KorisniciId == KorisnikId).FirstOrDefault();
 
-            if (!string.IsNullOrEmpty(request.Password))
+            _context.Korisnici.Attach(entity);
+            _context.Korisnici.Update(entity);
+
+            if (!string.IsNullOrEmpty(request.Lozinka))
             {
-                if (request.Password != request.PasswordConfirmation)
+                if (request.Lozinka != request.LozinkaPotvrda)
                 {
                     throw new Exception("Passwordi se ne slažu");
                 }
 
-                entity.PasswordSalt = UserPasswordHelper.GenerateSalt();
-                entity.PasswordHash = UserPasswordHelper.GenerateHash(entity.PasswordSalt, request.Password);
+                entity.LozinkaSalt = GenerateSalt();
+                entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
             }
 
-            entity.Adresa = request.Adresa;
-            entity.DatumRodjenja = request.DatumRodjenja;
-            entity.Email = request.Email;
-            entity.GradId = request.GradId;
-            entity.Ime = request.Ime;
-            entity.Prezime = request.Prezime;
-            entity.Slika = request.Slika;
-            entity.Spol = request.Spol;
-            entity.Telefon = request.Telefon;
-            entity.UserName = request.UserName;
+            entity = _mapper.Map(request, entity);
 
-            if(entity.Radnik != null && request.Radnik != null)
-            {
-                entity.Radnik.GodineStaza = request.Radnik.GodineStaza;
-                entity.Radnik.Pozicija = request.Radnik.Pozicija;
-            }
-
-            if(entity.Klijent != null && request.Klijent != null)
-            {
-                entity.Klijent.BrojPasosa = request.Klijent.BrojPasosa;
-                entity.Klijent.BrVozackeDozvole = request.Klijent.BrVozackeDozvole;
-            }
-
-            _db.SaveChanges();
+            _context.SaveChanges();
 
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
 
-        private static IQueryable<Database.Korisnici> IncludeUserDetails(IQueryable<Database.Korisnici> query)
+        public Model.Korisnici Authenticiraj(string username, string pass)
         {
-            query = query.Include(x => x.Grad.Drzava);
-            return query;
+            var user = _context.Korisnici
+                .Include(x => x.Uloga)
+                .Include(x => x.Grad.Drzava)
+                .FirstOrDefault(x => x.KorisnickoIme == username);
+
+            if (user != null)
+            {
+                var newHash = GenerateHash(user.LozinkaSalt, pass);
+
+                if (newHash == user.LozinkaHash)
+                {
+                    return _mapper.Map<Model.Korisnici>(user);
+                }
+            }
+            return null;
         }
     }
 }

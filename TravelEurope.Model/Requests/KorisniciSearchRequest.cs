@@ -6,6 +6,6 @@ namespace TravelEurope.Model.Requests
 {
     public class KorisniciSearchRequest
     {
-        public string Pretraga { get; set; }
+        public string ImePrezime { get; set; }
     }
 }

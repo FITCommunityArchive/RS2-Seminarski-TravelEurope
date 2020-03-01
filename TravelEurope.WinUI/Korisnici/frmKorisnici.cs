@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +20,7 @@ namespace TravelEurope.WinUI.Korisnici
             InitializeComponent();
         }
 
-        private async void frmKorisnici_Load(object sender, EventArgs e)
+        private async void btnPretraga_Click(object sender, EventArgs e)
         {
             await UcitajFormu();
         }
@@ -30,7 +29,7 @@ namespace TravelEurope.WinUI.Korisnici
         {
             var request = new Model.Requests.KorisniciSearchRequest
             {
-                Pretraga = txtImePrezime.Text
+                ImePrezime = txtImePrezime.Text
             };
 
             List<Model.Korisnici> lista = await _serviceKorisnici.Get<List<Model.Korisnici>>(request);
@@ -46,6 +45,11 @@ namespace TravelEurope.WinUI.Korisnici
                 await UcitajFormu();
         }
 
+        private async void frmKorisnici_Load(object sender, EventArgs e)
+        {
+            await UcitajFormu();
+        }
+
         private async void dgvKorisnici_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = int.Parse(dgvKorisnici.SelectedRows[0].Cells[0].Value.ToString());
@@ -53,11 +57,6 @@ namespace TravelEurope.WinUI.Korisnici
             var frm = new frmKorisniciDetalji(id);
             if (frm.ShowDialog() == DialogResult.OK)
                 await UcitajFormu();
-        }
-
-        private async void btnPretraga_ClickAsync(object sender, EventArgs e)
-        {
-            await UcitajFormu();
         }
     }
 }

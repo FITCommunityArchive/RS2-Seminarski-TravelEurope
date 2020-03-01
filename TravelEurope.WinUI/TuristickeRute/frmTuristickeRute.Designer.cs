@@ -35,19 +35,18 @@
             this.dgvTuristRuta = new System.Windows.Forms.DataGridView();
             this.TuristRutaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TuristickiVodic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Drzava = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lokacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTuristRuta)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDodajRutu
             // 
             this.btnDodajRutu.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajRutu.Location = new System.Drawing.Point(460, 37);
-            this.btnDodajRutu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDodajRutu.Location = new System.Drawing.Point(345, 30);
             this.btnDodajRutu.Name = "btnDodajRutu";
-            this.btnDodajRutu.Size = new System.Drawing.Size(132, 28);
+            this.btnDodajRutu.Size = new System.Drawing.Size(99, 23);
             this.btnDodajRutu.TabIndex = 14;
             this.btnDodajRutu.Text = "Dodaj rutu";
             this.btnDodajRutu.UseVisualStyleBackColor = true;
@@ -55,30 +54,27 @@
             // 
             // txtNazivRute
             // 
-            this.txtNazivRute.Location = new System.Drawing.Point(139, 39);
-            this.txtNazivRute.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNazivRute.Location = new System.Drawing.Point(104, 32);
             this.txtNazivRute.Name = "txtNazivRute";
-            this.txtNazivRute.Size = new System.Drawing.Size(189, 22);
+            this.txtNazivRute.Size = new System.Drawing.Size(143, 20);
             this.txtNazivRute.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(40, 43);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(30, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 17);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Naziv rute";
             // 
             // btnPretraga
             // 
             this.btnPretraga.ForeColor = System.Drawing.Color.Black;
-            this.btnPretraga.Location = new System.Drawing.Point(337, 37);
-            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPretraga.Location = new System.Drawing.Point(253, 30);
             this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(100, 28);
+            this.btnPretraga.Size = new System.Drawing.Size(75, 23);
             this.btnPretraga.TabIndex = 11;
             this.btnPretraga.Text = "Pretraga";
             this.btnPretraga.UseVisualStyleBackColor = true;
@@ -93,18 +89,17 @@
             this.dgvTuristRuta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TuristRutaId,
             this.Naziv,
-            this.Opis,
+            this.Kategorija,
             this.TuristickiVodic,
-            this.Drzava});
-            this.dgvTuristRuta.Location = new System.Drawing.Point(16, 140);
-            this.dgvTuristRuta.Margin = new System.Windows.Forms.Padding(4);
+            this.Lokacija});
+            this.dgvTuristRuta.Location = new System.Drawing.Point(12, 114);
             this.dgvTuristRuta.MultiSelect = false;
             this.dgvTuristRuta.Name = "dgvTuristRuta";
             this.dgvTuristRuta.ReadOnly = true;
             this.dgvTuristRuta.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(26)))), ((int)(((byte)(33)))));
             this.dgvTuristRuta.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.dgvTuristRuta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTuristRuta.Size = new System.Drawing.Size(747, 289);
+            this.dgvTuristRuta.Size = new System.Drawing.Size(560, 235);
             this.dgvTuristRuta.TabIndex = 10;
             this.dgvTuristRuta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTuristRuta_CellDoubleClick);
             // 
@@ -123,13 +118,12 @@
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
             // 
-            // Opis
+            // Kategorija
             // 
-            this.Opis.DataPropertyName = "Opis";
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.ReadOnly = true;
-            this.Opis.Width = 170;
+            this.Kategorija.DataPropertyName = "Kategorija";
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
             // 
             // TuristickiVodic
             // 
@@ -139,24 +133,23 @@
             this.TuristickiVodic.ReadOnly = true;
             this.TuristickiVodic.Width = 145;
             // 
-            // Drzava
+            // Lokacija
             // 
-            this.Drzava.DataPropertyName = "Drzava";
-            this.Drzava.HeaderText = "Drzava";
-            this.Drzava.Name = "Drzava";
-            this.Drzava.ReadOnly = true;
+            this.Lokacija.DataPropertyName = "Lokacija";
+            this.Lokacija.HeaderText = "Lokacija";
+            this.Lokacija.Name = "Lokacija";
+            this.Lokacija.ReadOnly = true;
             // 
             // frmTuristickeRute
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 444);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.btnDodajRutu);
             this.Controls.Add(this.txtNazivRute);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.dgvTuristRuta);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTuristickeRute";
             this.Text = "frmTuristickeRute";
             this.Load += new System.EventHandler(this.frmTuristRuta_Load);
@@ -175,8 +168,8 @@
         private System.Windows.Forms.DataGridView dgvTuristRuta;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuristRutaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kategorija;
         private System.Windows.Forms.DataGridViewTextBoxColumn TuristickiVodic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Drzava;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lokacija;
     }
 }
