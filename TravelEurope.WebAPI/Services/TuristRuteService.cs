@@ -24,7 +24,7 @@ namespace TravelEurope.WebAPI.Services
         public List<Model.TuristRute> Get(TuristRuteSearchRequest request)
         {
 
-            var query = _context.TuristRute.Include(a=>a.Kategorija).Include(b=>b.Lokacija).Include(c=>c.TuristickiVodic).AsQueryable();
+            var query = _context.TuristRute.Include(a=>a.Kategorija).Include(b=>b.Lokacija).Include(c=>c.TuristickiVodic).ThenInclude(d=>d.StraniJezik).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {

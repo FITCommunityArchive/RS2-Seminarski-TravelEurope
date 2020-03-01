@@ -12,7 +12,7 @@ namespace TravelEurope.Model
         public int StraniJezikId { get; set; }
         public override string ToString()
         {
-            string ImePrezimeJezik = (Ime + " " + Prezime + ", " + StraniJezik.Naziv);
+            string ImePrezimeJezik = (Ime + " " + Prezime);
             return ImePrezimeJezik.ToString();
         }
     }

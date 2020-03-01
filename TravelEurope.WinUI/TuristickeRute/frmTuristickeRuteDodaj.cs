@@ -100,6 +100,8 @@ namespace TravelEurope.WinUI.TuristickeRute
         private async Task LoadKategorije()
         {
             var listKategorije = await _serviceKategorije.Get<List<Model.Kategorije>>(null);
+            //cmbVodici.DisplayMember = "Naziv";
+            //cmbVodici.DataSource = listKategorije;
             listKategorije.Insert(0, new Model.Kategorije());
             ComboBoxLoad<Model.Kategorije> cmbLoad = new ComboBoxLoad<Model.Kategorije>();
             cmbLoad.Load(cmbKategorije, listKategorije, "Naziv", "KategorijaId");

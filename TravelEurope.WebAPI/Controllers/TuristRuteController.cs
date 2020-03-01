@@ -10,11 +10,11 @@ namespace TravelEurope.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TuristRutaController : ControllerBase
+    public class TuristRuteController : ControllerBase
     {
         private readonly ITuristRuteService _service;
 
-        public TuristRutaController(ITuristRuteService service)
+        public TuristRuteController(ITuristRuteService service)
         {
             _service = service;
         }

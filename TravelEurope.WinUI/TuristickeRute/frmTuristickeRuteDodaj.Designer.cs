@@ -88,7 +88,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(786, 309);
+            this.groupBox1.Size = new System.Drawing.Size(780, 308);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
@@ -96,7 +96,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(475, 174);
+            this.label9.Location = new System.Drawing.Point(455, 174);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 13);
@@ -106,7 +106,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(475, 137);
+            this.label8.Location = new System.Drawing.Point(455, 137);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 13);
@@ -115,26 +115,26 @@
             // 
             // txtCijenaOsiguranja
             // 
-            this.txtCijenaOsiguranja.Location = new System.Drawing.Point(593, 171);
+            this.txtCijenaOsiguranja.Location = new System.Drawing.Point(573, 171);
             this.txtCijenaOsiguranja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtCijenaOsiguranja.MaxLength = 5;
             this.txtCijenaOsiguranja.Name = "txtCijenaOsiguranja";
-            this.txtCijenaOsiguranja.Size = new System.Drawing.Size(173, 20);
+            this.txtCijenaOsiguranja.Size = new System.Drawing.Size(186, 20);
             this.txtCijenaOsiguranja.TabIndex = 153;
             // 
             // txtCijenaIznajmljivanja
             // 
-            this.txtCijenaIznajmljivanja.Location = new System.Drawing.Point(593, 134);
+            this.txtCijenaIznajmljivanja.Location = new System.Drawing.Point(573, 134);
             this.txtCijenaIznajmljivanja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtCijenaIznajmljivanja.MaxLength = 6;
             this.txtCijenaIznajmljivanja.Name = "txtCijenaIznajmljivanja";
-            this.txtCijenaIznajmljivanja.Size = new System.Drawing.Size(173, 20);
+            this.txtCijenaIznajmljivanja.Size = new System.Drawing.Size(186, 20);
             this.txtCijenaIznajmljivanja.TabIndex = 152;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(475, 52);
+            this.label6.Location = new System.Drawing.Point(455, 52);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
@@ -144,7 +144,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(474, 95);
+            this.label2.Location = new System.Drawing.Point(454, 95);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
@@ -153,12 +153,12 @@
             // 
             // dtpDatumPolaska
             // 
-            this.dtpDatumPolaska.Location = new System.Drawing.Point(593, 49);
+            this.dtpDatumPolaska.Location = new System.Drawing.Point(573, 49);
             this.dtpDatumPolaska.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtpDatumPolaska.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtpDatumPolaska.MinDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             this.dtpDatumPolaska.Name = "dtpDatumPolaska";
-            this.dtpDatumPolaska.Size = new System.Drawing.Size(173, 20);
+            this.dtpDatumPolaska.Size = new System.Drawing.Size(186, 20);
             this.dtpDatumPolaska.TabIndex = 149;
             this.dtpDatumPolaska.Value = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             // 
@@ -174,10 +174,10 @@
             "14",
             "21",
             "31"});
-            this.cmbTrajanjePutovanja.Location = new System.Drawing.Point(593, 92);
+            this.cmbTrajanjePutovanja.Location = new System.Drawing.Point(573, 92);
             this.cmbTrajanjePutovanja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cmbTrajanjePutovanja.Name = "cmbTrajanjePutovanja";
-            this.cmbTrajanjePutovanja.Size = new System.Drawing.Size(173, 21);
+            this.cmbTrajanjePutovanja.Size = new System.Drawing.Size(186, 21);
             this.cmbTrajanjePutovanja.TabIndex = 148;
             // 
             // btnDodajKategoriju
@@ -345,7 +345,7 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(708, 337);
+            this.button1.Location = new System.Drawing.Point(702, 336);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 23);
             this.button1.TabIndex = 3;
@@ -357,7 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 371);
+            this.ClientSize = new System.Drawing.Size(822, 369);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
