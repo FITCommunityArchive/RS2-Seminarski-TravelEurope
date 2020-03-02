@@ -32,6 +32,7 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.TuristRute, Model.TuristRute>().ReverseMap();
             CreateMap<Database.TuristickiVodici, Model.TuristickiVodici>().ReverseMap();
             CreateMap<Database.Kategorije, Model.Kategorije>().ReverseMap();
+            CreateMap<Database.RuteSlike, Model.RuteSlike>().ReverseMap();
 
 
             CreateMap<Database.Korisnici, Model.Requests.KorisniciInsertRequest>().ReverseMap();

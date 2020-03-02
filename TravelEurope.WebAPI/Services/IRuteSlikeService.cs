@@ -13,5 +13,6 @@ namespace TravelEurope.WebAPI.Services
         Model.RuteSlike Insert(Model.Requests.RuteSlikeInsertRequest request);
         RuteSlike Update(int id, RuteSlikeInsertRequest request);
         RuteSlike GetById(int id);
+        bool Remove(int id);
     }
 }

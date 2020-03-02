@@ -41,5 +41,10 @@ namespace TravelEurope.WebAPI.Controllers
         {
             return _service.GetById(id);
         }
+        [HttpDelete("{id}")]
+        public bool Remove(int id)
+        {
+            return _service.Remove(id);
+        }
     }
 }

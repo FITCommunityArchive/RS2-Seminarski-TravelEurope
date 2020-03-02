@@ -62,7 +62,8 @@ namespace TravelEurope.WebAPI.Services
 
         public Model.TuristRute Update(int id, TuristRuteInsertRequest request)
         {
-            Database.TuristRute entity = _context.TuristRute.Where(x => x.TuristRutaId == id).FirstOrDefault();
+            Database.TuristRute entity = _context.TuristRute.Where(a => a.TuristRutaId == id).FirstOrDefault();
+                //Include(a => a.Kategorija).Include(b => b.Lokacija).Include(c => c.TuristickiVodic).ThenInclude(d => d.StraniJezik).FirstOrDefault();
 
             _context.TuristRute.Attach(entity);
             _context.TuristRute.Update(entity);

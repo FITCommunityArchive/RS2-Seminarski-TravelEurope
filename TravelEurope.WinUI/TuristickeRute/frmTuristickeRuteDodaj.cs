@@ -41,7 +41,7 @@ namespace TravelEurope.WinUI.TuristickeRute
                 NovaRutaRequest.LokacijaId = (cmbLokacije.SelectedItem as Model.Lokacije).LokacijaId;
                 NovaRutaRequest.KategorijaId = (cmbKategorije.SelectedItem as Model.Kategorije).KategorijaId;
                 NovaRutaRequest.DatumPutovanja = dtpDatumPolaska.Value;
-                NovaRutaRequest.TrajanjePutovanja = 5;
+                NovaRutaRequest.TrajanjePutovanja = int.Parse(cmbTrajanjePutovanja.SelectedItem.ToString());
                 NovaRutaRequest.CijenaPaketa = decimal.Parse(txtCijenaIznajmljivanja.Text);
                 NovaRutaRequest.CijenaOsiguranja = decimal.Parse(txtCijenaOsiguranja.Text);
 
@@ -80,9 +80,8 @@ namespace TravelEurope.WinUI.TuristickeRute
         private async Task LoadLokacije()
         {
             var listLokacije = await _serviceLokacije.Get<List<Model.Lokacije>>(null);
-            listLokacije.Insert(0, new Model.Lokacije());
-            ComboBoxLoad<Model.Lokacije> cmbLoad = new ComboBoxLoad<Model.Lokacije>();
-            cmbLoad.Load(cmbLokacije, listLokacije, "Naziv", "LokacijaId");
+            cmbLokacije.DisplayMember = "Naziv";
+            cmbLokacije.DataSource = listLokacije;
         }
 
         private async Task LoadVodice()
@@ -90,21 +89,13 @@ namespace TravelEurope.WinUI.TuristickeRute
             var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodici>>(null);
             cmbVodici.DisplayMember = "ImePrezimeJezik";
             cmbVodici.DataSource = listVodici;
-
-            //var listVodici = await _serviceVodici.Get<List<Model.TuristickiVodici>>(null);
-            //listVodici.Insert(0, new Model.TuristickiVodici());
-            //ComboBoxLoad<Model.TuristickiVodici> cmbLoad = new ComboBoxLoad<Model.TuristickiVodici>();
-            //cmbLoad.Load(cmbVodici, listVodici, "ImePrezimeJezik", "TuristickiVodicId");
         }
 
         private async Task LoadKategorije()
         {
             var listKategorije = await _serviceKategorije.Get<List<Model.Kategorije>>(null);
-            //cmbVodici.DisplayMember = "Naziv";
-            //cmbVodici.DataSource = listKategorije;
-            listKategorije.Insert(0, new Model.Kategorije());
-            ComboBoxLoad<Model.Kategorije> cmbLoad = new ComboBoxLoad<Model.Kategorije>();
-            cmbLoad.Load(cmbKategorije, listKategorije, "Naziv", "KategorijaId");
+            cmbKategorije.DisplayMember = "Naziv";
+            cmbKategorije.DataSource = listKategorije;
         }
 
         private async Task UcitajDetaljeAsync()
