@@ -29,7 +29,10 @@ namespace TravelEurope.WebAPI.Services
             {
                 query = query.Where(x => x.Ime.ToLower().Contains(request.Ime.ToLower()));
             }
-
+            if (request.StraniJezikId > 0)
+            {
+                query = query.Where(x => x.StraniJezikId == request.StraniJezikId);
+            }
             var list = query.ToList();
 
             return _mapper.Map<List<Model.TuristickiVodici>>(list);

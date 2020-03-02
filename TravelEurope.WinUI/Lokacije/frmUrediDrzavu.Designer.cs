@@ -34,24 +34,25 @@
             this.dgvGradovi = new System.Windows.Forms.DataGridView();
             this.GradId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDodajGrad = new System.Windows.Forms.Button();
+            this.btnDodajVodica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradovi)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.ForeColor = System.Drawing.SystemColors.Menu;
+            this.label1.Location = new System.Drawing.Point(13, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv države";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(89, 13);
+            this.txtNaziv.Location = new System.Drawing.Point(89, 20);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(140, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(140, 22);
             this.txtNaziv.TabIndex = 1;
             // 
             // btnUredi
@@ -69,6 +70,7 @@
             // 
             this.dgvGradovi.AllowUserToAddRows = false;
             this.dgvGradovi.AllowUserToDeleteRows = false;
+            this.dgvGradovi.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgvGradovi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvGradovi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.GradId,
@@ -99,29 +101,30 @@
             this.Naziv.ReadOnly = true;
             this.Naziv.Width = 150;
             // 
-            // btnDodajGrad
+            // btnDodajVodica
             // 
-            this.btnDodajGrad.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajGrad.Location = new System.Drawing.Point(153, 329);
-            this.btnDodajGrad.Name = "btnDodajGrad";
-            this.btnDodajGrad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnDodajGrad.Size = new System.Drawing.Size(75, 23);
-            this.btnDodajGrad.TabIndex = 4;
-            this.btnDodajGrad.Text = "Dodaj grad";
-            this.btnDodajGrad.UseVisualStyleBackColor = true;
-            this.btnDodajGrad.Click += new System.EventHandler(this.btnDodajGrad_Click);
+            this.btnDodajVodica.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnDodajVodica.ForeColor = System.Drawing.Color.Black;
+            this.btnDodajVodica.Location = new System.Drawing.Point(116, 331);
+            this.btnDodajVodica.Name = "btnDodajVodica";
+            this.btnDodajVodica.Size = new System.Drawing.Size(113, 23);
+            this.btnDodajVodica.TabIndex = 20;
+            this.btnDodajVodica.Text = "Dodaj novi grad";
+            this.btnDodajVodica.UseVisualStyleBackColor = false;
+            this.btnDodajVodica.Click += new System.EventHandler(this.btnDodajGrad_Click);
             // 
             // frmUrediDrzavu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(241, 366);
-            this.Controls.Add(this.btnDodajGrad);
+            this.Controls.Add(this.btnDodajVodica);
             this.Controls.Add(this.dgvGradovi);
             this.Controls.Add(this.btnUredi);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.ForeColor = System.Drawing.Color.Silver;
             this.MaximizeBox = false;
             this.Name = "frmUrediDrzavu";
@@ -141,6 +144,6 @@
         private System.Windows.Forms.DataGridView dgvGradovi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GradId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
-        private System.Windows.Forms.Button btnDodajGrad;
+        private System.Windows.Forms.Button btnDodajVodica;
     }
 }

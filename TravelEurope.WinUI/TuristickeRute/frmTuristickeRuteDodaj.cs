@@ -147,10 +147,5 @@ namespace TravelEurope.WinUI.TuristickeRute
                 cmbLokacije.DataSource = listDrzave;
             }
         }
-
-        private void btnDodajKategoriju_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

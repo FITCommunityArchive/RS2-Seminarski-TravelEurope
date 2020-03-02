@@ -32,15 +32,18 @@
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prevozniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajPrevoznikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.državeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajDržavuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prevozniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajPrevoznikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turističkiVodičiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregl = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajTurističkogVodičaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lokacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajLokacijuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervacijeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledVozilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +62,7 @@
             this.državeToolStripMenuItem,
             this.prevozniciToolStripMenuItem,
             this.turističkiVodičiToolStripMenuItem,
+            this.lokacijeToolStripMenuItem,
             this.rezervacijeToolStripMenuItem1});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
@@ -90,6 +94,30 @@
             this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
             this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
             // 
+            // državeToolStripMenuItem
+            // 
+            this.državeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem1,
+            this.dodajDržavuToolStripMenuItem});
+            this.državeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.državeToolStripMenuItem.Name = "državeToolStripMenuItem";
+            this.državeToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.državeToolStripMenuItem.Text = "Države";
+            // 
+            // pregledToolStripMenuItem1
+            // 
+            this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
+            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.pregledToolStripMenuItem1.Text = "Pregled";
+            this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.PregledDrzavaToolStripMenuItem1_Click);
+            // 
+            // dodajDržavuToolStripMenuItem
+            // 
+            this.dodajDržavuToolStripMenuItem.Name = "dodajDržavuToolStripMenuItem";
+            this.dodajDržavuToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.dodajDržavuToolStripMenuItem.Text = "Dodaj državu";
+            this.dodajDržavuToolStripMenuItem.Click += new System.EventHandler(this.dodajDržavuToolStripMenuItem_Click);
+            // 
             // prevozniciToolStripMenuItem
             // 
             this.prevozniciToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -114,30 +142,6 @@
             this.dodajPrevoznikaToolStripMenuItem.Text = "Dodaj turističku rutu";
             this.dodajPrevoznikaToolStripMenuItem.Click += new System.EventHandler(this.dodajTuristRutuToolStripMenuItem_Click);
             // 
-            // državeToolStripMenuItem
-            // 
-            this.državeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem1,
-            this.dodajDržavuToolStripMenuItem});
-            this.državeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.državeToolStripMenuItem.Name = "državeToolStripMenuItem";
-            this.državeToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.državeToolStripMenuItem.Text = "Države";
-            // 
-            // pregledToolStripMenuItem1
-            // 
-            this.pregledToolStripMenuItem1.Name = "pregledToolStripMenuItem1";
-            this.pregledToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.pregledToolStripMenuItem1.Text = "Pregled";
-            this.pregledToolStripMenuItem1.Click += new System.EventHandler(this.PregledDrzavaToolStripMenuItem1_Click);
-            // 
-            // dodajDržavuToolStripMenuItem
-            // 
-            this.dodajDržavuToolStripMenuItem.Name = "dodajDržavuToolStripMenuItem";
-            this.dodajDržavuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dodajDržavuToolStripMenuItem.Text = "Dodaj državu";
-            this.dodajDržavuToolStripMenuItem.Click += new System.EventHandler(this.dodajDržavuToolStripMenuItem_Click);
-            // 
             // turističkiVodičiToolStripMenuItem
             // 
             this.turističkiVodičiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -161,6 +165,30 @@
             this.dodajTurističkogVodičaToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.dodajTurističkogVodičaToolStripMenuItem.Text = "Dodaj turističkog vodiča";
             this.dodajTurističkogVodičaToolStripMenuItem.Click += new System.EventHandler(this.dodajTurističkogVodičaToolStripMenuItem_Click);
+            // 
+            // lokacijeToolStripMenuItem
+            // 
+            this.lokacijeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem2,
+            this.dodajLokacijuToolStripMenuItem});
+            this.lokacijeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lokacijeToolStripMenuItem.Name = "lokacijeToolStripMenuItem";
+            this.lokacijeToolStripMenuItem.Size = new System.Drawing.Size(132, 20);
+            this.lokacijeToolStripMenuItem.Text = "Destinacije putovanja";
+            // 
+            // pregledToolStripMenuItem2
+            // 
+            this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
+            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.pregledToolStripMenuItem2.Text = "Pregled";
+            this.pregledToolStripMenuItem2.Click += new System.EventHandler(this.pregledToolStripMenuItem2_Click);
+            // 
+            // dodajLokacijuToolStripMenuItem
+            // 
+            this.dodajLokacijuToolStripMenuItem.Name = "dodajLokacijuToolStripMenuItem";
+            this.dodajLokacijuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajLokacijuToolStripMenuItem.Text = "Dodaj destinaciju";
+            this.dodajLokacijuToolStripMenuItem.Click += new System.EventHandler(this.dodajLokacijuToolStripMenuItem_Click);
             // 
             // rezervacijeToolStripMenuItem1
             // 
@@ -210,8 +238,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(714, 361);
             this.Controls.Add(this.menuStrip2);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Name = "frmIndex";
             this.Text = "frmIndex";
             this.menuStrip2.ResumeLayout(false);
@@ -241,5 +271,8 @@
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem pregledVozilaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledVozačaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lokacijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem dodajLokacijuToolStripMenuItem;
     }
 }

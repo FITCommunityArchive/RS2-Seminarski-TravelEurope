@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCijenaOsiguranja = new System.Windows.Forms.TextBox();
@@ -37,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDatumPolaska = new System.Windows.Forms.DateTimePicker();
             this.cmbTrajanjePutovanja = new System.Windows.Forms.ComboBox();
-            this.btnDodajKategoriju = new System.Windows.Forms.Button();
             this.cmbKategorije = new System.Windows.Forms.ComboBox();
             this.btnIzbrisiSliku = new System.Windows.Forms.Button();
             this.btnDodajSliku = new System.Windows.Forms.Button();
@@ -59,6 +63,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtCijenaOsiguranja);
@@ -67,7 +76,6 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.dtpDatumPolaska);
             this.groupBox1.Controls.Add(this.cmbTrajanjePutovanja);
-            this.groupBox1.Controls.Add(this.btnDodajKategoriju);
             this.groupBox1.Controls.Add(this.cmbKategorije);
             this.groupBox1.Controls.Add(this.btnIzbrisiSliku);
             this.groupBox1.Controls.Add(this.btnDodajSliku);
@@ -83,7 +91,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtNaziv);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Menu;
             this.groupBox1.Location = new System.Drawing.Point(19, 21);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
@@ -93,13 +101,63 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(667, 174);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.TabIndex = 165;
+            this.label14.Text = "(po danu)";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(667, 137);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(57, 13);
+            this.label13.TabIndex = 164;
+            this.label13.Text = "(po danu)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(636, 174);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(23, 13);
+            this.label11.TabIndex = 163;
+            this.label11.Text = "KM";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(636, 137);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 13);
+            this.label12.TabIndex = 162;
+            this.label12.Text = "KM";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(632, 95);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 156;
+            this.label10.Text = "dana";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(455, 174);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 13);
+            this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 155;
             this.label9.Text = "Cijena osiguranja";
             // 
@@ -109,7 +167,7 @@
             this.label8.Location = new System.Drawing.Point(455, 137);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.Size = new System.Drawing.Size(77, 13);
             this.label8.TabIndex = 154;
             this.label8.Text = "Cijena paketa";
             // 
@@ -119,7 +177,7 @@
             this.txtCijenaOsiguranja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtCijenaOsiguranja.MaxLength = 5;
             this.txtCijenaOsiguranja.Name = "txtCijenaOsiguranja";
-            this.txtCijenaOsiguranja.Size = new System.Drawing.Size(186, 20);
+            this.txtCijenaOsiguranja.Size = new System.Drawing.Size(53, 22);
             this.txtCijenaOsiguranja.TabIndex = 153;
             // 
             // txtCijenaIznajmljivanja
@@ -128,7 +186,7 @@
             this.txtCijenaIznajmljivanja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtCijenaIznajmljivanja.MaxLength = 6;
             this.txtCijenaIznajmljivanja.Name = "txtCijenaIznajmljivanja";
-            this.txtCijenaIznajmljivanja.Size = new System.Drawing.Size(186, 20);
+            this.txtCijenaIznajmljivanja.Size = new System.Drawing.Size(53, 22);
             this.txtCijenaIznajmljivanja.TabIndex = 152;
             // 
             // label6
@@ -137,7 +195,7 @@
             this.label6.Location = new System.Drawing.Point(455, 52);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 151;
             this.label6.Text = "Datum polaska";
             // 
@@ -147,7 +205,7 @@
             this.label2.Location = new System.Drawing.Point(454, 95);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.Size = new System.Drawing.Size(101, 13);
             this.label2.TabIndex = 150;
             this.label2.Text = "Trajanje putovanja";
             // 
@@ -158,7 +216,7 @@
             this.dtpDatumPolaska.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
             this.dtpDatumPolaska.MinDate = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             this.dtpDatumPolaska.Name = "dtpDatumPolaska";
-            this.dtpDatumPolaska.Size = new System.Drawing.Size(186, 20);
+            this.dtpDatumPolaska.Size = new System.Drawing.Size(186, 22);
             this.dtpDatumPolaska.TabIndex = 149;
             this.dtpDatumPolaska.Value = new System.DateTime(2020, 4, 1, 0, 0, 0, 0);
             // 
@@ -177,20 +235,8 @@
             this.cmbTrajanjePutovanja.Location = new System.Drawing.Point(573, 92);
             this.cmbTrajanjePutovanja.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.cmbTrajanjePutovanja.Name = "cmbTrajanjePutovanja";
-            this.cmbTrajanjePutovanja.Size = new System.Drawing.Size(186, 21);
+            this.cmbTrajanjePutovanja.Size = new System.Drawing.Size(53, 21);
             this.cmbTrajanjePutovanja.TabIndex = 148;
-            // 
-            // btnDodajKategoriju
-            // 
-            this.btnDodajKategoriju.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajKategoriju.Location = new System.Drawing.Point(391, 261);
-            this.btnDodajKategoriju.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDodajKategoriju.Name = "btnDodajKategoriju";
-            this.btnDodajKategoriju.Size = new System.Drawing.Size(21, 21);
-            this.btnDodajKategoriju.TabIndex = 25;
-            this.btnDodajKategoriju.Text = "+";
-            this.btnDodajKategoriju.UseVisualStyleBackColor = true;
-            this.btnDodajKategoriju.Click += new System.EventHandler(this.btnDodajKategoriju_Click);
             // 
             // cmbKategorije
             // 
@@ -252,6 +298,7 @@
             this.btnDodajVodica.TabIndex = 14;
             this.btnDodajVodica.Text = "+";
             this.btnDodajVodica.UseVisualStyleBackColor = true;
+            this.btnDodajVodica.Click += new System.EventHandler(this.btnDodajVodica_Click);
             // 
             // label7
             // 
@@ -259,7 +306,7 @@
             this.label7.Location = new System.Drawing.Point(26, 75);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "Opis putovanja";
             // 
@@ -273,6 +320,7 @@
             this.btnDodajDrzavu.TabIndex = 13;
             this.btnDodajDrzavu.Text = "+";
             this.btnDodajDrzavu.UseVisualStyleBackColor = true;
+            this.btnDodajDrzavu.Click += new System.EventHandler(this.btnDodajDrzavu_Click);
             // 
             // label5
             // 
@@ -280,7 +328,7 @@
             this.label5.Location = new System.Drawing.Point(52, 265);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Kategorija";
             // 
@@ -297,12 +345,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 236);
+            this.label4.Location = new System.Drawing.Point(47, 236);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Lokacija";
+            this.label4.Text = "Destinacija";
             // 
             // cmbVodici
             // 
@@ -320,7 +368,7 @@
             this.label3.Location = new System.Drawing.Point(28, 206);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.Size = new System.Drawing.Size(82, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Turistički vodič";
             // 
@@ -329,7 +377,7 @@
             this.txtNaziv.Location = new System.Drawing.Point(127, 44);
             this.txtNaziv.Margin = new System.Windows.Forms.Padding(4);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(256, 20);
+            this.txtNaziv.Size = new System.Drawing.Size(256, 22);
             this.txtNaziv.TabIndex = 1;
             // 
             // label1
@@ -357,9 +405,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(822, 369);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ForeColor = System.Drawing.SystemColors.Menu;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTuristickeRuteDodaj";
             this.Text = "frmTuristickeRuteDodaj";
@@ -389,7 +440,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbKategorije;
-        private System.Windows.Forms.Button btnDodajKategoriju;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDatumPolaska;
@@ -398,5 +448,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCijenaOsiguranja;
         private System.Windows.Forms.TextBox txtCijenaIznajmljivanja;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

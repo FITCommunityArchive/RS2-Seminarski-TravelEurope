@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.btnPretraga = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtImePrezime = new System.Windows.Forms.TextBox();
-            this.btnDodajKorisnika = new System.Windows.Forms.Button();
             this.KorisniciId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +36,10 @@
             this.Uloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnPretraga = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtImePrezime = new System.Windows.Forms.TextBox();
+            this.btnDodajVodica = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,45 +67,6 @@
             this.dgvKorisnici.Size = new System.Drawing.Size(621, 270);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellDoubleClick);
-            // 
-            // btnPretraga
-            // 
-            this.btnPretraga.ForeColor = System.Drawing.Color.Black;
-            this.btnPretraga.Location = new System.Drawing.Point(250, 32);
-            this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(75, 23);
-            this.btnPretraga.TabIndex = 1;
-            this.btnPretraga.Text = "Pretraga";
-            this.btnPretraga.UseVisualStyleBackColor = true;
-            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(27, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ime i prezime";
-            // 
-            // txtImePrezime
-            // 
-            this.txtImePrezime.Location = new System.Drawing.Point(101, 34);
-            this.txtImePrezime.Name = "txtImePrezime";
-            this.txtImePrezime.Size = new System.Drawing.Size(143, 20);
-            this.txtImePrezime.TabIndex = 3;
-            // 
-            // btnDodajKorisnika
-            // 
-            this.btnDodajKorisnika.ForeColor = System.Drawing.Color.Black;
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(342, 32);
-            this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(99, 23);
-            this.btnDodajKorisnika.TabIndex = 4;
-            this.btnDodajKorisnika.Text = "Dodaj korisnika";
-            this.btnDodajKorisnika.UseVisualStyleBackColor = true;
-            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
             // 
             // KorisniciId
             // 
@@ -160,17 +121,58 @@
             this.Status.TrueValue = "1";
             this.Status.Width = 50;
             // 
+            // btnPretraga
+            // 
+            this.btnPretraga.ForeColor = System.Drawing.Color.Black;
+            this.btnPretraga.Location = new System.Drawing.Point(250, 32);
+            this.btnPretraga.Name = "btnPretraga";
+            this.btnPretraga.Size = new System.Drawing.Size(75, 23);
+            this.btnPretraga.TabIndex = 1;
+            this.btnPretraga.Text = "Pretraga";
+            this.btnPretraga.UseVisualStyleBackColor = true;
+            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Menu;
+            this.label1.Location = new System.Drawing.Point(27, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ime i prezime";
+            // 
+            // txtImePrezime
+            // 
+            this.txtImePrezime.Location = new System.Drawing.Point(101, 34);
+            this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.Size = new System.Drawing.Size(143, 22);
+            this.txtImePrezime.TabIndex = 3;
+            // 
+            // btnDodajVodica
+            // 
+            this.btnDodajVodica.BackColor = System.Drawing.Color.LawnGreen;
+            this.btnDodajVodica.ForeColor = System.Drawing.Color.Black;
+            this.btnDodajVodica.Location = new System.Drawing.Point(340, 32);
+            this.btnDodajVodica.Name = "btnDodajVodica";
+            this.btnDodajVodica.Size = new System.Drawing.Size(161, 23);
+            this.btnDodajVodica.TabIndex = 20;
+            this.btnDodajVodica.Text = "Dodaj novog korisnika";
+            this.btnDodajVodica.UseVisualStyleBackColor = false;
+            this.btnDodajVodica.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
+            // 
             // frmKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(648, 408);
-            this.Controls.Add(this.btnDodajKorisnika);
+            this.Controls.Add(this.btnDodajVodica);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPretraga);
             this.Controls.Add(this.dgvKorisnici);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(65)))));
             this.MaximizeBox = false;
             this.Name = "frmKorisnici";
@@ -188,7 +190,6 @@
         private System.Windows.Forms.Button btnPretraga;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtImePrezime;
-        private System.Windows.Forms.Button btnDodajKorisnika;
         private System.Windows.Forms.DataGridViewTextBoxColumn KorisniciId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
@@ -196,5 +197,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Uloga;
         private System.Windows.Forms.DataGridViewTextBoxColumn Grad;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Status;
+        private System.Windows.Forms.Button btnDodajVodica;
     }
 }

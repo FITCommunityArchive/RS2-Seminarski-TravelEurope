@@ -30,10 +30,10 @@ namespace TravelEurope.WebAPI.Services
             {
                 query = query.Where(x => x.Naziv.ToLower().Contains(request.Naziv.ToLower()));
             }
-            //if (request?.KategorijaId != 0)
-            //{
-            //    query = query.Where(x => x.KategorijaId == request.KategorijaId);
-            //}
+            if (request.KategorijaId > 0)
+            {
+                query = query.Where(x => x.KategorijaId == request.KategorijaId);
+            }
 
             var list = query.ToList();
 
@@ -63,7 +63,6 @@ namespace TravelEurope.WebAPI.Services
         public Model.TuristRute Update(int id, TuristRuteInsertRequest request)
         {
             Database.TuristRute entity = _context.TuristRute.Where(a => a.TuristRutaId == id).FirstOrDefault();
-                //Include(a => a.Kategorija).Include(b => b.Lokacija).Include(c => c.TuristickiVodic).ThenInclude(d => d.StraniJezik).FirstOrDefault();
 
             _context.TuristRute.Attach(entity);
             _context.TuristRute.Update(entity);

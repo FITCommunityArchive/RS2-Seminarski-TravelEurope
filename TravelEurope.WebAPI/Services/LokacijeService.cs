@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace TravelEurope.WebAPI.Services
 {
@@ -22,11 +23,15 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Lokacije> Get(LokacijeSearchRequest request)
         {
-            var query = _context.Lokacije.AsQueryable();
+            var query = _context.Lokacije.Include(a=>a.Drzava).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Naziv))
             {
                 query = query.Where(x => x.Naziv.ToLower().Contains(request.Naziv.ToLower()));
+            }
+            if (request.DrzavaId > 0)
+            {
+                query = query.Where(x => x.DrzavaId == request.DrzavaId);
             }
 
             var list = query.ToList();

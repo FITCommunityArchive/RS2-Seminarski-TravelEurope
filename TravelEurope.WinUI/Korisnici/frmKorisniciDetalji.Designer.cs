@@ -73,10 +73,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtIme);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Menu;
             this.groupBox1.Location = new System.Drawing.Point(15, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(302, 288);
+            this.groupBox1.Size = new System.Drawing.Size(293, 288);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lični podaci";
@@ -86,7 +86,7 @@
             this.chbAktivan.AutoSize = true;
             this.chbAktivan.Location = new System.Drawing.Point(112, 265);
             this.chbAktivan.Name = "chbAktivan";
-            this.chbAktivan.Size = new System.Drawing.Size(62, 17);
+            this.chbAktivan.Size = new System.Drawing.Size(64, 17);
             this.chbAktivan.TabIndex = 17;
             this.chbAktivan.Text = "Aktivan";
             this.chbAktivan.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(71, 243);
+            this.label9.Location = new System.Drawing.Point(66, 243);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "Uloga";
             // 
@@ -112,9 +112,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(76, 215);
+            this.label8.Location = new System.Drawing.Point(71, 215);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 14;
             this.label8.Text = "Grad";
             // 
@@ -130,7 +130,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(65, 188);
+            this.label7.Location = new System.Drawing.Point(60, 188);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 12;
@@ -140,16 +140,16 @@
             // 
             this.txtLozinkaPotvrda.Location = new System.Drawing.Point(112, 159);
             this.txtLozinkaPotvrda.Name = "txtLozinkaPotvrda";
-            this.txtLozinkaPotvrda.Size = new System.Drawing.Size(163, 20);
+            this.txtLozinkaPotvrda.Size = new System.Drawing.Size(163, 22);
             this.txtLozinkaPotvrda.TabIndex = 10;
             this.txtLozinkaPotvrda.UseSystemPasswordChar = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 162);
+            this.label6.Location = new System.Drawing.Point(25, 162);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "Potvrdi lozinku";
             // 
@@ -161,21 +161,22 @@
             this.cmbDrzave.Name = "cmbDrzave";
             this.cmbDrzave.Size = new System.Drawing.Size(163, 21);
             this.cmbDrzave.TabIndex = 11;
+            this.cmbDrzave.SelectedIndexChanged += new System.EventHandler(this.cmbDrzave_SelectedIndexChanged);
             // 
             // txtLozinka
             // 
             this.txtLozinka.Location = new System.Drawing.Point(112, 133);
             this.txtLozinka.Name = "txtLozinka";
-            this.txtLozinka.Size = new System.Drawing.Size(163, 20);
+            this.txtLozinka.Size = new System.Drawing.Size(163, 22);
             this.txtLozinka.TabIndex = 9;
             this.txtLozinka.UseSystemPasswordChar = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(62, 136);
+            this.label5.Location = new System.Drawing.Point(57, 136);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Lozinka";
             // 
@@ -183,15 +184,15 @@
             // 
             this.txtKorisnickoIme.Location = new System.Drawing.Point(112, 107);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
-            this.txtKorisnickoIme.Size = new System.Drawing.Size(163, 20);
+            this.txtKorisnickoIme.Size = new System.Drawing.Size(163, 22);
             this.txtKorisnickoIme.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 110);
+            this.label4.Location = new System.Drawing.Point(26, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Korisničko ime";
             // 
@@ -199,15 +200,15 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(112, 81);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(163, 20);
+            this.txtEmail.Size = new System.Drawing.Size(163, 22);
             this.txtEmail.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 84);
+            this.label3.Location = new System.Drawing.Point(34, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Email adresa";
             // 
@@ -215,15 +216,15 @@
             // 
             this.txtPrezime.Location = new System.Drawing.Point(112, 55);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(163, 20);
+            this.txtPrezime.Size = new System.Drawing.Size(163, 22);
             this.txtPrezime.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 58);
+            this.label2.Location = new System.Drawing.Point(57, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Prezime";
             // 
@@ -231,22 +232,22 @@
             // 
             this.txtIme.Location = new System.Drawing.Point(112, 29);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(163, 20);
+            this.txtIme.Size = new System.Drawing.Size(163, 22);
             this.txtIme.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 32);
+            this.label1.Location = new System.Drawing.Point(77, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.Size = new System.Drawing.Size(25, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ime";
             // 
             // btnSnimi
             // 
             this.btnSnimi.ForeColor = System.Drawing.Color.Black;
-            this.btnSnimi.Location = new System.Drawing.Point(193, 310);
+            this.btnSnimi.Location = new System.Drawing.Point(211, 306);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(97, 23);
             this.btnSnimi.TabIndex = 2;
@@ -258,9 +259,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 348);
+            this.BackColor = System.Drawing.Color.Teal;
+            this.ClientSize = new System.Drawing.Size(322, 345);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Name = "frmKorisniciDetalji";
             this.Text = "frmKorisniciDetalji";
             this.Load += new System.EventHandler(this.frmKorisniciDetalji_Load);

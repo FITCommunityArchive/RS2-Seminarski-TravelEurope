@@ -109,12 +109,12 @@ namespace TravelEurope.WinUI.TuristickeRute
 
         private async void btnDodajDrzavu_Click(object sender, EventArgs e)
         {
-            //var frm = new Lokacije.frmDodajDrzavu();
-            //if (frm.ShowDialog() == DialogResult.OK)
-            //{
-            //    var listDrzave = await _serviceDrzave.Get<List<Model.Drzave>>(null);
-            //    cmbDrzave.DataSource = listDrzave;
-            //}
+            var frm = new Lokacije.frmDodajDrzavu();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                var listDrzave = await _serviceLokacije.Get<List<Model.Drzave>>(null);
+                cmbLokacije.DataSource = listDrzave;
+            }
         }
 
         private async Task UcitajListuSlika()
@@ -202,6 +202,11 @@ namespace TravelEurope.WinUI.TuristickeRute
             var frm = new frmTuristickeRuteDetaljiSlike(0, _id);
             if (frm.ShowDialog() == DialogResult.OK)
                 await UcitajListuSlika();
+        }
+
+        private void btnDodajKategoriju_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

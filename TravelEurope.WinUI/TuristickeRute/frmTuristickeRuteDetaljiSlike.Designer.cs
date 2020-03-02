@@ -47,10 +47,9 @@
             // 
             this.pbSlika.BackColor = System.Drawing.Color.Gainsboro;
             this.pbSlika.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbSlika.Location = new System.Drawing.Point(82, 98);
-            this.pbSlika.Margin = new System.Windows.Forms.Padding(4);
+            this.pbSlika.Location = new System.Drawing.Point(62, 80);
             this.pbSlika.Name = "pbSlika";
-            this.pbSlika.Size = new System.Drawing.Size(192, 168);
+            this.pbSlika.Size = new System.Drawing.Size(145, 137);
             this.pbSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSlika.TabIndex = 8;
             this.pbSlika.TabStop = false;
@@ -59,20 +58,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 98);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(26, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Slika";
             // 
             // btnSnimi
             // 
             this.btnSnimi.ForeColor = System.Drawing.Color.Black;
-            this.btnSnimi.Location = new System.Drawing.Point(352, 238);
-            this.btnSnimi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSnimi.Location = new System.Drawing.Point(264, 193);
             this.btnSnimi.Name = "btnSnimi";
-            this.btnSnimi.Size = new System.Drawing.Size(129, 28);
+            this.btnSnimi.Size = new System.Drawing.Size(97, 23);
             this.btnSnimi.TabIndex = 5;
             this.btnSnimi.Text = "Snimi";
             this.btnSnimi.UseVisualStyleBackColor = true;
@@ -80,33 +77,35 @@
             // 
             // txtOpis
             // 
-            this.txtOpis.Location = new System.Drawing.Point(82, 23);
-            this.txtOpis.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOpis.Location = new System.Drawing.Point(62, 19);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(397, 67);
+            this.txtOpis.Size = new System.Drawing.Size(299, 55);
             this.txtOpis.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 27);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(28, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Opis";
             // 
             // frmTuristickeRuteDetaljiSlike
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 289);
+            this.BackColor = System.Drawing.Color.Teal;
+            this.ClientSize = new System.Drawing.Size(386, 235);
             this.Controls.Add(this.pbSlika);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSnimi);
             this.Controls.Add(this.txtOpis);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.ForeColor = System.Drawing.SystemColors.Menu;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTuristickeRuteDetaljiSlike";
             this.Text = "frmTuristickeRuteDetaljiSlike";
             this.Load += new System.EventHandler(this.frmRuteDodajSlike_Load);
