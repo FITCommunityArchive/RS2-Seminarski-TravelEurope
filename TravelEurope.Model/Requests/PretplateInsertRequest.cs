@@ -8,7 +8,7 @@ namespace TravelEurope.Model.Requests
     public class PretplateInsertRequest
     {
         [Required]
-        public int PretplataId { get; set; }
+        public int KategorijaId { get; set; }
         [Required]
         public int KorisnikId { get; set; }
     }

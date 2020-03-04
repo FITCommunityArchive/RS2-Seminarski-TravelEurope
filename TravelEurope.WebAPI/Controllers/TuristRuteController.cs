@@ -36,6 +36,18 @@ namespace TravelEurope.WebAPI.Controllers
             return _service.Update(id, request);
         }
 
+        [HttpGet("GetListSaSlikama")]
+        public List<Model.TuristRute> GetListSaSlikama([FromQuery]Model.Requests.TuristRuteSearchRequest request)
+        {
+            return _service.GetListSaSlikama(request);
+        }
+
+        [HttpGet("GetThumbnail/{id}")]
+        public Model.RuteSlike GetThumbnail(int id)
+        {
+            return _service.GetThumbnail(id);
+        }
+
         [HttpGet("{id}")]
         public Model.TuristRute GetById(int id)
         {

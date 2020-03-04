@@ -4,42 +4,42 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class AddKategorije : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            MigrationBuilder.AddColumn<int>(
                 name: "KategorijaId",
                 table: "Vozilo",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.AddColumn<int>(
+            MigrationBuilder.AddColumn<int>(
                 name: "KategorijaId",
                 table: "Vozac",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.AddColumn<int>(
+            MigrationBuilder.AddColumn<int>(
                 name: "KategorijaId",
                 table: "TuristRuta",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozilo_KategorijaId",
                 table: "Vozilo",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozac_KategorijaId",
                 table: "Vozac",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRuta_KategorijaId",
                 table: "TuristRuta",
                 column: "KategorijaId");
 
-            migrationBuilder.AddForeignKey(
+            MigrationBuilder.AddForeignKey(
                 name: "FK_TuristRuta_Kategorije_KategorijaId",
                 table: "TuristRuta",
                 column: "KategorijaId",
@@ -47,7 +47,7 @@ namespace TravelEurope.WebAPI.Migrations
                 principalColumn: "KategorijaId",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
+            MigrationBuilder.AddForeignKey(
                 name: "FK_Vozac_Kategorije_KategorijaId",
                 table: "Vozac",
                 column: "KategorijaId",
@@ -55,7 +55,7 @@ namespace TravelEurope.WebAPI.Migrations
                 principalColumn: "KategorijaId",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
+            MigrationBuilder.AddForeignKey(
                 name: "FK_Vozilo_Kategorije_KategorijaId",
                 table: "Vozilo",
                 column: "KategorijaId",
@@ -64,41 +64,41 @@ namespace TravelEurope.WebAPI.Migrations
                 onDelete: ReferentialAction.Cascade);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_TuristRuta_Kategorije_KategorijaId",
                 table: "TuristRuta");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Vozac_Kategorije_KategorijaId",
                 table: "Vozac");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Vozilo_Kategorije_KategorijaId",
                 table: "Vozilo");
 
-            migrationBuilder.DropIndex(
+            MigrationBuilder.DropIndex(
                 name: "IX_Vozilo_KategorijaId",
                 table: "Vozilo");
 
-            migrationBuilder.DropIndex(
+            MigrationBuilder.DropIndex(
                 name: "IX_Vozac_KategorijaId",
                 table: "Vozac");
 
-            migrationBuilder.DropIndex(
+            MigrationBuilder.DropIndex(
                 name: "IX_TuristRuta_KategorijaId",
                 table: "TuristRuta");
 
-            migrationBuilder.DropColumn(
+            MigrationBuilder.DropColumn(
                 name: "KategorijaId",
                 table: "Vozilo");
 
-            migrationBuilder.DropColumn(
+            MigrationBuilder.DropColumn(
                 name: "KategorijaId",
                 table: "Vozac");
 
-            migrationBuilder.DropColumn(
+            MigrationBuilder.DropColumn(
                 name: "KategorijaId",
                 table: "TuristRuta");
         }

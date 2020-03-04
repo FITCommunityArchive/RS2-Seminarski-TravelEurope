@@ -5,15 +5,15 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class RemoveKategorijaRute : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Kategorija");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Kategorija",
                 columns: table => new
                 {

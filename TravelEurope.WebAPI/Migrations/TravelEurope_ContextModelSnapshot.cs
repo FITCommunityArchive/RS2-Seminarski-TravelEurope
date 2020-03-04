@@ -118,7 +118,7 @@ namespace TravelEurope.WebAPI.Migrations
                     b.ToTable("KorisniciFriends");
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacija", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacije", b =>
                 {
                     b.Property<int>("LokacijaId")
                         .ValueGeneratedOnAdd()
@@ -200,6 +200,31 @@ namespace TravelEurope.WebAPI.Migrations
                     b.HasIndex("KorisnikId");
 
                     b.ToTable("Pretplate");
+                });
+
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Recenzije", b =>
+                {
+                    b.Property<int>("RecenzijaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DatumRecenzije");
+
+                    b.Property<int>("KorisnikId");
+
+                    b.Property<int>("Ocjena");
+
+                    b.Property<string>("Sadrzaj");
+
+                    b.Property<int>("TuristRutaId");
+
+                    b.HasKey("RecenzijaId");
+
+                    b.HasIndex("KorisnikId");
+
+                    b.HasIndex("TuristRutaId");
+
+                    b.ToTable("Recenzije");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacije", b =>
@@ -360,7 +385,7 @@ namespace TravelEurope.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacija", b =>
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Lokacije", b =>
                 {
                     b.HasOne("TravelEurope.WebAPI.Database.Drzave", "Drzava")
                         .WithMany()
@@ -407,6 +432,19 @@ namespace TravelEurope.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("TravelEurope.WebAPI.Database.Recenzije", b =>
+                {
+                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRute", "TuristRuta")
+                        .WithMany()
+                        .HasForeignKey("TuristRutaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Rezervacije", b =>
                 {
                     b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
@@ -443,7 +481,7 @@ namespace TravelEurope.WebAPI.Migrations
                         .HasForeignKey("KategorijaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TravelEurope.WebAPI.Database.Lokacija", "Lokacija")
+                    b.HasOne("TravelEurope.WebAPI.Database.Lokacije", "Lokacija")
                         .WithMany()
                         .HasForeignKey("LokacijaId")
                         .OnDelete(DeleteBehavior.Cascade);

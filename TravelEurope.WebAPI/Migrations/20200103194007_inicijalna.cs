@@ -6,9 +6,9 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class inicijalna : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Drzava",
                 columns: table => new
                 {
@@ -21,7 +21,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Drzava", x => x.DrzavaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Kategorija",
                 columns: table => new
                 {
@@ -34,7 +34,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Kategorija", x => x.KategorijaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "MarkaVozila",
                 columns: table => new
                 {
@@ -47,7 +47,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_MarkaVozila", x => x.MarkaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "NacinPlacanja",
                 columns: table => new
                 {
@@ -60,7 +60,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_NacinPlacanja", x => x.NacinPlacanjaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "StatusVozaca",
                 columns: table => new
                 {
@@ -73,7 +73,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_StatusVozaca", x => x.StatusVozacaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "StatusVozila",
                 columns: table => new
                 {
@@ -88,7 +88,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_StatusVozila", x => x.StatusVozilaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "StraniJezik",
                 columns: table => new
                 {
@@ -101,7 +101,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_StraniJezik", x => x.StraniJezikId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "TipVozila",
                 columns: table => new
                 {
@@ -114,7 +114,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_TipVozila", x => x.TipId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "VrstaGoriva",
                 columns: table => new
                 {
@@ -127,7 +127,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_VrstaGoriva", x => x.GorivoId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Grad",
                 columns: table => new
                 {
@@ -147,7 +147,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Lokacija",
                 columns: table => new
                 {
@@ -167,7 +167,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Vozac",
                 columns: table => new
                 {
@@ -189,7 +189,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "TuristickiVodic",
                 columns: table => new
                 {
@@ -210,7 +210,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Vozilo",
                 columns: table => new
                 {
@@ -256,7 +256,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Korisnici",
                 columns: table => new
                 {
@@ -287,7 +287,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "TuristRuta",
                 columns: table => new
                 {
@@ -315,7 +315,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Administrator",
                 columns: table => new
                 {
@@ -333,7 +333,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Klijent",
                 columns: table => new
                 {
@@ -352,7 +352,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Radnik",
                 columns: table => new
                 {
@@ -371,7 +371,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "RuteSlike",
                 columns: table => new
                 {
@@ -393,7 +393,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Rezervacija",
                 columns: table => new
                 {
@@ -445,7 +445,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Racun",
                 columns: table => new
                 {
@@ -474,107 +474,107 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Grad_DrzavaId",
                 table: "Grad",
                 column: "DrzavaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Korisnici_GradId",
                 table: "Korisnici",
                 column: "GradId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Lokacija_DrzavaId",
                 table: "Lokacija",
                 column: "DrzavaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Racun_NacinPlacanjaId",
                 table: "Racun",
                 column: "NacinPlacanjaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Racun_RezervacijaId",
                 table: "Racun",
                 column: "RezervacijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_KlijentId",
                 table: "Rezervacija",
                 column: "KlijentId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_RacunId",
                 table: "Rezervacija",
                 column: "RacunId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_RadnikId",
                 table: "Rezervacija",
                 column: "RadnikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_TuristRutaId",
                 table: "Rezervacija",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_VozacId",
                 table: "Rezervacija",
                 column: "VozacId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacija_VoziloId",
                 table: "Rezervacija",
                 column: "VoziloId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_RuteSlike_TuristRutaId",
                 table: "RuteSlike",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristickiVodic_StraniJezikId",
                 table: "TuristickiVodic",
                 column: "StraniJezikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRuta_DrzavaId",
                 table: "TuristRuta",
                 column: "DrzavaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRuta_TuristickiVodicId",
                 table: "TuristRuta",
                 column: "TuristickiVodicId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozac_StatusVozacaId",
                 table: "Vozac",
                 column: "StatusVozacaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozilo_MarkaVozilaId",
                 table: "Vozilo",
                 column: "MarkaVozilaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozilo_StatusVozilaId",
                 table: "Vozilo",
                 column: "StatusVozilaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozilo_TipVozilaId",
                 table: "Vozilo",
                 column: "TipVozilaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Vozilo_VrstaGorivaId",
                 table: "Vozilo",
                 column: "VrstaGorivaId");
 
-            migrationBuilder.AddForeignKey(
+            MigrationBuilder.AddForeignKey(
                 name: "FK_Rezervacija_Racun_RacunId",
                 table: "Rezervacija",
                 column: "RacunId",
@@ -583,92 +583,92 @@ namespace TravelEurope.WebAPI.Migrations
                 onDelete: ReferentialAction.Restrict);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Klijent_Korisnici_KlijentId",
                 table: "Klijent");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Radnik_Korisnici_RadnikId",
                 table: "Radnik");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_TuristRuta_Drzava_DrzavaId",
                 table: "TuristRuta");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Racun_NacinPlacanja_NacinPlacanjaId",
                 table: "Racun");
 
-            migrationBuilder.DropForeignKey(
+            MigrationBuilder.DropForeignKey(
                 name: "FK_Racun_Rezervacija_RezervacijaId",
                 table: "Racun");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Administrator");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Kategorija");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Lokacija");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "RuteSlike");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Korisnici");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Grad");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Drzava");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "NacinPlacanja");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Rezervacija");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Klijent");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Racun");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Radnik");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "TuristRuta");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Vozac");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Vozilo");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "TuristickiVodic");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "StatusVozaca");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "MarkaVozila");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "StatusVozila");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "TipVozila");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "VrstaGoriva");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "StraniJezik");
         }
     }

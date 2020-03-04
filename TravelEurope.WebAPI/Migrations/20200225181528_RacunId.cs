@@ -4,18 +4,18 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class RacunId : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
+            MigrationBuilder.AlterColumn<int>(
                 name: "RacunId",
                 table: "Rezervacija",
                 nullable: true,
                 oldClrType: typeof(int));
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
+            MigrationBuilder.AlterColumn<int>(
                 name: "RacunId",
                 table: "Rezervacija",
                 nullable: false,

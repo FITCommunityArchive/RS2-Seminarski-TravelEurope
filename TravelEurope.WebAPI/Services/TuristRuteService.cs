@@ -20,7 +20,7 @@ namespace TravelEurope.WebAPI.Services
             _context = context;
             _mapper = mapper;
         }
-
+      
         public List<Model.TuristRute> Get(TuristRuteSearchRequest request)
         {
 
@@ -39,6 +39,41 @@ namespace TravelEurope.WebAPI.Services
 
             return _mapper.Map<List<Model.TuristRute>>(list);
         }
+
+
+        public List<Model.TuristRute> GetListSaSlikama(TuristRuteSearchRequest request)
+        {
+            var query = _context.TuristRute.Include(a => a.Kategorija).Include(b => b.Lokacija).Include(c => c.TuristickiVodic).ThenInclude(d => d.StraniJezik).AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Naziv))
+            {
+                query = query.Where(x => x.Naziv.ToLower().Contains(request.Naziv.ToLower()));
+            }
+            if (request.KategorijaId > 0)
+            {
+                query = query.Where(x => x.KategorijaId == request.KategorijaId);
+            }
+
+            var list = query.ToList();
+
+            // ucitavanje slika za svaku igru
+            List<Model.TuristRute> listaIgara = _mapper.Map<List<Model.TuristRute>>(list);
+            foreach (var item in listaIgara)
+            {
+                var querySlika = _context.RuteSlike.AsQueryable();
+
+                querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
+
+                var entitySlika = querySlika.FirstOrDefault();
+
+                if (entitySlika != null)
+                {
+                    item.SlikaThumb = entitySlika.SlikaThumb;
+                }
+            }
+            return listaIgara;
+        }
+
 
         public Model.TuristRute Insert(TuristRuteInsertRequest request)
         {
@@ -72,6 +107,18 @@ namespace TravelEurope.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.TuristRute>(entity);
+        }
+
+
+        public Model.RuteSlike GetThumbnail(int TuristRutaId)
+        {
+            var query = _context.RuteSlike.AsQueryable();
+
+            query = query.Where(x => x.TuristRutaId == TuristRutaId);
+
+            var entity = query.FirstOrDefault();
+
+            return _mapper.Map<Model.RuteSlike>(entity);
         }
     }
 }

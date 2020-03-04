@@ -77,7 +77,7 @@ namespace TravelEurope.WebAPI.Services
             //int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
             int KorisnikId = 0;
-            Database.Pretplate entity = _context.Pretplate.Where(x => x.PretplataId == request.PretplataId && x.KorisnikId == KorisnikId).FirstOrDefault();
+            Database.Pretplate entity = _context.Pretplate.Where(x => x.PretplataId == request.KategorijaId && x.KorisnikId == KorisnikId).FirstOrDefault();
             //if (entity != null)
             //{
             //    entity.Ocjena = request.Ocjena;

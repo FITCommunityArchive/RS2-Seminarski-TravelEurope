@@ -24,6 +24,7 @@ namespace TravelEurope.Model
         public int TrajanjePutovanja { get; set; }
         public decimal CijenaPaketa { get; set; }
         public decimal CijenaOsiguranja { get; set; }
+        public byte[] SlikaThumb { get; set; }
         public Kategorije Kategorija { get; set; }
         public Lokacije Lokacija { get; set; }
         public TuristickiVodici TuristickiVodic { get; set; }

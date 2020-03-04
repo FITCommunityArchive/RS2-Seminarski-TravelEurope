@@ -1,22 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:TravelEurope.Mobile.ViewModels;assembly=TravelEurope.Mobile"
              xmlns:local="clr-namespace:TravelEurope.Mobile.Converters"
              x:Class="TravelEurope.Mobile.Views.TuristRutePage"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
-        <vm:TuristRutaVM></vm:TuristRutaVM>
-    </ContentPage.BindingContext>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+            <local:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></local:DatetimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
             <ToolbarItem.Icon>
                 <FileImageSource File="search.png"/>
@@ -32,76 +28,75 @@
                 <FileImageSource File="more.png"/>
             </ToolbarItem.Icon>
         </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Turist rute"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding RuteList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Naziv}"
-                                       LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       FontSize="16"/>
-                                <Label Text="{Binding Opis}"
-                                       LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       FontSize="13"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
-        <!--<ScrollView>
-
+        <ScrollView>
             <StackLayout>
-
-                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="5">
-                    <StackLayout Orientation="Vertical" HeightRequest="200" >
-                        <Image Source="{Binding FeaturedGame.SlikaThumb, Converter={StaticResource imgConv}}" WidthRequest="150" HeightRequest="200" />
-                        -->
-        <!--<Label Text="*****"/>-->
-        <!--
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="{Binding FeaturedGame.Naziv}" FontSize="24" />
-                        <Label Text="{Binding FeaturedGame.Opis}" FontSize="16" />
-                    </StackLayout>
-                    
-                </StackLayout>
-
-                <CollectionView ItemsSource="{Binding RuteList}">
-                    <CollectionView.ItemTemplate>
+                <Picker Title="Izaberite vašu pretplaćenu kategoriju putovanja"
+                    TitleColor="White"
+                    Margin="10,0"
+                    ItemsSource="{Binding PretplaceneKategorijePutovanja}"
+                    SelectedItem="{Binding SelectedKategorijaPutovanja}"
+                    ItemDisplayBinding="{Binding Naziv}"></Picker>
+                <ListView ItemsSource="{Binding RuteList}" ItemSelected="ListView_OnItemSelected">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" HeightRequest="100" />
                                     </StackLayout>
-                                    -->
-        <!--<Label Text="*****"/>-->
-        <!--
-                                    <Label Text="{Binding Naziv}" FontSize="22"/>
-                                    -->
-        <!--<Label Text="{Binding Opis}" FontSize="14"/>-->
-        <!--
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Naziv}"
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Kategorija.Naziv}"
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Destinacija: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                            <Label Text="{Binding Lokacija.Naziv}" 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Cijena (dnevno): " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                            <Label Text="{Binding CijenaPaketa}"
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Datum putovanja: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                            <Label Text="{Binding DatumPutovanja, Converter={StaticResource cnvDateTimeConverter}}" 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                        </StackLayout>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
+                            </ViewCell>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout
-                        Orientation="Vertical"
-                        Span="2"/>
-                    </CollectionView.ItemsLayout>
-                </CollectionView>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
-        </ScrollView>-->
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

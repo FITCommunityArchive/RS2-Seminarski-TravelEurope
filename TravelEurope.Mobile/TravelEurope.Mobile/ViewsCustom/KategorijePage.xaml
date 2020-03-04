@@ -16,15 +16,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!--<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
             <ToolbarItem.Icon>
                 <FileImageSource File="search.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="Filter" Clicked="FilterToolbarItem_Clicked">
-            <ToolbarItem.Icon>
-                <FileImageSource File="filter.png"/>
             </ToolbarItem.Icon>
         </ToolbarItem>
         <ToolbarItem Text="More">
@@ -32,14 +27,31 @@
                 <FileImageSource File="more.png"/>
             </ToolbarItem.Icon>
         </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Turist rute"
+            <Label Text="Kategorije na koje ste pretplaćeni"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ListView ItemsSource="{Binding KategorijeList}">
+          <ListView ItemsSource="{Binding PretplaceneKategorijeList}">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <StackLayout Padding="10">
+                    <Label Text="{Binding Naziv}"
+                           LineBreakMode="NoWrap"
+                           Style="{DynamicResource ListItemTextStyle}"
+                           FontSize="16"/>
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+            <Label Text="Kategorije na koje niste pretplaćeni"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding NePretplaceneKategorijeList}" x:Name="ListaKategorija" SelectedItem="{Binding SelectedKategorija}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -48,59 +60,18 @@
                                        LineBreakMode="NoWrap"
                                        Style="{DynamicResource ListItemTextStyle}"
                                        FontSize="16"/>
-                                <Button Text="Pretplatite se"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center"/>
+                                <Button Command="{Binding PretplatiCommand}"
+                                Clicked="Button_Clicked"
+                                BackgroundColor="Green"
+                                Text="Pretplati se" 
+                                TextColor="White"
+                                FontAttributes="Bold" 
+                                Grid.Row="0"></Button>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-        <!--<ScrollView>
-
-            <StackLayout>
-
-                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="5">
-                    <StackLayout Orientation="Vertical" HeightRequest="200" >
-                        <Image Source="{Binding FeaturedGame.SlikaThumb, Converter={StaticResource imgConv}}" WidthRequest="150" HeightRequest="200" />
-                        -->
-        <!--<Label Text="*****"/>-->
-        <!--
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="{Binding FeaturedGame.Naziv}" FontSize="24" />
-                        <Label Text="{Binding FeaturedGame.Opis}" FontSize="16" />
-                    </StackLayout>
-                    
-                </StackLayout>
-
-                <CollectionView ItemsSource="{Binding RuteList}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                        <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" HeightRequest="100" />
-                                    </StackLayout>
-                                    -->
-        <!--<Label Text="*****"/>-->
-        <!--
-                                    <Label Text="{Binding Naziv}" FontSize="22"/>
-                                    -->
-        <!--<Label Text="{Binding Opis}" FontSize="14"/>-->
-        <!--
-                                </StackLayout>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout
-                        Orientation="Vertical"
-                        Span="2"/>
-                    </CollectionView.ItemsLayout>
-                </CollectionView>
-            </StackLayout>
-        </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

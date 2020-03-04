@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TravelEurope.Mobile.Views;
+using TravelEurope.Mobile.ViewsCustom;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace TravelEurope.Mobile
@@ -12,9 +13,7 @@ namespace TravelEurope.Mobile
         public App()
         {
             InitializeComponent();
-
-
-            MainPage = new KategorijePage();
+            MainPage = new NavigationPage(new KategorijePage());
         }
 
         protected override void OnStart()

@@ -6,12 +6,18 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\RezervacijeController.cs" />
+    <Compile Remove="Migrations\20200103194007_inicijalna.cs" />
+    <Compile Remove="Migrations\20200103194007_inicijalna.Designer.cs" />
     <Compile Remove="Migrations\20200208143544_x.cs" />
     <Compile Remove="Migrations\20200211160147_Cijena.cs" />
+    <Compile Remove="Migrations\20200211160507_RemoveKategorijaRute.cs" />
+    <Compile Remove="Migrations\20200211160507_RemoveKategorijaRute.Designer.cs" />
     <Compile Remove="Migrations\20200211201230_KlijentKorisnik.cs" />
     <Compile Remove="Migrations\20200211202803_KlijentKorisnik1.cs" />
     <Compile Remove="Migrations\20200211202843_Proba.cs" />
     <Compile Remove="Migrations\20200211203023_KlijentKorisnikž.cs" />
+    <Compile Remove="Migrations\20200225181528_RacunId.cs" />
+    <Compile Remove="Migrations\20200225181528_RacunId.Designer.cs" />
     <Compile Remove="Migrations\20200226151125_test.cs" />
     <Compile Remove="Migrations\20200226153224_AddKlijent.cs" />
     <Compile Remove="Migrations\20200226153745_AddKlijent.cs" />
@@ -19,9 +25,25 @@
     <Compile Remove="Migrations\20200226154433_Proba.cs" />
     <Compile Remove="Migrations\20200226154954_test.cs" />
     <Compile Remove="Migrations\20200228204428_Kategorija.cs" />
+    <Compile Remove="Migrations\20200228204738_KategorijaPretplata.cs" />
+    <Compile Remove="Migrations\20200228204738_KategorijaPretplata.Designer.cs" />
+    <Compile Remove="Migrations\20200229200001_AddKategorije.cs" />
+    <Compile Remove="Migrations\20200229200001_AddKategorije.Designer.cs" />
     <Compile Remove="Migrations\20200301172011_VelikaPromjenaUBazi.cs" />
+    <Compile Remove="Migrations\20200301172139_VelikaPromjenaUBazi.cs" />
+    <Compile Remove="Migrations\20200301172139_VelikaPromjenaUBazi.Designer.cs" />
     <Compile Remove="Migrations\20200301212215_Promjene.cs" />
+    <Compile Remove="Migrations\20200302203028_AddRecenzijaAddPreporuka.cs" />
+    <Compile Remove="Migrations\20200302203130_AddRecenzijaAddPreporuka.cs" />
+    <Compile Remove="Migrations\20200302203158_NovaBaza9-Reason-AddRecenzijaAddPreporuka.cs" />
+    <Compile Remove="Migrations\20200302203405_Proba.cs" />
+    <Compile Remove="Migrations\20200302203520_NovaBaza9-Reason-AddRecenzijaAddPreporuka.cs" />
+    <Compile Remove="Migrations\20200302203520_NovaBaza9-Reason-AddRecenzijaAddPreporuka.Designer.cs" />
+    <Compile Remove="Migrations\20200302205221_NovaBaza-2-3-2020-Recenzije.cs" />
+    <Compile Remove="Migrations\20200302210110_NovaBaza-0-2-3-2020-Recenzije.cs" />
+    <Compile Remove="Migrations\20200302212231_NovaBazaBezOcjene.cs" />
     <Compile Remove="Services\IRezervacijeService.cs" />
+    <Compile Remove="Services\PreporukaService.cs" />
     <Compile Remove="Services\RezervacijeService.cs" />
   </ItemGroup>
 

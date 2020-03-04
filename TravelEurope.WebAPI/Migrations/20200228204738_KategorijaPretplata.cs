@@ -5,9 +5,9 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class KategorijaPretplata : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Kategorije",
                 columns: table => new
                 {
@@ -20,7 +20,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Kategorije", x => x.KategorijaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "ItemKategorije",
                 columns: table => new
                 {
@@ -60,7 +60,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Pretplata",
                 columns: table => new
                 {
@@ -86,46 +86,46 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_ItemKategorije_KategorijaId",
                 table: "ItemKategorije",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_ItemKategorije_TuristRutaId",
                 table: "ItemKategorije",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_ItemKategorije_VozacId",
                 table: "ItemKategorije",
                 column: "VozacId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_ItemKategorije_VoziloId",
                 table: "ItemKategorije",
                 column: "VoziloId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Pretplata_KategorijaId",
                 table: "Pretplata",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Pretplata_KorisnikId",
                 table: "Pretplata",
                 column: "KorisnikId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "ItemKategorije");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Pretplata");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Kategorije");
         }
     }

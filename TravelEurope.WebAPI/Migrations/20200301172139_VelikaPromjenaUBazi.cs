@@ -6,9 +6,9 @@ namespace TravelEurope.WebAPI.Migrations
 {
     public partial class VelikaPromjenaUBazi : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Drzave",
                 columns: table => new
                 {
@@ -21,7 +21,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Drzave", x => x.DrzavaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Kategorije",
                 columns: table => new
                 {
@@ -34,7 +34,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Kategorije", x => x.KategorijaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "StraniJezici",
                 columns: table => new
                 {
@@ -47,7 +47,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_StraniJezici", x => x.StraniJezikId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Uloge",
                 columns: table => new
                 {
@@ -61,7 +61,7 @@ namespace TravelEurope.WebAPI.Migrations
                     table.PrimaryKey("PK_Uloge", x => x.UlogaId);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Gradovi",
                 columns: table => new
                 {
@@ -81,7 +81,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Lokacije",
                 columns: table => new
                 {
@@ -101,7 +101,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "TuristickiVodici",
                 columns: table => new
                 {
@@ -122,7 +122,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Korisnici",
                 columns: table => new
                 {
@@ -157,7 +157,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "TuristRute",
                 columns: table => new
                 {
@@ -196,7 +196,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "KorisniciFriends",
                 columns: table => new
                 {
@@ -222,7 +222,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.NoAction);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Poruke",
                 columns: table => new
                 {
@@ -250,7 +250,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Pretplate",
                 columns: table => new
                 {
@@ -276,7 +276,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Ocjene",
                 columns: table => new
                 {
@@ -305,7 +305,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "Rezervacije",
                 columns: table => new
                 {
@@ -332,7 +332,7 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            MigrationBuilder.CreateTable(
                 name: "RuteSlike",
                 columns: table => new
                 {
@@ -354,147 +354,147 @@ namespace TravelEurope.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Gradovi_DrzavaId",
                 table: "Gradovi",
                 column: "DrzavaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Korisnici_GradId",
                 table: "Korisnici",
                 column: "GradId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Korisnici_UlogaId",
                 table: "Korisnici",
                 column: "UlogaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_KorisniciFriends_FriendId",
                 table: "KorisniciFriends",
                 column: "FriendId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_KorisniciFriends_KorisnikId",
                 table: "KorisniciFriends",
                 column: "KorisnikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Lokacije_DrzavaId",
                 table: "Lokacije",
                 column: "DrzavaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Ocjene_KorisnikId",
                 table: "Ocjene",
                 column: "KorisnikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Ocjene_TuristRutaId",
                 table: "Ocjene",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Poruke_PosiljalacId",
                 table: "Poruke",
                 column: "PosiljalacId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Poruke_PrimalacId",
                 table: "Poruke",
                 column: "PrimalacId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Pretplate_KategorijaId",
                 table: "Pretplate",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Pretplate_KorisnikId",
                 table: "Pretplate",
                 column: "KorisnikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacije_KorisnikId",
                 table: "Rezervacije",
                 column: "KorisnikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_Rezervacije_TuristRutaId",
                 table: "Rezervacije",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_RuteSlike_TuristRutaId",
                 table: "RuteSlike",
                 column: "TuristRutaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristickiVodici_StraniJezikId",
                 table: "TuristickiVodici",
                 column: "StraniJezikId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRute_KategorijaId",
                 table: "TuristRute",
                 column: "KategorijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRute_LokacijaId",
                 table: "TuristRute",
                 column: "LokacijaId");
 
-            migrationBuilder.CreateIndex(
+            MigrationBuilder.CreateIndex(
                 name: "IX_TuristRute_TuristickiVodicId",
                 table: "TuristRute",
                 column: "TuristickiVodicId");
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder MigrationBuilder)
         {
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "KorisniciFriends");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Ocjene");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Poruke");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Pretplate");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Rezervacije");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "RuteSlike");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Korisnici");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "TuristRute");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Gradovi");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Uloge");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Kategorije");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Lokacije");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "TuristickiVodici");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "Drzave");
 
-            migrationBuilder.DropTable(
+            MigrationBuilder.DropTable(
                 name: "StraniJezici");
         }
     }

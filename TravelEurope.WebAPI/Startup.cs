@@ -52,9 +52,11 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IPretplateService, PretplateService>();
             services.AddScoped<IUlogeService, UlogeService>();
             services.AddScoped<ILokacijeService, LokacijeService>();
+            services.AddScoped<IRecenzijeService, RecenzijeService>();
+            services.AddScoped<IOcjeneService, OcjeneService>();
+            //services.AddScoped<IPreporukaService, PreporukaService>();
 
-
-            #pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();
             #pragma warning restore CS0618 // Type or member is obsolete
 
