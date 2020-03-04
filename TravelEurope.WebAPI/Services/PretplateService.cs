@@ -63,7 +63,6 @@ namespace TravelEurope.WebAPI.Services
         public Model.Pretplate Insert(PretplateInsertRequest request)
         {
             Database.Pretplate entity = _mapper.Map<Database.Pretplate>(request);
-
             //entity.KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
             _context.Pretplate.Add(entity);
@@ -76,7 +75,7 @@ namespace TravelEurope.WebAPI.Services
         {
             //int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
-            int KorisnikId = 0;
+            int KorisnikId = 1;
             Database.Pretplate entity = _context.Pretplate.Where(x => x.PretplataId == request.KategorijaId && x.KorisnikId == KorisnikId).FirstOrDefault();
             //if (entity != null)
             //{

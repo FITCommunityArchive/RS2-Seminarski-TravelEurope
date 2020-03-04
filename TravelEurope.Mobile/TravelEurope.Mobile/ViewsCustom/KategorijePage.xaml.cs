@@ -22,17 +22,6 @@ namespace TravelEurope.Mobile.Views
             BindingContext = model = new KategorijeVM();
         }
 
-    
-        private async void Button_Clicked(object sender, System.EventArgs e)
-        {
-            if (!model.Provjera)
-            {
-                await Application.Current.MainPage.DisplayAlert("Obavijest", "Uspješno ste se pretplatili na novu kategoriju!", "OK");
-                Page p = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
-                await model.Init();
-            }
-        }
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
