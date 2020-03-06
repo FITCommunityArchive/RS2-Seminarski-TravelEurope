@@ -46,44 +46,6 @@
 
             <ScrollView>
                 <StackLayout >
-                    <StackLayout Orientation="Horizontal">
-                        <ImageButton                    
-                            Command="{Binding OcijeniStarCommand}"
-                            BackgroundColor="Transparent"
-                            Source="{Binding Star1.Slika}"
-                            WidthRequest="32"
-                            CommandParameter="1"
-                            />
-                        <ImageButton                    
-                            Command="{Binding OcijeniStarCommand}"
-                            BackgroundColor="Transparent"
-                            Source="{Binding Star2.Slika}" 
-                            WidthRequest="32"
-                            CommandParameter="2"
-                            />
-                        <ImageButton                    
-                            Command="{Binding OcijeniStarCommand}"
-                            BackgroundColor="Transparent"
-                            Source="{Binding Star3.Slika}" 
-                            WidthRequest="32"
-                            CommandParameter="3"
-                            />
-                        <ImageButton                    
-                            Command="{Binding OcijeniStarCommand}"
-                            BackgroundColor="Transparent"
-                            Source="{Binding Star4.Slika}" 
-                            WidthRequest="32"
-                            CommandParameter="4"
-                            />
-                        <ImageButton                    
-                            Command="{Binding OcijeniStarCommand}"
-                            BackgroundColor="Transparent"
-                            Source="{Binding Star5.Slika}" 
-                            WidthRequest="32"
-                            CommandParameter="5"
-                            />
-                    </StackLayout>
-
                     <Label Text="{Binding Ruta.Opis}" />
 
                     <Grid>
@@ -98,32 +60,29 @@
                         <Label Grid.Row="0" Grid.Column="0" Text="Ocjena kritičara:"/>
                         <Label Grid.Row="0" Grid.Column="1" Text="{Binding Ruta.OcjenaKriticara}" FontAttributes="Bold"/>
 
-                        <Label Grid.Row="1" Grid.Column="0" Text="Ocjena korisnika:"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Ruta.OcjenaKorisnika}" FontAttributes="Bold"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="Naziv: "/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Ruta.Naziv}" FontAttributes="None"/>
 
-                        <Label Grid.Row="2" Grid.Column="0" Text="Naziv: "/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Ruta.Naziv}" FontAttributes="None"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Opis:"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Ruta.Opis}" FontAttributes="None"/>
 
-                        <Label Grid.Row="3" Grid.Column="0" Text="Opis:"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Ruta.Opis}" FontAttributes="None"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Lokacija:"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Ruta.Lokacija.Naziv}" FontAttributes="None"/>
 
-                        <Label Grid.Row="4" Grid.Column="0" Text="Lokacija:"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Ruta.Lokacija.Naziv}" FontAttributes="None"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="Datum putovanja:"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Ruta.DatumPutovanja}" FontAttributes="None"/>
 
-                        <Label Grid.Row="5" Grid.Column="0" Text="Datum putovanja:"/>
-                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding Ruta.DatumPutovanja}" FontAttributes="None"/>
+                        <Label Grid.Row="5" Grid.Column="0" Text="Cijena paketa:"/>
+                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding Ruta.CijenaPaketa}" FontAttributes="None"/>
 
-                        <Label Grid.Row="6" Grid.Column="0" Text="Cijena paketa:"/>
-                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding Ruta.CijenaPaketa}" FontAttributes="None"/>
+                        <Label Grid.Row="6" Grid.Column="0" Text="Cijena osiguranja:"/>
+                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding Ruta.CijenaOsiguranja}" FontAttributes="None"/>
 
-                        <Label Grid.Row="7" Grid.Column="0" Text="Cijena osiguranja:"/>
-                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding Ruta.CijenaOsiguranja}" FontAttributes="None"/>
-
-                        <Label Grid.Row="8" Grid.Column="0" Text="Trajanje putovanja: "/>
-                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding Ruta.TrajanjePutovanja}" FontAttributes="None"/>
+                        <Label Grid.Row="7" Grid.Column="0" Text="Trajanje putovanja: "/>
+                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding Ruta.TrajanjePutovanja}" FontAttributes="None"/>
                         
-                        <Label Grid.Row="9" Grid.Column="0" Text="Ukupna cijena (put+osiguranje):  "/>
-                        <Label Grid.Row="9" Grid.Column="1" Text="{Binding Ruta.UkupnaCijena}" FontAttributes="Bold"/>
+                        <Label Grid.Row="8" Grid.Column="0" Text="Ukupna cijena (put+osiguranje):  "/>
+                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding Ruta.UkupnaCijena}" FontAttributes="Bold"/>
                     </Grid>
                     <Grid Grid.Row="10" Margin="0,5">
                         <Grid.RowDefinitions>

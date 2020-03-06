@@ -25,10 +25,12 @@ namespace TravelEurope.Mobile.ViewModels
         public ICommand NavigateToSearchPageCommand { get; set; }
         public ICommand InitCommand { get; set; }
         public ICommand PretplatiCommand { get; set; }
+        public ICommand UkiniPretplatuCommand { get; set; }
 
         public KategorijeVM()
         {
             PretplatiCommand = new Command<KategorijeMobile>(async (obj) => await Pretplati(obj));
+            UkiniPretplatuCommand = new Command<KategorijeMobile>(async (obj) => await UkiniPretplatu(obj));
             InitCommand = new Command(async () => await Init());
         }
 
@@ -69,13 +71,41 @@ namespace TravelEurope.Mobile.ViewModels
         {
             var entity = await _servicePretplate.Insert<Model.Pretplate>(request);
         }
-
+        public async Task RemovePretplata(int id)
+        {
+            var success = await _servicePretplate.Remove(id);
+            if (success)
+            {
+                await Init();
+            }
+        }
         public async Task Pretplati(KategorijeMobile obj)
         {
             PretplateInsertRequest korak = new PretplateInsertRequest();
             korak.KategorijaId = obj.KategorijaId;
             korak.KorisnikId = 1;
-            await AddPretplate(korak);
+            bool yes = false;
+
+            foreach (var x in PretplaceneKategorijeList)
+            {
+                if (x.KategorijaId == korak.KategorijaId && /*APIService.PrijavljeniKorisnik.KorisniciId*/ 1 == korak.KorisnikId)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Ne možete se pretplatiti više puta na istu kategoriju!", "OK");
+                    yes = true;
+                    //await Init();
+                }
+            }
+            if(yes==false)
+            {
+                await AddPretplate(korak);
+                await Init();
+            }
+            await Init();
+        }
+        public async Task UkiniPretplatu(KategorijeMobile obj)
+        {
+            KategorijeMobile novi = obj;
+            await RemovePretplata(novi.KategorijaId);
             await Init();
         }
 

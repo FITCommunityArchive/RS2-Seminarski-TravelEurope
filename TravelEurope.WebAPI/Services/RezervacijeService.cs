@@ -21,28 +21,137 @@ namespace TravelEurope.WebAPI.Services
             _mapper = mapper;
         }
 
+        public bool Remove(int id)
+        {
+            Database.Rezervacije entity = _context.Rezervacije.Where(x => x.RezervacijaId == id).FirstOrDefault();
+            if (entity != null)
+            {
+                _context.Rezervacije.Remove(entity);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+
         public List<Model.Rezervacije> Get(RezervacijeSearchRequest request)
         {
-            var query = _context.Rezervacija.Include(b=>b.TuristRuta).Include(c=>c.Klijent).Include(d=>d.Radnik).AsQueryable();
+            var query = _context.Rezervacije.Include(a=>a.Korisnik).Include(b=>b.TuristRuta).ThenInclude(c=>c.RuteSlike).AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(request?.Naziv))
+            if (request.TuristRutaId > 0)
             {
-                query = query.Where(x => x.TuristRuta.Naziv.ToLower().Contains(request.Naziv.ToLower()));
+                query = query.Where(x => x.TuristRutaId == request.TuristRutaId);
+            }
+            if (request.KorisnikId > 0)
+            {
+                query = query.Where(x => x.KorisnikId == request.KorisnikId);
             }
 
             var list = query.ToList();
 
-            return _mapper.Map<List<Model.Rezervacija>>(list);
+            List<Model.Rezervacije> listaRezervacija = _mapper.Map<List<Model.Rezervacije>>(list);
+            foreach (var item in listaRezervacija)
+            {
+                var querySlika = _context.RuteSlike.AsQueryable();
+
+                querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
+
+                var entitySlika = querySlika.FirstOrDefault();
+
+                if (entitySlika != null)
+                {
+                    item.SlikaThumb = entitySlika.SlikaThumb;
+                }
+            }
+
+            return listaRezervacija;
         }
-        public Model.Rezervacija GetById(int id)
+
+        public Model.Rezervacije Update(int id, RezervacijeInsertRequest request)
         {
-            var query = _context.Rezervacija.AsQueryable();
+            Database.Rezervacije entity = _context.Rezervacije.Where(x => x.RezervacijaId == id).FirstOrDefault();
+
+            _context.Rezervacije.Attach(entity);
+            _context.Rezervacije.Update(entity);
+
+            entity = _mapper.Map(request, entity);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Rezervacije>(entity);
+        }
+        public Model.Rezervacije Insert(RezervacijeInsertRequest request)
+        {
+            Database.Rezervacije entity = _mapper.Map<Database.Rezervacije>(request);
+
+            _context.Rezervacije.Add(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Rezervacije>(entity);
+        }
+        public Model.Rezervacije GetById(int id)
+        {
+            var query = _context.Rezervacije.Include(a => a.Korisnik).Include(b => b.TuristRuta).ThenInclude(c=>c.Kategorija).Include(d=>d.TuristRuta.Lokacija).AsQueryable();
 
             query = query.Where(x => x.RezervacijaId == id);
 
             var entity = query.FirstOrDefault();
 
-            return _mapper.Map<Model.Rezervacija>(entity);
+            return _mapper.Map<Model.Rezervacije>(entity);
+        }
+
+        public List<Model.Rezervacije> GetUserRezervacije(int KorisnikId)
+        {
+            var query = _context.Rezervacije.AsQueryable();
+
+            query = query.Where(x => x.KorisnikId == KorisnikId);
+
+            query = query.Include(a => a.TuristRuta).ThenInclude(b=>b.Lokacija).Include(c=>c.TuristRuta.Kategorija);
+
+            var list = query.ToList();
+
+            List<Model.Rezervacije> listaRezervacija = _mapper.Map<List<Model.Rezervacije>>(list);
+            foreach (var item in listaRezervacija)
+            {
+                var querySlika = _context.RuteSlike.AsQueryable();
+
+                querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
+
+                var entitySlika = querySlika.FirstOrDefault();
+
+                if (entitySlika != null)
+                {
+                    item.SlikaThumb = entitySlika.SlikaThumb;
+                }
+            }
+
+            return listaRezervacija;
+        }
+
+        public List<Model.Rezervacije> GetMyRezervacije()
+        {
+            var query = _context.Rezervacije.AsQueryable();
+
+            query = query.Where(x => x.KorisnikId == 1);// Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId);
+
+            var list = query.ToList();
+
+            List<Model.Rezervacije> listaRezervacija = _mapper.Map<List<Model.Rezervacije>>(list);
+            foreach (var item in listaRezervacija)
+            {
+                var querySlika = _context.RuteSlike.AsQueryable();
+
+                querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
+
+                var entitySlika = querySlika.FirstOrDefault();
+
+                if (entitySlika != null)
+                {
+                    item.SlikaThumb = entitySlika.SlikaThumb;
+                }
+            }
+
+            return listaRezervacija;
         }
     }
 }

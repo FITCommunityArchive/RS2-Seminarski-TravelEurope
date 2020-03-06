@@ -9,11 +9,11 @@ namespace TravelEurope.WebAPI.Services
 {
     public interface IOcjeneService
     {
-
-        List<Model.Ocjene> Get(Model.Requests.OcjeneSearchRequest request);
+        Model.Ocjene Get(Model.Requests.OcjeneSearchRequest request);
         Model.Ocjene Insert(Model.Requests.OcjeneInsertRequest request);
         Model.Ocjene GetById(int id);
         Model.Ocjene Update(int id, OcjeneInsertRequest request);
         Ocjene OcijeniRutu(OcjeneInsertRequest request);
+        Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId);
     }
 }

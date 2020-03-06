@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\RezervacijeController.cs" />
     <Compile Remove="Migrations\20200103194007_inicijalna.cs" />
     <Compile Remove="Migrations\20200103194007_inicijalna.Designer.cs" />
     <Compile Remove="Migrations\20200208143544_x.cs" />
@@ -42,9 +41,7 @@
     <Compile Remove="Migrations\20200302205221_NovaBaza-2-3-2020-Recenzije.cs" />
     <Compile Remove="Migrations\20200302210110_NovaBaza-0-2-3-2020-Recenzije.cs" />
     <Compile Remove="Migrations\20200302212231_NovaBazaBezOcjene.cs" />
-    <Compile Remove="Services\IRezervacijeService.cs" />
     <Compile Remove="Services\PreporukaService.cs" />
-    <Compile Remove="Services\RezervacijeService.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +64,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Stripe.net" Version="35.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />

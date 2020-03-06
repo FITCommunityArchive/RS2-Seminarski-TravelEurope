@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:TravelEurope.Mobile.Converters"
-             x:Class="TravelEurope.Mobile.Views.TuristRutePage"
-             Title="{Binding Title}">
+             x:Class="TravelEurope.Mobile.ViewsCustom.RezervacijePage"
+             xmlns:converters="clr-namespace:TravelEurope.Mobile.Converters"
+             xmlns:viewModels="clr-namespace:TravelEurope.Mobile.ViewModels.Rezervacije">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
-            <local:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></local:DatetimeToStringConverter>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <converters:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></converters:DatetimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -16,11 +18,6 @@
         <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
             <ToolbarItem.Icon>
                 <FileImageSource File="search.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="Filter" Clicked="FilterToolbarItem_Clicked">
-            <ToolbarItem.Icon>
-                <FileImageSource File="filter.png"/>
             </ToolbarItem.Icon>
         </ToolbarItem>
         <ToolbarItem Text="More">
@@ -33,21 +30,50 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="Ponuđene turist rute :"
+                <StackLayout BackgroundColor="MediumPurple">
+                    <Label Margin="0,7" 
+                       FontSize="16" 
+                       TextColor="White" 
+                       Text="Moje rezervacije"
+                       HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <StackLayout BackgroundColor="White" Orientation="Vertical" Margin="0,5">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Moje rezervacije :"
                            TextColor="DarkGray"
                            LineBreakMode="NoWrap"
                            Style="{DynamicResource ListItemTextStyle}" 
                            FontSize="13"
                            />
+                        <Label Text="{Binding UkupnoRezervacija}"
+                           TextColor="DarkGray"
+                           LineBreakMode="NoWrap"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="13"
+                           />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Ukupno potrošeno :"
+                           TextColor="Purple"
+                           LineBreakMode="NoWrap"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="13"
+                           />
+                        <Label Text="{Binding UkupnoUtroseno}"
+                           TextColor="Purple"
+                           LineBreakMode="NoWrap"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="13"
+                           />
+                        <Label Text="KM"
+                           TextColor="Purple"
+                           LineBreakMode="NoWrap"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="13"
+                           />
+                    </StackLayout>
                 </StackLayout>
-                <Picker Title="Izaberite vašu pretplaćenu kategoriju putovanja"
-                    TitleColor="White"
-                    Margin="10,0"
-                    ItemsSource="{Binding PretplaceneKategorijePutovanja}"
-                    SelectedItem="{Binding SelectedKategorijaPutovanja}"
-                    ItemDisplayBinding="{Binding Naziv}"></Picker>
-                <ListView ItemsSource="{Binding RuteList}" ItemSelected="ListView_OnItemSelected">
+                <ListView ItemsSource="{Binding RezervacijeList}" ItemSelected="ListView_OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -57,13 +83,21 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Naziv}"
+                                            <Label Text="Datum rezervacije: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                            <Label Text="{Binding DatumRezervacije, Converter={StaticResource cnvDateTimeConverter}}" 
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Kategorija.Naziv}"
+                                            <Label Text="Naziv rute: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                            <Label Text="{Binding TuristRuta.Naziv}"
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>
@@ -73,17 +107,7 @@
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>
-                                            <Label Text="{Binding Lokacija.Naziv}" 
-                                               TextColor="Black"
-                                               Style="{DynamicResource ListItemTextStyle}" 
-                                               FontSize="14"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="Cijena (dnevno): " 
-                                               TextColor="Black"
-                                               Style="{DynamicResource ListItemTextStyle}" 
-                                               FontSize="14"/>
-                                            <Label Text="{Binding CijenaPaketa}"
+                                            <Label Text="{Binding TuristRuta.Lokacija.Naziv}" 
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>
@@ -93,7 +117,7 @@
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>
-                                            <Label Text="{Binding DatumPutovanja, Converter={StaticResource cnvDateTimeConverter}}" 
+                                            <Label Text="{Binding TuristRuta.DatumPutovanja, Converter={StaticResource cnvDateTimeConverter}}" 
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 
                                                FontSize="14"/>

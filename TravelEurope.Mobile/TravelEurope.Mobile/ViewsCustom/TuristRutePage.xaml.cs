@@ -24,7 +24,8 @@ namespace TravelEurope.Mobile.Views
         private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as TuristRuteMobile;
-            await Navigation.PushAsync(new TuristRuteDetailsPage(item.TuristRutaId));
+            int trenutniKorisnikId = 1; //APIService.PrijavljeniKorisnik.KorisniciId;
+            await Navigation.PushAsync(new TuristRuteDetailsPage(item.TuristRutaId, trenutniKorisnikId));
         }
 
         private void FilterToolbarItem_Clicked(object sender, EventArgs e)

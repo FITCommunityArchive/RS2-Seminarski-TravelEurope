@@ -22,26 +22,26 @@ namespace TravelEurope.WebAPI.Services
             _mapper = mapper;
         }
 
-        public List<Model.Ocjene> Get(OcjeneSearchRequest request)
+        public Model.Ocjene Get(OcjeneSearchRequest request)
         {
             var query = _context.Ocjene.AsQueryable();
 
-            
-            if(request?.TuristRutaId != 0)
-            {
-                query = query.Where(x => x.TuristRutaId == request.TuristRutaId);
-            }
-            if (request?.KorisnikId != 0)
-            {
-                query = query.Where(x => x.KorisnikId == request.KorisnikId);
-            }
+            var entity = query.Where(a => a.KorisnikId == request.KorisnikId && a.TuristRutaId == request.TuristRutaId).FirstOrDefault();
+
+            return _mapper.Map<Model.Ocjene>(entity);
+        }
+
+        public Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId)
+        {
+            var query = _context.Ocjene.AsQueryable();
 
             query = query.Include(x => x.TuristRuta);
+
             query = query.Include(x => x.Korisnik);
 
-            var list = query.ToList();
+            var entity = query.Where(a=>a.TuristRutaId == TuristRutaId && a.KorisnikId==KorisnikId).FirstOrDefault();
 
-            return _mapper.Map<List<Model.Ocjene>>(list);
+            return _mapper.Map<Model.Ocjene>(entity);
         }
 
         public Model.Ocjene GetById(int id)
@@ -75,7 +75,7 @@ namespace TravelEurope.WebAPI.Services
 
         public Model.Ocjene OcijeniRutu(OcjeneInsertRequest request)
         {
-            int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
+            int KorisnikId = 1;// Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
             Database.Ocjene entity = _context.Ocjene.Where(x => x.TuristRutaId == request.TuristRutaId && x.KorisnikId == KorisnikId).FirstOrDefault();
             if(entity != null)

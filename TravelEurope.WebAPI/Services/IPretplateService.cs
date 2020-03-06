@@ -13,5 +13,6 @@ namespace TravelEurope.WebAPI.Services
         Model.Pretplate Insert(Model.Requests.PretplateInsertRequest request);
         Pretplate Update(int id, PretplateInsertRequest request);
         Pretplate GetById(int id);
+        bool Remove(int id);
     }
 }

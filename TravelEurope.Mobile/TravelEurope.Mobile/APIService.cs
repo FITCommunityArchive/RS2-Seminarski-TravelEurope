@@ -24,7 +24,41 @@ namespace TravelEurope.Mobile
 
         //private readonly string APIUrl = "http://192.168.137.1:5000/api"; // za IIS
         private readonly string APIUrl = "http://localhost:5000/api"; // ZA IIS EXPRESS
-        //private readonly string APIUrl = "https://TravelEuropewebapi20190717101945.azurewebsites.net/api"; // AZURE, NE RADI VISE
+                                                                      //private readonly string APIUrl = "https://TravelEuropewebapi20190717101945.azurewebsites.net/api"; // AZURE, NE RADI VISE
+
+
+        public async Task<bool> Remove(int id)
+        {
+            var url = $"{APIUrl}/{_route}/{id}";
+
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni", "OK");
+                    return false;
+                }
+                if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste autorizovani", "OK");
+                }
+
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, {string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Greška", "", "OK");
+                return false;
+            }
+        }
 
         public async Task<T> Get<T>(object search, string actionName = null)
         {

@@ -21,6 +21,18 @@ namespace TravelEurope.WebAPI.Services
             _mapper = mapper;
         }
 
+        public bool Remove(int id)
+        {
+            Database.Pretplate entity = _context.Pretplate.Where(x => x.KategorijaId == id && x.KorisnikId == 1).FirstOrDefault();
+            if (entity != null)
+            {
+                _context.Pretplate.Remove(entity);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
         public List<Model.Pretplate> Get(PretplateSearchRequest request)
         {
             var query = _context.Pretplate.AsQueryable();
@@ -71,29 +83,6 @@ namespace TravelEurope.WebAPI.Services
             return _mapper.Map<Model.Pretplate>(entity);
         }
 
-        public Model.Pretplate PretplatiSe(PretplateInsertRequest request)
-        {
-            //int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
-
-            int KorisnikId = 1;
-            Database.Pretplate entity = _context.Pretplate.Where(x => x.PretplataId == request.KategorijaId && x.KorisnikId == KorisnikId).FirstOrDefault();
-            //if (entity != null)
-            //{
-            //    entity.Ocjena = request.Ocjena;
-            //    entity.Komentar = request.Komentar;
-            //}
-            //else
-            //{
-            //    entity = _mapper.Map<Database.Pretplate>(request);
-            //    entity.KorisnikId = KorisnikId;
-            //    entity.DatumPretplate = DateTime.Now;
-
-            //    _context.Pretplate.Add(entity);
-            //}
-            //_context.SaveChanges();
-            return _mapper.Map<Model.Pretplate>(entity);
-        }
-
         public Model.Pretplate Update(int id, PretplateInsertRequest request)
         {
             Database.Pretplate entity = _context.Pretplate.Where(x => x.PretplataId == id).FirstOrDefault();
@@ -106,7 +95,6 @@ namespace TravelEurope.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.Pretplate>(entity);
-
         }
     }
 }

@@ -13,7 +13,8 @@ namespace TravelEurope.Mobile
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new KategorijePage());
+            //MainPage = new NavigationPage(new TuristRutePage());
+            MainPage = new NavigationPage(new RezervacijePage(1));
         }
 
         protected override void OnStart()

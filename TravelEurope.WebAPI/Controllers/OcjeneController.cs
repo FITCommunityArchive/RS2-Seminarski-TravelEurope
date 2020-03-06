@@ -20,7 +20,7 @@ namespace TravelEurope.WebAPI.Controllers
         }
 
         [HttpGet]
-        public List<Model.Ocjene> Get([FromQuery]Model.Requests.OcjeneSearchRequest request)
+        public Model.Ocjene Get([FromQuery]Model.Requests.OcjeneSearchRequest request)
         {
             return _service.Get(request);
         }
@@ -48,6 +48,12 @@ namespace TravelEurope.WebAPI.Controllers
         public Model.Ocjene GetById(int id)
         {
             return _service.GetById(id);
+        }
+
+        [HttpGet("GetMojuOcjenu")]
+        public Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId)
+        {
+            return _service.GetMojuOcjenu(TuristRutaId, KorisnikId);
         }
     }
 }

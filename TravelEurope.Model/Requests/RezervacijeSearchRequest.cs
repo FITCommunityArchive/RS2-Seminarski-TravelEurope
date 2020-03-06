@@ -6,6 +6,8 @@ namespace TravelEurope.Model.Requests
 {
     public class RezervacijeSearchRequest
     {
-        public string Naziv { get; set; }
+        public int? RezervacijaId { get; set; }
+        public int? KorisnikId { get; set; }
+        public int? TuristRutaId { get; set; }
     }
 }

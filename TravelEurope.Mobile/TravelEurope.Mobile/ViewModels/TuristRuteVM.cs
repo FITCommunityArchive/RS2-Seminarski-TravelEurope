@@ -65,7 +65,7 @@ namespace TravelEurope.Mobile.ViewModels
                     {
                         if (x.KategorijaId == y.KategorijaId && y.KorisnikId == 1)//APIService.PrijavljeniKorisnik.KorisniciId)
                         {
-                            kategorijaPutovanjaList.Add(x);
+                            PretplaceneKategorijePutovanja.Add(x);
                         }
                     }
                 }

@@ -23,6 +23,7 @@
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Stripe.net" Version="35.3.0" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.1.0.52" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />  
@@ -40,6 +41,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ViewsCustom\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewsCustom\RezervacijeDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ViewsCustom\RezervacijePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="ViewsCustom\TuristRuteDetailsPage.xaml">

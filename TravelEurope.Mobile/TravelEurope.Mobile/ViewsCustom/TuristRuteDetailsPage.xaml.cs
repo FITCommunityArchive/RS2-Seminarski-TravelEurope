@@ -13,13 +13,16 @@ namespace TravelEurope.Mobile.ViewsCustom
     public partial class TuristRuteDetailsPage : ContentPage
     {
         private int _rutaId;
+        private int _korisnikId;
+
         private TuristRuteDetailsVM model;
 
-        public TuristRuteDetailsPage(int rutaId)
+        public TuristRuteDetailsPage(int rutaId, int korisnikId)
         {
             InitializeComponent();
             _rutaId = rutaId;
-            BindingContext = model = new TuristRuteDetailsVM(_rutaId);
+            _korisnikId = korisnikId;
+            BindingContext = model = new TuristRuteDetailsVM(_rutaId, _korisnikId);
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -42,10 +45,8 @@ namespace TravelEurope.Mobile.ViewsCustom
         {
             if (!model.Provjera)
             {
+                model.AddRezervaciju();
                 await Application.Current.MainPage.DisplayAlert("Obavijest", "Uspješno ste rezervisali putovanje!", "OK");
-                Page p = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
-                //Navigation.InsertPageBefore(new MyRidesPage(model.KlijentID), p);
-                await Navigation.PopAsync();
             }
         }
 

@@ -10,6 +10,11 @@ namespace TravelEurope.WebAPI.Services
     public interface IRezervacijeService
     {
         List<Model.Rezervacije> Get(Model.Requests.RezervacijeSearchRequest request);
+        Model.Rezervacije Insert(Model.Requests.RezervacijeInsertRequest request);
+        Rezervacije Update(int id, RezervacijeInsertRequest request);
         Rezervacije GetById(int id);
+        bool Remove(int id);
+        List<Rezervacije> GetMyRezervacije();
+        List<Rezervacije> GetUserRezervacije(int KorisnikId);
     }
 }

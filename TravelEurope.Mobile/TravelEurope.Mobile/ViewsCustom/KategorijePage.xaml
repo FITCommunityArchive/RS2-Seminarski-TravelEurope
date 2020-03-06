@@ -68,6 +68,12 @@
                            LineBreakMode="NoWrap"
                            Style="{DynamicResource ListItemTextStyle}"
                            FontSize="16"/>
+                                <Button Command="{Binding BindingContext.UkiniPretplatuCommand, Source={x:Reference MyKategorijePage}}" CommandParameter="{Binding .}"
+                                BackgroundColor="Red"
+                                Text="Ukini pretplatu" 
+                                TextColor="White"
+                                FontAttributes="Bold" 
+                                Grid.Row="0"></Button>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
