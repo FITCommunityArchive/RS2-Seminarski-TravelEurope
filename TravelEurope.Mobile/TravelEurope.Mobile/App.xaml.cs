@@ -14,7 +14,7 @@ namespace TravelEurope.Mobile
         {
             InitializeComponent();
             //MainPage = new NavigationPage(new TuristRutePage());
-            MainPage = new NavigationPage(new RezervacijePage(1));
+            MainPage = new NavigationPage(new StripePaymentGatewayPage());
         }
 
         protected override void OnStart()
