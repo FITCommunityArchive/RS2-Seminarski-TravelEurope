@@ -11,7 +11,7 @@ namespace TravelEurope.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class PreporukaController : ControllerBase
     {
         private readonly IPreporukaService _service;
@@ -21,11 +21,10 @@ namespace TravelEurope.WebAPI.Controllers
             _service = service;
         }
 
-        [HttpGet("GetPreporuceneTuristRute")]
-        public List<Model.TuristRute> GetPreporuceneTuristRute()
+        [HttpGet("{id}")]
+        public List<Model.TuristRute> GetById(int id)
         {
-            return _service.GetPreporuceneTuristRute();
+            return _service.GetById(id);
         }
-
     }
  }

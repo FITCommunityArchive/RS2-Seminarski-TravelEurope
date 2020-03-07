@@ -28,7 +28,6 @@ namespace TravelEurope.Mobile.ViewModels
         public RezervacijeVM(int KorisnikId)
         {
             _KorisnikId = KorisnikId;
-            InitCommand = new Command(async () => await Init());
         }
 
         private int ukupnoRezervacija;

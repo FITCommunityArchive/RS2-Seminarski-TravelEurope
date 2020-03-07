@@ -15,16 +15,13 @@ namespace TravelEurope.WebAPI.Services
 
         private readonly IMapper _mapper;
 
-        private int pozitivnaOcjena = 3;
-        private int brojRezultata = 5;
-
         public PreporukaService(TravelEurope_Context context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-        
-        public List<Model.TuristRute> GetPreporuceneTuristRute()
+
+        public List<Model.TuristRute> GetById(int id)
         {
             int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
@@ -35,106 +32,23 @@ namespace TravelEurope.WebAPI.Services
                     throw new Exception();
                 }
 
-                List<Ocjene> listaOcjena = _context.Ocjene.Where(x => x.KorisnikId == KorisnikId)
-                    .Include(m => m.TuristRuta.Izdavac)
-                    .Include(m => m.TuristRuta.Developer)
-                    .ToList();
+                TuristRute model = _context.TuristRute.Where(a => a.TuristRutaId == id).Include(b=>b.Kategorija).FirstOrDefault();
 
-                List<Ocjene> listaPozitivnihOcjena = listaOcjena
-                    .Where(x => x.Ocjena >= pozitivnaOcjena)
-                    .ToList();
+                List<TuristRute> isteKategorije = _context.TuristRute.Where(a => a.KategorijaId == model.KategorijaId).ToList();
 
-                if (listaPozitivnihOcjena.Count() > 0)
+                List<TuristRute> filterisanaListaBezIzabranog = new List<TuristRute>();
+
+                foreach (var x in isteKategorije)
                 {
-                    List<Kategorije> jedinstveneKategorije = new List<Kategorije>();
-                    foreach (var item in listaPozitivnihOcjena)
+                    if (x.TuristRutaId != model.TuristRutaId)
                     {
-                        var TuristRutaKategorije = _context.TuristRuteKategorije.Where(m => m.TuristRutaId == item.TuristRutaId)
-                            .Select(g => g.Kategorija)
-                            .ToList();
-
-                        foreach (var Kategorija in TuristRutaKategorije)
-                        {
-                            // Add only unique items to the list (no duplicates)
-                            bool dodaj = true;
-                            for (int i = 0; i < jedinstveneKategorije.Count; i++)
-                            {
-                                if (Kategorija.Naziv == jedinstveneKategorije[i].Naziv)
-                                {
-                                    dodaj = false;
-                                }
-                            }
-
-                            if (dodaj)
-                            {
-                                jedinstveneKategorije.Add(Kategorija);
-                            }
-                        }
+                        filterisanaListaBezIzabranog.Add(x);
                     }
-
-                    List<TuristRute> konacnaLista = new List<TuristRute>();
-                    foreach (var item in jedinstveneKategorije)
-                    {
-                        var TuristRuteUKategoriji = _context.TuristRuteKategorije
-                            .Where(g => g.KategorijaId == item.KategorijaId)
-                            .Select(x => x.TuristRuta)
-                            .ToList();
-
-                        foreach (var TuristRuta in TuristRuteUKategoriji)
-                        {
-                            bool dodaj = true;
-                            for (int i = 0; i < konacnaLista.Count; i++)
-                            {
-                                if (TuristRuta.Naziv == konacnaLista[i].Naziv)
-                                {
-                                    dodaj = false;
-                                }
-
-                            }
-
-                            foreach (var ocjena in listaOcjena)
-                            {
-                                if(TuristRuta.Naziv == ocjena.TuristRuta.Naziv)
-                                {
-                                    dodaj = false;
-                                }
-                            }
-
-                            if (dodaj)
-                            {
-                                konacnaLista.Add(TuristRuta);
-                            }
-                        }
-                    }
-
-                    konacnaLista = konacnaLista.OrderBy(media => Guid.NewGuid()).Take(brojRezultata).ToList();
-
-                    // ucitavanje slika za svaku igru
-                    List<Model.TuristRute> listaIgara = _mapper.Map<List<Model.TuristRute>>(konacnaLista);
-                    foreach (var item in listaIgara)
-                    {
-                        var querySlika = _context.RuteSlike.AsQueryable();
-
-                        querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
-
-                        var entitySlika = querySlika.FirstOrDefault();
-
-                        if (entitySlika != null)
-                        {
-                            item.SlikaThumb = entitySlika.SlikaThumb;
-                        }
-                    }
-                    return listaIgara;
                 }
-                throw new Exception();
-            }
-            catch
-            {
-                var lista = _context.TuristRute.OrderBy(media => Guid.NewGuid()).Take(brojRezultata).ToList();
 
-                // ucitavanje slika za svaku igru
-                List<Model.TuristRute> listaIgara = _mapper.Map<List<Model.TuristRute>>(lista);
-                foreach (var item in listaIgara)
+                List<Model.TuristRute> listaRuta = _mapper.Map<List<Model.TuristRute>>(filterisanaListaBezIzabranog);
+
+                foreach (var item in listaRuta)
                 {
                     var querySlika = _context.RuteSlike.AsQueryable();
 
@@ -147,7 +61,41 @@ namespace TravelEurope.WebAPI.Services
                         item.SlikaThumb = entitySlika.SlikaThumb;
                     }
                 }
-                return listaIgara;
+                return listaRuta;
+            }
+            catch
+            {
+                TuristRute model = _context.TuristRute.Where(a => a.TuristRutaId == id).Include(b => b.Kategorija).Include(c => c.Lokacija).Include(d => d.TuristickiVodic).FirstOrDefault();
+
+                List<TuristRute> isteKategorije = _context.TuristRute.Where(a => a.KategorijaId == model.KategorijaId).ToList();
+
+                List<TuristRute> filterisanaListaBezIzabranog = new List<TuristRute>();
+
+                foreach (var x in isteKategorije)
+                {
+                    if (x.TuristRutaId != model.TuristRutaId)
+                    {
+                        filterisanaListaBezIzabranog.Add(x);
+                    }
+                }
+
+                List<Model.TuristRute> listaRuta = _mapper.Map<List<Model.TuristRute>>(filterisanaListaBezIzabranog);
+
+                // ucitavanje slika za svaku igru
+                foreach (var item in listaRuta)
+                {
+                    var querySlika = _context.RuteSlike.AsQueryable();
+
+                    querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
+
+                    var entitySlika = querySlika.FirstOrDefault();
+
+                    if (entitySlika != null)
+                    {
+                        item.SlikaThumb = entitySlika.SlikaThumb;
+                    }
+                }
+                return listaRuta;
             }
         }
     }

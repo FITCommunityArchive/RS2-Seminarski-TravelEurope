@@ -39,7 +39,7 @@ namespace TravelEurope.Mobile
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
                     return false;
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
@@ -83,7 +83,7 @@ namespace TravelEurope.Mobile
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
@@ -111,7 +111,7 @@ namespace TravelEurope.Mobile
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
                     return default(T);
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
@@ -149,7 +149,7 @@ namespace TravelEurope.Mobile
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
@@ -185,7 +185,7 @@ namespace TravelEurope.Mobile
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste prijavljeni", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
                     return default(T);
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)

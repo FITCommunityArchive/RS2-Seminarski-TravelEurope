@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using TravelEurope.Model.Requests;
+using TravelEurope.Model;
+using TravelEurope.Mobile.ViewsCustom;
 
 namespace TravelEurope.Mobile.ViewModels
 {
@@ -15,11 +16,15 @@ namespace TravelEurope.Mobile.ViewModels
         private readonly APIService _serviceTuristRute = new APIService("TuristRute");
         private readonly APIService _serviceRuteSlike = new APIService("RuteSlike");
         private readonly APIService _serviceOcjene = new APIService("Ocjene");
-        private readonly APIService _serviceRecenzije = new APIService("Recenzije");
         private readonly APIService _serviceRezervacije = new APIService("Rezervacije");
+        private readonly APIService _servicePreporuka = new APIService("Preporuka");
+        private readonly APIService _servicePretplate = new APIService("Pretplate");
+
 
         public ObservableCollection<Model.RuteSlike> SlikeList { get; set; } = new ObservableCollection<Model.RuteSlike>();
+        public ObservableCollection<TuristRuteMobile> PreporuceneRuteList { get; set; } = new ObservableCollection<TuristRuteMobile>();
 
+        private readonly INavigation Navigation;
         private int _TuristRutaId;
         private int _KorisnikId;
 
@@ -48,15 +53,14 @@ namespace TravelEurope.Mobile.ViewModels
             set { SetProperty(ref _prikazanaSlika, value); }
         }
 
-        public int Ocjena { get; set; }
+        public int Ocjene { get; set; }
         public ICommand InitCommand { get; set; }
 
-        public TuristRuteDetailsVM(int TuristRutaId, int KorisnikId)
-        { 
+        public TuristRuteDetailsVM(int TuristRutaId, int KorisnikId, INavigation navigation)
+        {
             _TuristRutaId = TuristRutaId;
             _KorisnikId = KorisnikId;
-            InitCommand = new Command(async () => await Init());
-            //InitCommand.Execute(null);
+            this.Navigation = navigation;
         }
 
         public async Task Init()
@@ -65,6 +69,13 @@ namespace TravelEurope.Mobile.ViewModels
 
             await UcitajSlike();
 
+            List<TuristRuteMobile> listRute = await _servicePreporuka.GetById<List<TuristRuteMobile>>(_TuristRutaId);
+
+            PreporuceneRuteList.Clear();
+            foreach (var item in listRute)
+            {
+                PreporuceneRuteList.Add(item);
+            }
         }
 
         private async Task UcitajRutaDetails()
@@ -73,37 +84,7 @@ namespace TravelEurope.Mobile.ViewModels
             Title = temp.Naziv;
 
             temp.UkupnaCijena = temp.CijenaPaketa * temp.TrajanjePutovanja + temp.CijenaOsiguranja * temp.TrajanjePutovanja;
-
             Ruta = temp;
-
-            var request = new Model.Requests.OcjeneSearchRequest
-            {
-                TuristRutaId = _TuristRutaId,
-            };
-            var PostojecaOcjena = await _serviceOcjene.Get<List<Model.Ocjene>>(request);
-            if (PostojecaOcjena.Count > 0)
-            {
-                Ocjena = PostojecaOcjena[0].Ocjena;
-            }
-        }
-
-        private async Task<float> UcitajRecenzije()
-        {
-            var requestRecenzije = new Model.Requests.RecenzijeSearchRequest
-            {
-                TuristRutaId = _TuristRutaId,
-            };
-            var recenzije = await _serviceRecenzije.Get<List<Model.Recenzije>>(requestRecenzije);
-            if (recenzije.Count == 0)
-                return 0;
-
-            double suma = 0;
-            foreach (var item in recenzije)
-            {
-                suma += item.Ocjena;
-            }
-
-            return (float)Math.Round(suma / recenzije.Count);
         }
 
         private async Task UcitajSlike()
@@ -126,19 +107,59 @@ namespace TravelEurope.Mobile.ViewModels
             }
         }
 
+        public async Task PozivPaymentaAsync()
+        {
+            await Navigation.PushAsync(new StripePaymentGatewayPage(_TuristRutaId, _KorisnikId));
+            //var atif = Navigation.PushAsync(new StripePaymentGatewayPage(_TuristRutaId, _KorisnikId));
+            //atif.Wait();
+            //return atif.IsCompleted;
+        }
         public async void AddRezervaciju()
         {
-            var request = new RezervacijeInsertRequest
-            {
-                TuristRutaId = _TuristRutaId,
-                KorisnikId = 1,//APIService.PrijavljeniKorisnik.KorisniciId,
-                DatumRezervacije = DateTime.Now
-            };
+            var listPretplate = await _servicePretplate.Get<List<Pretplate>>(null);
 
-            var entity = await _serviceRezervacije.Insert<Model.Rezervacije>(request);
-            if (entity!=null)
+            bool pretplacen = false;
+            foreach(var x in listPretplate)
             {
+                if (_ruta.KategorijaId == x.KategorijaId && x.KorisnikId == APIService.PrijavljeniKorisnik.KorisniciId)
+                {
+                    pretplacen = true;
+                }
+            }
+            if (pretplacen)
+            {
+                var listRezervacijaZaUsera = await _serviceRezervacije.GetById<List<RezervacijeMobile>>(_KorisnikId, "GetUserRezervacije");
+                bool ima = false;
 
+                foreach(var x in listRezervacijaZaUsera)
+                {
+                    if (x.TuristRutaId == _TuristRutaId)
+                    {
+                        ima = true;
+                    }
+                }
+
+                if(!ima)
+                {
+                    var request = new RezervacijeInsertRequest
+                    {
+                        TuristRutaId = _TuristRutaId,
+                        KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId,
+                        DatumRezervacije = DateTime.Now
+                    };
+
+                    if (PozivPaymentaAsync().GetAwaiter().IsCompleted)
+                    {
+                        var entity = await _serviceRezervacije.Insert<Model.Rezervacije>(request);
+                    }
+                }
+                else await Application.Current.MainPage.DisplayAlert("Obavijest", "Ne možete rezervisati isti turistički paket opet.", "OK");
+                await Init();
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška", "Ne možete rezervisati putovanje na čiju kategoriju niste pretplaćeni!", "OK");
+                await Init();
             }
         }
     }

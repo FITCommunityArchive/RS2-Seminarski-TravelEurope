@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelEurope.Mobile.Models;
 using TravelEurope.Mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,7 +23,14 @@ namespace TravelEurope.Mobile.ViewsCustom
             InitializeComponent();
             _rutaId = rutaId;
             _korisnikId = korisnikId;
-            BindingContext = model = new TuristRuteDetailsVM(_rutaId, _korisnikId);
+            BindingContext = model = new TuristRuteDetailsVM(_rutaId, _korisnikId, this.Navigation);
+        }
+
+        private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as TuristRuteMobile;
+            int trenutniKorisnikId = APIService.PrijavljeniKorisnik.KorisniciId;
+            await Navigation.PushAsync(new TuristRuteDetailsPage(item.TuristRutaId, trenutniKorisnikId));
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -46,7 +54,6 @@ namespace TravelEurope.Mobile.ViewsCustom
             if (!model.Provjera)
             {
                 model.AddRezervaciju();
-                await Application.Current.MainPage.DisplayAlert("Obavijest", "Uspješno ste rezervisali putovanje!", "OK");
             }
         }
 

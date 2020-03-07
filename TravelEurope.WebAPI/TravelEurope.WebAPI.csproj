@@ -41,7 +41,6 @@
     <Compile Remove="Migrations\20200302205221_NovaBaza-2-3-2020-Recenzije.cs" />
     <Compile Remove="Migrations\20200302210110_NovaBaza-0-2-3-2020-Recenzije.cs" />
     <Compile Remove="Migrations\20200302212231_NovaBazaBezOcjene.cs" />
-    <Compile Remove="Services\PreporukaService.cs" />
   </ItemGroup>
 
   <ItemGroup>

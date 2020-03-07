@@ -11,10 +11,10 @@ namespace TravelEurope.Mobile.ViewsCustom
     public partial class StripePaymentGatewayPage : ContentPage
     {
         public PaymentVM model;
-        public StripePaymentGatewayPage()
+        public StripePaymentGatewayPage(int RezervacijaId, int KorisnikId)
         {
             InitializeComponent();
-            BindingContext = model = new PaymentVM();
+            BindingContext = model = new PaymentVM(RezervacijaId, KorisnikId, this.Navigation);
         }
 
         protected override void OnAppearing()
@@ -36,7 +36,7 @@ namespace TravelEurope.Mobile.ViewsCustom
             else if (CardNumber.Text.Length < 1)
             {
                 ErrorLabel_CardNumber.IsVisible = true;
-                ErrorLabel_CardNumber.Text = "Card number can not be empty !!";
+                ErrorLabel_CardNumber.Text = "Card number can not be empty!";
 
             }
             else
@@ -51,7 +51,7 @@ namespace TravelEurope.Mobile.ViewsCustom
             if (CardNumber.Text.Length > 16 || CardNumber.Text.Length < 12)
             {
                 ErrorLabel_CardNumber.IsVisible = true;
-                ErrorLabel_CardNumber.Text = "Invalid Card number";
+                ErrorLabel_CardNumber.Text = "Invalid card number";
                 EnableSubmitButton();
             }
             else
@@ -68,7 +68,7 @@ namespace TravelEurope.Mobile.ViewsCustom
             if (Month.Text.Length < 1)
             {
                 ErrorLabel_Month.IsVisible = true;
-                ErrorLabel_Month.Text = "month can not be empty !!";
+                ErrorLabel_Month.Text = "Month can not be empty !!";
             }
             else if (Month.Text.Length > 2)
             {
@@ -94,7 +94,7 @@ namespace TravelEurope.Mobile.ViewsCustom
             if (Year.Text.Length < 1)
             {
                 ErrorLabel_Year.IsVisible = true;
-                ErrorLabel_Year.Text = "month can not be empty !!";
+                ErrorLabel_Year.Text = "Month can not be empty !!";
             }
             else if (Year.Text.Length > 2)
             {

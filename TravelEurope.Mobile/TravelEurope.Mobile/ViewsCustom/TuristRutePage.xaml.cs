@@ -19,12 +19,12 @@ namespace TravelEurope.Mobile.Views
         public TuristRutePage()
         {
             InitializeComponent();
-            BindingContext = model = new TuristRuteVM();
+            BindingContext = model = new TuristRuteVM(this.Navigation);
         }
         private async void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as TuristRuteMobile;
-            int trenutniKorisnikId = 1; //APIService.PrijavljeniKorisnik.KorisniciId;
+            int trenutniKorisnikId = APIService.PrijavljeniKorisnik.KorisniciId;
             await Navigation.PushAsync(new TuristRuteDetailsPage(item.TuristRutaId, trenutniKorisnikId));
         }
 

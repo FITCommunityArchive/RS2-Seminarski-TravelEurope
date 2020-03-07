@@ -25,7 +25,7 @@ namespace TravelEurope.Mobile.ViewsCustom
         {
             var item = e.SelectedItem as RezervacijeMobile;
             var trenutniKorisnik = 1; // APIService.PrijavljeniKorisnik.KorisniciId;
-            await Navigation.PushAsync(new RezervacijeDetailsPage(item.RezervacijaId, trenutniKorisnik));
+            await Navigation.PushAsync(new RezervacijeDetailsPage(item.RezervacijaId, trenutniKorisnik, this.Navigation));
         }
         protected async override void OnAppearing()
         {

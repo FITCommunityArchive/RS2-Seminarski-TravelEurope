@@ -45,8 +45,9 @@
                     TitleColor="White"
                     Margin="10,0"
                     ItemsSource="{Binding PretplaceneKategorijePutovanja}"
-                    SelectedItem="{Binding SelectedKategorijaPutovanja}"
+                    SelectedItem="{Binding SelectedKategorijeRuta}"
                     ItemDisplayBinding="{Binding Naziv}"></Picker>
+                
                 <ListView ItemsSource="{Binding RuteList}" ItemSelected="ListView_OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -63,6 +64,10 @@
                                                FontSize="14"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
+                                            <Label Text="Kategorija: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
                                             <Label Text="{Binding Kategorija.Naziv}"
                                                TextColor="Black"
                                                Style="{DynamicResource ListItemTextStyle}" 

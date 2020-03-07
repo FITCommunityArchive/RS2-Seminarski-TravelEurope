@@ -12,12 +12,25 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using TravelEurope.Model.Requests;
+using TravelEurope.Model;
+using TravelEurope.Mobile.Views;
+using System.Windows.Input;
 
 namespace TravelEurope.Mobile.ViewModels
 {
     public class PaymentVM : BindableBase
     {
-        #region Variable
+        private readonly APIService _serviceTuristRute = new APIService("TuristRute");
+        private readonly APIService _serviceRezervacije = new APIService("Rezervacije");
+        private readonly APIService _serviceRuteSlike = new APIService("RuteSlike");
+        private readonly APIService _serviceOcjene = new APIService("Ocjene");
+        private readonly APIService _serviceKorisnici = new APIService("Korisnici");
+        private readonly APIService _serviceRecenzije = new APIService("Recenzije");
+
+        public ObservableCollection<Model.RuteSlike> SlikeList { get; set; } = new ObservableCollection<Model.RuteSlike>();
+
         private CreditCardModel _creditCardModel;
         private TokenService Tokenservice;
         private Token stripeToken;
@@ -27,9 +40,24 @@ namespace TravelEurope.Mobile.ViewModels
         private string _expYear;
         private string _title;
 
-        #endregion Variable
 
-        #region Public Property
+        private int _TuristRutaId;
+        private int _KorisnikId;
+
+        public TuristRuteMobile _ruta;
+        public TuristRuteMobile Ruta
+        {
+            get { return _ruta; }
+            set { SetProperty(ref _ruta, value); }
+        }
+
+        public Korisnici _korisnik;
+        public Korisnici Korisnik
+        {
+            get { return _korisnik; }
+            set { SetProperty(ref _korisnik, value); }
+        }
+
         private string StripeTestApiKey = "pk_test_Lv9kMJZk4ns08GJOPriyuXVO00a24FlJLh";
         public string ExpMonth
         {
@@ -67,19 +95,35 @@ namespace TravelEurope.Mobile.ViewModels
             set { SetProperty(ref _creditCardModel, value); }
         }
 
-        #endregion Public Property
+        private readonly INavigation Navigation;
 
-        #region Constructor
-
-        public PaymentVM()
+        public PaymentVM(int TuristRutaId, int KorisnikId, INavigation nav)
         {
+            _TuristRutaId = TuristRutaId;
+            _KorisnikId = KorisnikId;
+            this.Navigation = nav;
             CreditCardModel = new CreditCardModel();
             Title = "Card Details";
         }
 
-        #endregion Constructor
+        public PaymentVM()
+        {
+            InitCommand = new Command(async () => await Init());
+        }
+        public ICommand InitCommand { get; set; }
+        public async Task Init()
+        {
+            await UcitajPodatkeZaUplatu();
+        }
 
-        #region Command
+        private async Task UcitajPodatkeZaUplatu()
+        {
+            var temp = await _serviceTuristRute.GetById<TuristRuteMobile>(_TuristRutaId);
+            temp.UkupnaCijena = temp.CijenaPaketa * temp.TrajanjePutovanja + temp.CijenaOsiguranja * temp.TrajanjePutovanja;
+            temp.DatumPovratka = temp.DatumPutovanja.AddDays(temp.TrajanjePutovanja);
+            Ruta = temp;
+            Korisnik = APIService.PrijavljeniKorisnik;
+        }
 
         public DelegateCommand SubmitCommand => new DelegateCommand(async () =>
         {
@@ -93,11 +137,11 @@ namespace TravelEurope.Mobile.ViewModels
                 await Task.Run(async () =>
                 {
 
-                    var Token = CreateToken();
-                    Console.Write("Payment Gateway" + "Token :" + Token);
-                    if (Token != null)
+                    var Token = CreateTokenAsync();
+                    Console.Write("TravelEurope" + "Token :" + Token);
+                    if (Token.ToString() != null)
                     {
-                        IsTransectionSuccess = MakePayment(Token);
+                        IsTransectionSuccess = await MakePaymentAsync(Token.Result);
                     }
                     else
                     {
@@ -109,14 +153,14 @@ namespace TravelEurope.Mobile.ViewModels
             {
                 UserDialogs.Instance.HideLoading();
                 UserDialogs.Instance.Alert(ex.Message, null, "OK");
-                Console.Write("Payment Gatway" + ex.Message);
+                Console.Write("TravelEurope" + ex.Message);
             }
             finally
             {
                 if (IsTransectionSuccess)
                 {
-                    Console.Write("Payment Gateway" + "Payment Successful ");
-
+                    await Navigation.PushAsync(new TuristRutePage());
+                    Console.Write("TravelEurope" + "Payment Successful ");
                     UserDialogs.Instance.HideLoading();
                 }
                 else
@@ -124,18 +168,15 @@ namespace TravelEurope.Mobile.ViewModels
 
                     UserDialogs.Instance.HideLoading();
                     UserDialogs.Instance.Alert("Oops, something went wrong", "Payment failed", "OK");
-                    Console.Write("Payment Gateway" + "Payment Failure ");
+                    Console.Write("TravelEurope" + "Payment Failure ");
                 }
             }
 
         });
 
-        #endregion Command
-
-        #region Method
-
-        private string CreateToken()
+        private async Task<string> CreateTokenAsync()
         {
+            await UcitajPodatkeZaUplatu();
             try
             {
                 StripeConfiguration.ApiKey = StripeTestApiKey;
@@ -148,14 +189,14 @@ namespace TravelEurope.Mobile.ViewModels
                         ExpYear = CreditCardModel.ExpYear,
                         ExpMonth = CreditCardModel.ExpMonth,
                         Cvc = CreditCardModel.Cvc,
-                        Name = "Faruk Redzic",
-                        AddressLine1 = "19",
-                        AddressLine2 = "Marka Marulića",
-                        AddressCity = "Dolac Malta",
-                        AddressZip = "77000",
-                        AddressState = "Malta Dolac",
+                        Name = Korisnik.KorisnickoIme,
+                        AddressLine1 = "Marka Marulića",
+                        AddressLine2 = "23",
+                        AddressCity = Korisnik.Grad.Naziv,
+                        AddressZip = "88000",
+                        AddressState = "Starmo",
                         AddressCountry = "Bosna i Hercegovina",
-                        Currency = "eur",
+                        Currency = "bam",
                     }
                 };
 
@@ -169,29 +210,33 @@ namespace TravelEurope.Mobile.ViewModels
             }
         }
 
-        public bool MakePayment(string token)
+        public async Task<bool> MakePaymentAsync(string token)
         {
+            await UcitajPodatkeZaUplatu();
+            var stringUkupnaCijena = Convert.ToInt32(Ruta.UkupnaCijena);
+            string kpnCijena = stringUkupnaCijena.ToString();
+            string nazivRute = "Uplata za " + Ruta.Naziv + " " + Ruta.DatumPutovanja.ToShortDateString();
             try
             {
                 StripeConfiguration.ApiKey = "sk_test_u5PVeLrvvFRQGj89siYcIEpw00fedaueHy";
-                var options = new ChargeCreateOptions
-                {
-                    Amount = (long)float.Parse("20000"),
-                    Currency = "inr",
-                    Description = "Charge for Jon.rosen@example.com",
-                    Source = stripeToken.Id,
-                    StatementDescriptor = "Custom descriptor",
-                    Capture = true,
-                    ReceiptEmail = "sonu.sharma@gmail.com",
-                };
+                var options = new ChargeCreateOptions();
+
+                options.Amount = (long)float.Parse(kpnCijena);
+                options.Currency = "bam";
+                options.Description = nazivRute;
+                options.Source = stripeToken.Id;
+                options.StatementDescriptor = "Custom descriptor";
+                options.Capture = true;
+                options.ReceiptEmail = Korisnik.Email.ToString();
                 //Make Payment
                 var service = new ChargeService();
                 Charge charge = service.Create(options);
+                UserDialogs.Instance.Alert("Uspješno ste platili putovanje. Vraćamo vas ponudu turističkih ruta.");
                 return true;
             }
             catch (Exception ex)
             {
-                Console.Write("Payment Gatway (CreateCharge)" + ex.Message);
+                Console.Write("TravelEurope (CreateCharge)" + ex.Message);
                 throw ex;
             }
         }
@@ -203,6 +248,5 @@ namespace TravelEurope.Mobile.ViewModels
             }
             return true;
         }
-        #endregion Method
     }
 }

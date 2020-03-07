@@ -14,7 +14,7 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout >
+            <StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -96,8 +96,7 @@
                             CommandParameter="5"
                             />
                 </StackLayout>
-
-                <Button Command="{Binding BindingContext.UkiniRezervacijuCommand, Source={x:Reference MyRezervacijeDetailsPage}}" CommandParameter="{Binding .}"
+                <Button Command="{Binding UkiniRezervacijuCommand}"
                         BackgroundColor="Red"
                         Text="Otkaži" 
                         TextColor="White"

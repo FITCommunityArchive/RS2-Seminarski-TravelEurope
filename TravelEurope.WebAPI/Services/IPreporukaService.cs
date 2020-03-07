@@ -9,6 +9,6 @@ namespace TravelEurope.WebAPI.Services
 {
     public interface IPreporukaService
     {
-        List<Model.TuristRute> GetPreporuceneTuristRute();
+        List<Model.TuristRute> GetById(int id);
     }
 }

@@ -75,7 +75,7 @@ namespace TravelEurope.WebAPI.Services
 
         public Model.Ocjene OcijeniRutu(OcjeneInsertRequest request)
         {
-            int KorisnikId = 1;// Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
+            int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
             Database.Ocjene entity = _context.Ocjene.Where(x => x.TuristRutaId == request.TuristRutaId && x.KorisnikId == KorisnikId).FirstOrDefault();
             if(entity != null)

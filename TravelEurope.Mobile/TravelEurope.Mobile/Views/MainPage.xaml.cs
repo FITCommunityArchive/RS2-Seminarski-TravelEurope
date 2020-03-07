@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TravelEurope.Mobile.ViewsCustom;
 
 namespace TravelEurope.Mobile.Views
 {
@@ -10,13 +11,13 @@ namespace TravelEurope.Mobile.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
-        public MainPage()
+        public int KorisnikId;
+        public MainPage(int Korisnik)
         {
             InitializeComponent();
-
+            KorisnikId = Korisnik;
             MasterBehavior = MasterBehavior.Popover;
-
-            MenuPages.Add((int)MenuItemType.Ponuda, (NavigationPage)Detail);
+            //MenuPages.Add((int)MenuItemType.Pretplate, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -25,23 +26,23 @@ namespace TravelEurope.Mobile.Views
             {
                 switch (id)
                 {
-                    //case (int)MenuItemType.Friends:
-                    //    MenuPages.Add(id, new NavigationPage(new FriendsPage()));
-                    //    break;
-                    //case (int)MenuItemType.Games:
-                    //    MenuPages.Add(id, new NavigationPage(new GamesPage()));
-                    //    break;
-                    //case (int)MenuItemType.Logout:
-                    //    MenuPages.Add(id, new NavigationPage(new LoginPage()));
-                    //    break;
-                    //case (int)MenuItemType.Favorites:
-                    //    MenuPages.Add(id, new NavigationPage(new FavoritesPage()));
-                    //    break;
-                    //case (int)MenuItemType.Recommendations:
-                    //    MenuPages.Add(id, new NavigationPage(new RecommendedGamesPage()));
-                    //    break;
+                    case (int)MenuItemType.Pretplate:
+                        MenuPages.Add(id, new NavigationPage(new KategorijePage()));
+                        break;
                     case (int)MenuItemType.Ponuda:
                         MenuPages.Add(id, new NavigationPage(new TuristRutePage()));
+                        break;
+                    case (int)MenuItemType.Rezervacije:
+                        MenuPages.Add(id, new NavigationPage(new RezervacijePage(KorisnikId)));
+                        break;
+                    //case (int)MenuItemType.Poruke:
+                    //    MenuPages.Add(id, new NavigationPage(new PorukePage()));
+                    //    break;
+                    case (int)MenuItemType.Profil:
+                        MenuPages.Add(id, new NavigationPage(new ProfilePage()));
+                        break;
+                    case (int)MenuItemType.Logout:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage()));
                         break;
                 }
             }

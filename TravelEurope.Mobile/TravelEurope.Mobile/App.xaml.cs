@@ -13,8 +13,10 @@ namespace TravelEurope.Mobile
         public App()
         {
             InitializeComponent();
+            MainPage = new LoginPage();
+            //MainPage = new NavigationPage(new StripePaymentGatewayPage(13,1));
+            //MainPage = new NavigationPage(new RezervacijePage(1));
             //MainPage = new NavigationPage(new TuristRutePage());
-            MainPage = new NavigationPage(new StripePaymentGatewayPage());
         }
 
         protected override void OnStart()

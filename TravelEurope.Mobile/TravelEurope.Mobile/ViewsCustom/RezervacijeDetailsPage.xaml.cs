@@ -15,13 +15,15 @@ namespace TravelEurope.Mobile.ViewsCustom
         private int _rezervacijaId;
         private int _korisnikId;
         private RezervacijeDetailsVM model;
+        private readonly INavigation Navigation;
 
-        public RezervacijeDetailsPage(int rezervacijaId, int korisnikId)
+        public RezervacijeDetailsPage(int rezervacijaId, int korisnikId, INavigation Navigation)
         {
             InitializeComponent();
             _rezervacijaId = rezervacijaId;
             _korisnikId = korisnikId;
-            BindingContext = model = new RezervacijeDetailsVM(_rezervacijaId, _korisnikId);
+            this.Navigation = Navigation;
+            BindingContext = model = new RezervacijeDetailsVM(_korisnikId, _rezervacijaId, Navigation);
         }
 
         protected async override void OnAppearing()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TravelEurope.Mobile.ViewsCustom;
 
 namespace TravelEurope.Mobile.Views
 {
@@ -16,10 +17,10 @@ namespace TravelEurope.Mobile.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Prijatelji, Title="Prijatelji" },
+                new HomeMenuItem {Id = MenuItemType.Pretplate, Title="Pretplate na kategorije" },
                 new HomeMenuItem {Id = MenuItemType.Ponuda, Title="Ponuda turist ruta" },
-                new HomeMenuItem {Id = MenuItemType.Pretplate, Title="Pretplate" },
-                new HomeMenuItem {Id = MenuItemType.Preporuke, Title="Preporuke" },
+                new HomeMenuItem {Id = MenuItemType.Rezervacije, Title="Vaše rezervacije" },
+                new HomeMenuItem {Id = MenuItemType.Poruke, Title="Vaše poruke" },
                 new HomeMenuItem {Id = MenuItemType.Profil, Title="Profil" },
                 new HomeMenuItem {Id = MenuItemType.Logout, Title="Logout" }
             };
@@ -38,7 +39,7 @@ namespace TravelEurope.Mobile.Views
                     APIService.PrijavljeniKorisnik = null;
                     APIService.Username = null;
                     APIService.Password = null;
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new LoginPage();
                     return;
                 }
                 await RootPage.NavigateFromMenu(id);

@@ -23,6 +23,9 @@ namespace TravelEurope.Mobile.ViewModels
 
         private int _RezervacijaId;
         private int _KorisnikId;
+
+        private readonly INavigation Navigation;
+
         public RezervacijeMobile _rezervacija;
         public RezervacijeMobile Rezervacija
         {
@@ -83,20 +86,18 @@ namespace TravelEurope.Mobile.ViewModels
             set { SetProperty(ref _star5, value); }
         }
 
-        private readonly INavigation Navigation;
         #endregion
 
         public ICommand InitCommand { get; set; }
         public ICommand OcijeniStarCommand { get; set; }
 
-        public RezervacijeDetailsVM(int RezervacijaId, int KorisnikId)
+        public RezervacijeDetailsVM(int KorisnikId, int RezervacijaId, INavigation Navigation)
         {
+            this.Navigation = Navigation;
             _RezervacijaId = RezervacijaId;
             _KorisnikId = KorisnikId;
-            InitCommand = new Command(async () => await Init());
-            OcijeniStarCommand = new Command<string>(async (ocjena) => await OcijeniStar(ocjena, _rezervacija.TuristRutaId));
-            UkiniRezervacijuCommand = new Command<RezervacijeMobile>(async (obj) => await UkiniRezervaciju(obj));
-            //InitCommand.Execute(null);
+            OcijeniStarCommand = new Command<string>(async (Ocjena) => await OcijeniStar(Ocjena, _rezervacija.TuristRutaId));
+            UkiniRezervacijuCommand = new Command(async () => await UkiniRezervaciju());
 
             Star1 = new Star();
             Star2 = new Star();
@@ -105,21 +106,16 @@ namespace TravelEurope.Mobile.ViewModels
             Star5 = new Star();
         }
 
-        public async Task UkiniRezervaciju(RezervacijeMobile obj)
+        public async Task UkiniRezervaciju()
         {
-            RezervacijeMobile novi = obj;
-            await RemoveRezervacija(novi.RezervacijaId);
-            await Application.Current.MainPage.DisplayAlert("Obavijest", "Uspješno ste obrisali rezervaciju, vraćamo vas na prethodnu stranicu.", "OK");
+            await RemoveRezervacija(_RezervacijaId);
             await Navigation.PushAsync(new RezervacijePage(_KorisnikId));
         }
 
         public async Task RemoveRezervacija(int id)
         {
             var success = await _serviceRezervacije.Remove(id);
-            if (success)
-            {
-                await Init();
-            }
+            await Application.Current.MainPage.DisplayAlert("Obavijest", "Uspješno ste obrisali rezervaciju, vraćamo vas na prethodnu stranicu.", "OK");
         }
 
 
@@ -146,9 +142,9 @@ namespace TravelEurope.Mobile.ViewModels
                 Star5 = Star_Filled;
         }
 
-        private async Task OcijeniStar(string ocjena, int TuristRutaId)
+        private async Task OcijeniStar(string _ocjena, int TuristRutaId)
         {
-            int OcjenaBroj = int.TryParse(ocjena, out int value) ? value : 0;
+            int OcjenaBroj = int.TryParse(_ocjena, out int value) ? value : 0;
             if (OcjenaBroj >= 1 && OcjenaBroj <= 5)
             {
                 var request = new Model.Requests.OcjeneInsertRequest
@@ -188,15 +184,16 @@ namespace TravelEurope.Mobile.ViewModels
 
             var request = new Model.Requests.OcjeneSearchRequest
             {
-                TuristRutaId = _RezervacijaId,
-                KorisnikId = 1//APIService.PrijavljeniKorisnik.KorisniciId
+                TuristRutaId = Rezervacija.TuristRutaId,
+                KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId
             };
+
             var PostojecaOcjena = await _serviceOcjene.Get<Model.Ocjene>(request);
             if(PostojecaOcjena==null)
             {
                 Ocjena = 0;
             }
-            else if (PostojecaOcjena.Ocjena!=Ocjena)
+            else if (PostojecaOcjena.Ocjena != Ocjena)
             {
                 Ocjena = PostojecaOcjena.Ocjena;
             }
@@ -206,12 +203,12 @@ namespace TravelEurope.Mobile.ViewModels
         {
             var requestOcjene = new Model.Requests.OcjeneSearchRequest();
             requestOcjene.TuristRutaId = id;
-            requestOcjene.KorisnikId = 1;
+            requestOcjene.KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId;
 
-            var _ocjena = await _serviceOcjene.Get<Model.Ocjene>(requestOcjene);
+            var _Ocjene = await _serviceOcjene.Get<Model.Ocjene>(requestOcjene);
 
-            if (_ocjena == null) return 0;
-            return _ocjena.Ocjena;
+            if (_Ocjene == null) return 0;
+            return _Ocjene.Ocjena;
         }
 
         private async Task UcitajSlike()

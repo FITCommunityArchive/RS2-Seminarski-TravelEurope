@@ -14,6 +14,7 @@ namespace TravelEurope.Mobile.Models
         public string Naziv { get; set; }
         public string Opis { get; set; }
         public DateTime DatumPutovanja { get; set; }
+        public DateTime DatumPovratka { get; set; }
         public int TrajanjePutovanja { get; set; }
         public decimal CijenaPaketa { get; set; }
         public decimal CijenaOsiguranja { get; set; }
@@ -23,8 +24,6 @@ namespace TravelEurope.Mobile.Models
         public TuristickiVodici TuristickiVodic { get; set; }
         public byte[] Slika { get; set; }
         public byte[] SlikaThumb { get; set; }
-        public int OcjenaKorisnika { get; set; }
-        public ICollection<Ocjene> Ocjene { get; set; }
         public ICollection<RuteSlike> RuteSlike { get; set; }
         public override string ToString()
         {

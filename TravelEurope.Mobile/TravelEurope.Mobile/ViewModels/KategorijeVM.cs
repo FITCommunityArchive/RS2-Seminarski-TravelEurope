@@ -31,12 +31,11 @@ namespace TravelEurope.Mobile.ViewModels
         {
             PretplatiCommand = new Command<KategorijeMobile>(async (obj) => await Pretplati(obj));
             UkiniPretplatuCommand = new Command<KategorijeMobile>(async (obj) => await UkiniPretplatu(obj));
-            InitCommand = new Command(async () => await Init());
         }
 
         public async Task Init()
         {
-            //APIService.PrijavljeniKorisnik = await _serviceKorisnici.Get<Model.Korisnici>(null, "MyProfile");
+            APIService.PrijavljeniKorisnik = await _serviceKorisnici.Get<Model.Korisnici>(null, "MyProfile");
             var listKategorije = await _serviceKategorije.Get<List<KategorijeMobile>>(null);
             var listPretplate = await _servicePretplate.Get<List<Pretplate>>(null);
             var listPretplaceneKategorije = new List<KategorijeMobile>();
@@ -45,7 +44,7 @@ namespace TravelEurope.Mobile.ViewModels
             {
                 foreach (var y in listPretplate)
                 {
-                    if (x.KategorijaId == y.KategorijaId && y.KorisnikId == 1)//APIService.PrijavljeniKorisnik.KorisniciId)
+                    if (x.KategorijaId == y.KategorijaId && y.KorisnikId == APIService.PrijavljeniKorisnik.KorisniciId)
                     {
                         listPretplaceneKategorije.Add(x);
                     }
@@ -83,12 +82,12 @@ namespace TravelEurope.Mobile.ViewModels
         {
             PretplateInsertRequest korak = new PretplateInsertRequest();
             korak.KategorijaId = obj.KategorijaId;
-            korak.KorisnikId = 1;
+            korak.KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId;
             bool yes = false;
 
             foreach (var x in PretplaceneKategorijeList)
             {
-                if (x.KategorijaId == korak.KategorijaId && /*APIService.PrijavljeniKorisnik.KorisniciId*/ 1 == korak.KorisnikId)
+                if (x.KategorijaId == korak.KategorijaId)
                 {
                     await Application.Current.MainPage.DisplayAlert("Greška", "Ne možete se pretplatiti više puta na istu kategoriju!", "OK");
                     yes = true;

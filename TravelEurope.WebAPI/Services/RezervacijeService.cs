@@ -91,7 +91,7 @@ namespace TravelEurope.WebAPI.Services
         }
         public Model.Rezervacije GetById(int id)
         {
-            var query = _context.Rezervacije.Include(a => a.Korisnik).Include(b => b.TuristRuta).ThenInclude(c=>c.Kategorija).Include(d=>d.TuristRuta.Lokacija).AsQueryable();
+            var query = _context.Rezervacije.Include(a => a.Korisnik).ThenInclude(q=>q.Grad).Include(b => b.TuristRuta).ThenInclude(c=>c.Kategorija).Include(d=>d.TuristRuta.Lokacija).AsQueryable();
 
             query = query.Where(x => x.RezervacijaId == id);
 

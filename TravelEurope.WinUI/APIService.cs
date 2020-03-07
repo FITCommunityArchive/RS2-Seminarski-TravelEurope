@@ -45,7 +45,7 @@ namespace TravelEurope.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste prijavljeni");
+                    MessageBox.Show("Neuspjela prijava ili nepostojeći korisnik!");
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
@@ -67,12 +67,12 @@ namespace TravelEurope.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste prijavljeni");
+                    MessageBox.Show("Neuspjela prijava ili nepostojeći korisnik!");
                     return default(T);
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    MessageBox.Show("Niste autorizovani");
+                    MessageBox.Show("Niste autorizovani!");
                 }
 
                 var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
@@ -104,7 +104,8 @@ namespace TravelEurope.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste prijavljeni");
+                    MessageBox.Show("Neuspjela prijava ili nepostojeći korisnik!");
+
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
@@ -127,7 +128,8 @@ namespace TravelEurope.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste prijavljeni");
+                    MessageBox.Show("Neuspjela prijava ili nepostojeći korisnik!");
+
                     return default(T);
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)
@@ -161,7 +163,8 @@ namespace TravelEurope.WinUI
             {
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    MessageBox.Show("Niste prijavljeni");
+                    MessageBox.Show("Neuspjela prijava ili nepostojeći korisnik!");
+
                     return false;
                 }
                 if (ex.Call.HttpStatus == System.Net.HttpStatusCode.Forbidden)

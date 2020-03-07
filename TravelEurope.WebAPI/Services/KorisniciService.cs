@@ -34,6 +34,11 @@ namespace TravelEurope.WebAPI.Services
                                           x.KorisnickoIme.Contains(request.ImePrezime.ToLower()));
             }
 
+            if (!string.IsNullOrWhiteSpace(request?.UserName))
+            {
+                query = query.Where(x => x.KorisnickoIme.ToLower().StartsWith(request.UserName));
+            }
+
             query = query.Include(x => x.Grad.Drzava);
             query = query.Include(x => x.Uloga);
 
@@ -112,7 +117,7 @@ namespace TravelEurope.WebAPI.Services
 
             query = query.Where(x => x.KorisniciId == id);
 
-            query = query.Include(x => x.Grad.Drzava);
+            query = query.Include(x => x.Grad);
             query = query.Include(x => x.Uloga);
 
             var entity = query.FirstOrDefault();

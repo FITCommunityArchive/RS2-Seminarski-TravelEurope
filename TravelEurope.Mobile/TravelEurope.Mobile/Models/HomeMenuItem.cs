@@ -6,10 +6,12 @@ namespace TravelEurope.Mobile.Models
 {
     public enum MenuItemType
     {
-        Prijatelji,
-        Ponuda,
+        Browse,
+        About,
         Pretplate,
-        Preporuke,
+        Ponuda,
+        Rezervacije,
+        Poruke,
         Profil,
         Logout
     }

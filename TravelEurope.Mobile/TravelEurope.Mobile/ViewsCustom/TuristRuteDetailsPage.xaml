@@ -9,6 +9,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ImageConverter x:Key="imgConv"></local:ImageConverter>
+            <local:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></local:DatetimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -46,8 +47,6 @@
 
             <ScrollView>
                 <StackLayout >
-                    <Label Text="{Binding Ruta.Opis}" />
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -57,11 +56,12 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Text="Ocjena kritičara:"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Ruta.OcjenaKriticara}" FontAttributes="Bold"/>
 
-                        <Label Grid.Row="1" Grid.Column="0" Text="Naziv: "/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Ruta.Naziv}" FontAttributes="None"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Naziv rute: "/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Ruta.Naziv}" FontAttributes="None"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Kategorija: "/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Ruta.Kategorija.Naziv}" FontAttributes="None"/>
 
                         <Label Grid.Row="2" Grid.Column="0" Text="Opis:"/>
                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Ruta.Opis}" FontAttributes="None"/>
@@ -80,7 +80,7 @@
 
                         <Label Grid.Row="7" Grid.Column="0" Text="Trajanje putovanja: "/>
                         <Label Grid.Row="7" Grid.Column="1" Text="{Binding Ruta.TrajanjePutovanja}" FontAttributes="None"/>
-                        
+
                         <Label Grid.Row="8" Grid.Column="0" Text="Ukupna cijena (put+osiguranje):  "/>
                         <Label Grid.Row="8" Grid.Column="1" Text="{Binding Ruta.UkupnaCijena}" FontAttributes="Bold"/>
                     </Grid>
@@ -96,6 +96,53 @@
                         FontAttributes="Bold" 
                         Grid.Row="0"></Button>
                     </Grid>
+
+
+                    <Label Text="Preporučeni turist paketi na osnovu izabranog"
+                       TextColor="Black"
+                   Margin="10,0,0,0"
+                   FontSize="16"
+                   FontAttributes="Bold"></Label>
+
+                    <StackLayout>
+                        <ListView ItemsSource="{Binding PreporuceneRuteList}" ItemSelected="ListView_OnItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" HeightRequest="100" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Naziv}"
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{Binding Kategorija.Naziv}"
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Datum putovanja: " 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                                    <Label Text="{Binding DatumPutovanja, Converter={StaticResource cnvDateTimeConverter}}" 
+                                               TextColor="Black"
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               FontSize="14"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
