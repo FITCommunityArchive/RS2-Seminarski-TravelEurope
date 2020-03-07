@@ -34,20 +34,14 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Label Text="Ponuđene turist rute :"
-                           TextColor="DarkGray"
-                           LineBreakMode="NoWrap"
-                           Style="{DynamicResource ListItemTextStyle}" 
-                           FontSize="13"
-                           />
+                    <StackLayout BackgroundColor="DarkBlue">
+                        <Label Margin="0,7" 
+                       FontSize="16" 
+                       TextColor="White" 
+                       Text="Ponuđene turist rute (imate uvid u rute samo na koje ste kategorije pretplaćeni) :"
+                       HorizontalOptions="Center"></Label>
+                    </StackLayout>
                 </StackLayout>
-                <Picker Title="Izaberite vašu pretplaćenu kategoriju putovanja"
-                    TitleColor="White"
-                    Margin="10,0"
-                    ItemsSource="{Binding PretplaceneKategorijePutovanja}"
-                    SelectedItem="{Binding SelectedKategorijeRuta}"
-                    ItemDisplayBinding="{Binding Naziv}"></Picker>
-                
                 <ListView ItemsSource="{Binding RuteList}" ItemSelected="ListView_OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>

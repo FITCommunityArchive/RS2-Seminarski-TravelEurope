@@ -24,78 +24,28 @@ namespace TravelEurope.Mobile.ViewModels
         public ICommand NavigateToSearchPageCommand { get; set; }
         public ICommand InitCommand { get; set; }
 
-        public ObservableCollection<KategorijeMobile> PretplaceneKategorijePutovanja { get; set; } = new ObservableCollection<KategorijeMobile>();
-
-        KategorijeMobile _selectedKategorijeRuta = null;
-
-        public KategorijeMobile SelectedKategorijeRuta
-        {
-            get { return _selectedKategorijeRuta; }
-            set
-            {
-                SetProperty(ref _selectedKategorijeRuta, value);
-                if (value != null)
-                {
-                    InitCommand.Execute(null);
-                }
-            }
-        }
-
         public TuristRuteVM(INavigation navigation)
         {
             this.Navigation = navigation;
             InitCommand = new Command(async () => await Init());
         }
 
-        private async Task UcitajPretplaceneKategorije()
-        {
-            var kategorijaPutovanjaList = await _kategorijePutovanja.Get<List<KategorijeMobile>>(null);
-            var listPretplate = await _servicePretplate.Get<List<Pretplate>>(null);
-
-            PretplaceneKategorijePutovanja.Clear();
-            foreach (var x in kategorijaPutovanjaList)
-            {
-                foreach (var y in listPretplate)
-                {
-                    if (x.KategorijaId == y.KategorijaId && y.KorisnikId == APIService.PrijavljeniKorisnik.KorisniciId)
-                    {
-                        PretplaceneKategorijePutovanja.Add(x);
-                    }
-                }
-            }
-        }
         public async Task Init()
         {
-            //await UcitajPretplaceneKategorije();
-
-            var kategorijaPutovanjaList = await _kategorijePutovanja.Get<List<KategorijeMobile>>(null);
             var listPretplate = await _servicePretplate.Get<List<Pretplate>>(null);
 
-            PretplaceneKategorijePutovanja.Clear();
-            foreach (var x in kategorijaPutovanjaList)
+            var listTuristRute = await _serviceTuristRute.Get<List<TuristRuteMobile>>(null, "GetListSaSlikama");
+
+            RuteList.Clear();
+            foreach (var x in listTuristRute)
             {
                 foreach (var y in listPretplate)
                 {
                     if (x.KategorijaId == y.KategorijaId && y.KorisnikId == APIService.PrijavljeniKorisnik.KorisniciId)
                     {
-                        PretplaceneKategorijePutovanja.Add(x);
+                        RuteList.Add(x);
                     }
                 }
-            }
-
-            TuristRuteSearchRequest search = new TuristRuteSearchRequest();
-
-            if (SelectedKategorijeRuta != null)
-            {
-                search.KategorijaId = _selectedKategorijeRuta.KategorijaId;
-            }
-
-            var listTuristRute = await _serviceTuristRute.Get<List<TuristRuteMobile>>(search, "GetListSaSlikama");
-
-            RuteList.Clear();
-            foreach (var item in listTuristRute)
-            {
-                RuteList.Add(item);
             }
         }
     }
