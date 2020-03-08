@@ -52,7 +52,6 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IPretplateService, PretplateService>();
             services.AddScoped<IUlogeService, UlogeService>();
             services.AddScoped<ILokacijeService, LokacijeService>();
-            services.AddScoped<IRecenzijeService, RecenzijeService>();
             services.AddScoped<IOcjeneService, OcjeneService>();
             services.AddScoped<IRezervacijeService, RezervacijeService>();
             services.AddScoped<IPreporukaService, PreporukaService>();

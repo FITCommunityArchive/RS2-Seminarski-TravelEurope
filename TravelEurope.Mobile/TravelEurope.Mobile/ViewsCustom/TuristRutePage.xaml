@@ -12,24 +12,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
-            <ToolbarItem.Icon>
-                <FileImageSource File="search.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="Filter" Clicked="FilterToolbarItem_Clicked">
-            <ToolbarItem.Icon>
-                <FileImageSource File="filter.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="More">
-            <ToolbarItem.Icon>
-                <FileImageSource File="more.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

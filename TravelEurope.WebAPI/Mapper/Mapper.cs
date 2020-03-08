@@ -25,7 +25,6 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.RuteSlike, Model.RuteSlike>();
             CreateMap<Database.Pretplate, Model.Pretplate>();
             CreateMap<Database.Kategorije, Model.Kategorije>();
-            CreateMap<Database.Recenzije, Model.Recenzije>();
             CreateMap<Database.Poruke, Model.Poruke>();
 
             CreateMap<Database.Rezervacije, Model.Rezervacije>();
@@ -57,7 +56,6 @@ namespace TravelEurope.WebAPI.Mapper
             CreateMap<Database.RuteSlike, Model.Requests.RuteSlikeInsertRequest>().ReverseMap();
             CreateMap<Database.Kategorije, Model.Requests.KategorijeInsertRequest>().ReverseMap();
             CreateMap<Database.Pretplate, Model.Requests.PretplateInsertRequest>().ReverseMap();
-            CreateMap<Database.Recenzije, Model.Requests.RecenzijeInsertRequest>().ReverseMap();
             CreateMap<Database.Ocjene, Model.Requests.OcjeneInsertRequest>().ReverseMap();
 
             CreateMap<Database.Poruke, Model.Requests.PorukeInsertRequest>().ReverseMap();

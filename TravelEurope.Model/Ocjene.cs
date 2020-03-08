@@ -15,8 +15,8 @@ namespace TravelEurope.Model
         public Korisnici Korisnik { get; set; }
         public int KorisnikId { get; set; }
 
-        public TuristRute TuristRuta { get; set; }
-        public int TuristRutaId { get; set; }
+        public Rezervacije Rezervacija { get; set; }
+        public int RezervacijaId { get; set; }
 
         public int Ocjena { get; set; }
         public DateTime DatumOcjene { get; set; }

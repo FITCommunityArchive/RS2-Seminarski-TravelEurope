@@ -8,7 +8,6 @@ namespace TravelEurope.WebAPI.Database
     {
         public TuristRute()
         {
-            Ocjene = new List<Ocjene>();
             RuteSlike = new List<RuteSlike>();
 
         }
@@ -27,7 +26,6 @@ namespace TravelEurope.WebAPI.Database
         public Lokacije Lokacija { get; set; }
         public TuristickiVodici TuristickiVodic { get; set; }
 
-        public ICollection<Ocjene> Ocjene { get; set; }
         public ICollection<RuteSlike> RuteSlike { get; set; }
     }
 }

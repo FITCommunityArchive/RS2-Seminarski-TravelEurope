@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelEurope.WebAPI.Database;
 
 namespace TravelEurope.WebAPI.Migrations
 {
     [DbContext(typeof(TravelEurope_Context))]
-    partial class TravelEurope_ContextModelSnapshot : ModelSnapshot
+    [Migration("20200308043308_RecenzijeOcjeneChange")]
+    partial class RecenzijeOcjeneChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,11 +134,15 @@ namespace TravelEurope.WebAPI.Migrations
 
                     b.Property<int>("RezervacijaId");
 
+                    b.Property<int?>("TuristRuteTuristRutaId");
+
                     b.HasKey("OcjenaId");
 
                     b.HasIndex("KorisnikId");
 
                     b.HasIndex("RezervacijaId");
+
+                    b.HasIndex("TuristRuteTuristRutaId");
 
                     b.ToTable("Ocjene");
                 });
@@ -347,6 +353,10 @@ namespace TravelEurope.WebAPI.Migrations
                         .WithMany()
                         .HasForeignKey("RezervacijaId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TravelEurope.WebAPI.Database.TuristRute")
+                        .WithMany("Ocjene")
+                        .HasForeignKey("TuristRuteTuristRutaId");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Poruke", b =>

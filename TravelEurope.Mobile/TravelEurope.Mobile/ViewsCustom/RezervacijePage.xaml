@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelEurope.Mobile.ViewsCustom.RezervacijePage"
-             xmlns:converters="clr-namespace:TravelEurope.Mobile.Converters"
-             xmlns:viewModels="clr-namespace:TravelEurope.Mobile.ViewModels.Rezervacije">
+             xmlns:converters="clr-namespace:TravelEurope.Mobile.Converters">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -13,19 +12,6 @@
             <converters:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></converters:DatetimeToStringConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
-            <ToolbarItem.Icon>
-                <FileImageSource File="search.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="More">
-            <ToolbarItem.Icon>
-                <FileImageSource File="more.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <ScrollView>

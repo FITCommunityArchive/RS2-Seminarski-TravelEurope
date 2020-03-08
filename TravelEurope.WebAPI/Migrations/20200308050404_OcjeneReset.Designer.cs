@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelEurope.WebAPI.Database;
 
 namespace TravelEurope.WebAPI.Migrations
 {
     [DbContext(typeof(TravelEurope_Context))]
-    partial class TravelEurope_ContextModelSnapshot : ModelSnapshot
+    [Migration("20200308050404_OcjeneReset")]
+    partial class OcjeneReset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,31 +116,6 @@ namespace TravelEurope.WebAPI.Migrations
                     b.HasIndex("DrzavaId");
 
                     b.ToTable("Lokacije");
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Ocjene", b =>
-                {
-                    b.Property<int>("OcjenaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DatumOcjene");
-
-                    b.Property<string>("Komentar");
-
-                    b.Property<int>("KorisnikId");
-
-                    b.Property<int>("Ocjena");
-
-                    b.Property<int>("RezervacijaId");
-
-                    b.HasKey("OcjenaId");
-
-                    b.HasIndex("KorisnikId");
-
-                    b.HasIndex("RezervacijaId");
-
-                    b.ToTable("Ocjene");
                 });
 
             modelBuilder.Entity("TravelEurope.WebAPI.Database.Poruke", b =>
@@ -333,19 +310,6 @@ namespace TravelEurope.WebAPI.Migrations
                     b.HasOne("TravelEurope.WebAPI.Database.Drzave", "Drzava")
                         .WithMany()
                         .HasForeignKey("DrzavaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TravelEurope.WebAPI.Database.Ocjene", b =>
-                {
-                    b.HasOne("TravelEurope.WebAPI.Database.Korisnici", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TravelEurope.WebAPI.Database.Rezervacije", "Rezervacija")
-                        .WithMany()
-                        .HasForeignKey("RezervacijaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

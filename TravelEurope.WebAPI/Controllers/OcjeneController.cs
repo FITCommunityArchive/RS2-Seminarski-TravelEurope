@@ -51,9 +51,9 @@ namespace TravelEurope.WebAPI.Controllers
         }
 
         [HttpGet("GetMojuOcjenu")]
-        public Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId)
+        public Model.Ocjene GetMojuOcjenu(int RezervacijaId, int KorisnikId)
         {
-            return _service.GetMojuOcjenu(TuristRutaId, KorisnikId);
+            return _service.GetMojuOcjenu(RezervacijaId, KorisnikId);
         }
     }
 }

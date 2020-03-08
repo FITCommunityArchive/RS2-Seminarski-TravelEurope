@@ -14,6 +14,6 @@ namespace TravelEurope.WebAPI.Services
         Model.Ocjene GetById(int id);
         Model.Ocjene Update(int id, OcjeneInsertRequest request);
         Ocjene OcijeniRutu(OcjeneInsertRequest request);
-        Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId);
+        Model.Ocjene GetMojuOcjenu(int RezervacijaId, int KorisnikId);
     }
 }

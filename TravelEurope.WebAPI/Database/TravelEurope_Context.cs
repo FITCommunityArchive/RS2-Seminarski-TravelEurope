@@ -38,6 +38,5 @@ namespace TravelEurope.WebAPI.Database
         public virtual DbSet<TuristickiVodici> TuristickiVodici { get; set; }
         public virtual DbSet<TuristRute> TuristRute { get; set; }
         public virtual DbSet<Uloge> Uloge { get; set; }
-        public virtual DbSet<Recenzije> Recenzije { get; set; }
     }
 }

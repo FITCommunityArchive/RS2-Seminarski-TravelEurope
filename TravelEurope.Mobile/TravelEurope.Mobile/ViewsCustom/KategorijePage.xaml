@@ -18,19 +18,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Search" Command="{Binding NavigateToSearchPageCommand}">
-            <ToolbarItem.Icon>
-                <FileImageSource File="search.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-        <ToolbarItem Text="More">
-            <ToolbarItem.Icon>
-                <FileImageSource File="more.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Sve ponuđene kategorije putovanja"

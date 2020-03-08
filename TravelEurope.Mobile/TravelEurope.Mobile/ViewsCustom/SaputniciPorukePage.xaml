@@ -12,14 +12,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="More">
-            <ToolbarItem.Icon>
-                <FileImageSource File="more.png"/>
-            </ToolbarItem.Icon>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

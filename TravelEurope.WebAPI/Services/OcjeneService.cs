@@ -26,20 +26,20 @@ namespace TravelEurope.WebAPI.Services
         {
             var query = _context.Ocjene.AsQueryable();
 
-            var entity = query.Where(a => a.KorisnikId == request.KorisnikId && a.TuristRutaId == request.TuristRutaId).FirstOrDefault();
+            var entity = query.Where(a => a.KorisnikId == request.KorisnikId && a.RezervacijaId == request.RezervacijaId).FirstOrDefault();
 
             return _mapper.Map<Model.Ocjene>(entity);
         }
 
-        public Model.Ocjene GetMojuOcjenu(int TuristRutaId, int KorisnikId)
+        public Model.Ocjene GetMojuOcjenu(int RezervacijaId, int KorisnikId)
         {
             var query = _context.Ocjene.AsQueryable();
 
-            query = query.Include(x => x.TuristRuta);
+            query = query.Include(x => x.Rezervacija);
 
             query = query.Include(x => x.Korisnik);
 
-            var entity = query.Where(a=>a.TuristRutaId == TuristRutaId && a.KorisnikId==KorisnikId).FirstOrDefault();
+            var entity = query.Where(a=>a.RezervacijaId == RezervacijaId && a.KorisnikId==KorisnikId).FirstOrDefault();
 
             return _mapper.Map<Model.Ocjene>(entity);
         }
@@ -50,7 +50,7 @@ namespace TravelEurope.WebAPI.Services
 
             query = query.Where(x => x.OcjenaId == id);
 
-            query = query.Include(x => x.TuristRuta);
+            query = query.Include(x => x.Rezervacija);
 
             query = query.Include(x => x.Korisnik);
             
@@ -77,7 +77,7 @@ namespace TravelEurope.WebAPI.Services
         {
             int KorisnikId = Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId;
 
-            Database.Ocjene entity = _context.Ocjene.Where(x => x.TuristRutaId == request.TuristRutaId && x.KorisnikId == KorisnikId).FirstOrDefault();
+            Database.Ocjene entity = _context.Ocjene.Where(x => x.RezervacijaId == request.RezervacijaId && x.KorisnikId == KorisnikId).FirstOrDefault();
             if(entity != null)
             {
                 entity.Ocjena = request.Ocjena;
@@ -98,7 +98,7 @@ namespace TravelEurope.WebAPI.Services
 
         public Model.Ocjene Update(int id, OcjeneInsertRequest request)
         { 
-            Database.Ocjene entity = _context.Ocjene.Where(x => x.TuristRutaId == id).FirstOrDefault();
+            Database.Ocjene entity = _context.Ocjene.Where(x => x.RezervacijaId == id).FirstOrDefault();
 
             _context.Ocjene.Attach(entity);
             _context.Ocjene.Update(entity);

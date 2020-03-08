@@ -9,9 +9,7 @@ namespace TravelEurope.Model
     {
         public TuristRute()
         {
-            Ocjene = new List<Ocjene>();
             RuteSlike = new List<RuteSlike>();
-
         }
         [Key]
         public int TuristRutaId { get; set; }
@@ -34,7 +32,6 @@ namespace TravelEurope.Model
             return atif.ToString();
         }
 
-        public ICollection<Ocjene> Ocjene { get; set; }
         public ICollection<RuteSlike> RuteSlike { get; set; }
     }
 }

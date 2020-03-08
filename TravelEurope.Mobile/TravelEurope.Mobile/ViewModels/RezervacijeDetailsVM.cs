@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using TravelEurope.Mobile.ViewsCustom;
+using TravelEurope.Model;
 
 namespace TravelEurope.Mobile.ViewModels
 {
@@ -96,7 +97,7 @@ namespace TravelEurope.Mobile.ViewModels
             this.Navigation = Navigation;
             _RezervacijaId = RezervacijaId;
             _KorisnikId = KorisnikId;
-            OcijeniStarCommand = new Command<string>(async (Ocjena) => await OcijeniStar(Ocjena, _rezervacija.TuristRutaId));
+            OcijeniStarCommand = new Command<string>(async (Ocjena) => await OcijeniStar(Ocjena, _RezervacijaId));
             UkiniRezervacijuCommand = new Command(async () => await UkiniRezervaciju());
 
             Star1 = new Star();
@@ -142,14 +143,14 @@ namespace TravelEurope.Mobile.ViewModels
                 Star5 = Star_Filled;
         }
 
-        private async Task OcijeniStar(string _ocjena, int TuristRutaId)
+        private async Task OcijeniStar(string _ocjena, int RezervacijaId)
         {
             int OcjenaBroj = int.TryParse(_ocjena, out int value) ? value : 0;
             if (OcjenaBroj >= 1 && OcjenaBroj <= 5)
             {
                 var request = new Model.Requests.OcjeneInsertRequest
                 {
-                    TuristRutaId = TuristRutaId,
+                    RezervacijaId = _RezervacijaId,
                     Ocjena = OcjenaBroj
                 };
 
@@ -177,14 +178,14 @@ namespace TravelEurope.Mobile.ViewModels
             var temp = await _serviceRezervacije.GetById<RezervacijeMobile>(_RezervacijaId);
             Title = temp.TuristRuta.Naziv;
 
-            Ocjena = await UcitajOcjene(temp.TuristRutaId);
+            Ocjena = await UcitajOcjene(_RezervacijaId);
             temp.UkupnaCijena = temp.TuristRuta.CijenaPaketa * temp.TuristRuta.TrajanjePutovanja + temp.TuristRuta.CijenaOsiguranja * temp.TuristRuta.TrajanjePutovanja;
             temp.DatumPovratka = temp.TuristRuta.DatumPutovanja.AddDays(temp.TuristRuta.TrajanjePutovanja);
             Rezervacija = temp;
 
             var request = new Model.Requests.OcjeneSearchRequest
             {
-                TuristRutaId = Rezervacija.TuristRutaId,
+                RezervacijaId = temp.RezervacijaId,
                 KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId
             };
 
@@ -202,13 +203,20 @@ namespace TravelEurope.Mobile.ViewModels
         private async Task<int> UcitajOcjene(int id)
         {
             var requestOcjene = new Model.Requests.OcjeneSearchRequest();
-            requestOcjene.TuristRutaId = id;
+            requestOcjene.RezervacijaId = id;
             requestOcjene.KorisnikId = APIService.PrijavljeniKorisnik.KorisniciId;
 
-            var _Ocjene = await _serviceOcjene.Get<Model.Ocjene>(requestOcjene);
+            Ocjene _ocjene = null;
+            try
+            {
+                _ocjene = await _serviceOcjene.Get<Model.Ocjene>(requestOcjene);
+            }
+            catch
+            {
 
-            if (_Ocjene == null) return 0;
-            return _Ocjene.Ocjena;
+            }
+            if (_ocjene == null) return 0;
+            return _ocjene.Ocjena;
         }
 
         private async Task UcitajSlike()
