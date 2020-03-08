@@ -84,7 +84,7 @@ namespace TravelEurope.Mobile.ViewModels
             novaPoruka.PosiljalacId = APIService.PrijavljeniKorisnik.KorisniciId;
             novaPoruka.PrimalacId = _PrimalacId;
             novaPoruka.DatumVrijeme = DateTime.Now;
-            novaPoruka.Sadrzaj = SadrzajPoruke;
+            novaPoruka.Sadrzaj = "Tema: " + SadrzajPoruke;
 
             try
             {

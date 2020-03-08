@@ -24,6 +24,10 @@ namespace TravelEurope.WebAPI.Services
         public bool Remove(int id)
         {
             Database.Rezervacije entity = _context.Rezervacije.Where(x => x.RezervacijaId == id).FirstOrDefault();
+
+            Database.Ocjene entity2 = _context.Ocjene.Where(a => a.RezervacijaId == id).FirstOrDefault();
+            _context.Ocjene.Remove(entity2);
+
             if (entity != null)
             {
                 _context.Rezervacije.Remove(entity);

@@ -248,6 +248,8 @@
       <Name>TravelEurope.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="black-and-white-panda-logo-users-group-encapsulated-postscript-user-profile-group-png-clip-art.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

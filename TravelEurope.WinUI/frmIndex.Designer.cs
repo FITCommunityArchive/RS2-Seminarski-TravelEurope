@@ -48,6 +48,8 @@
             this.pregledToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnVozila = new System.Windows.Forms.Button();
+            this.btnKorisnici = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -201,7 +203,7 @@
             // pregledToolStripMenuItem6
             // 
             this.pregledToolStripMenuItem6.Name = "pregledToolStripMenuItem6";
-            this.pregledToolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.pregledToolStripMenuItem6.Size = new System.Drawing.Size(172, 22);
             this.pregledToolStripMenuItem6.Text = "Pregled rezervacija";
             this.pregledToolStripMenuItem6.Click += new System.EventHandler(this.pregledToolStripMenuItem6_Click);
             // 
@@ -219,12 +221,50 @@
             this.pregledToolStripMenuItem5.Size = new System.Drawing.Size(114, 22);
             this.pregledToolStripMenuItem5.Text = "Pregled";
             // 
+            // btnVozila
+            // 
+            this.btnVozila.FlatAppearance.BorderSize = 0;
+            this.btnVozila.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVozila.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVozila.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVozila.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVozila.Location = new System.Drawing.Point(478, 162);
+            this.btnVozila.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnVozila.Name = "btnVozila";
+            this.btnVozila.Size = new System.Drawing.Size(155, 38);
+            this.btnVozila.TabIndex = 9;
+            this.btnVozila.Text = "    Turisticki paketi";
+            this.btnVozila.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVozila.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVozila.UseVisualStyleBackColor = true;
+            this.btnVozila.Click += new System.EventHandler(this.btnVozila_Click);
+            // 
+            // btnKorisnici
+            // 
+            this.btnKorisnici.FlatAppearance.BorderSize = 0;
+            this.btnKorisnici.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKorisnici.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKorisnici.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnKorisnici.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKorisnici.Location = new System.Drawing.Point(126, 162);
+            this.btnKorisnici.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnKorisnici.Name = "btnKorisnici";
+            this.btnKorisnici.Size = new System.Drawing.Size(155, 38);
+            this.btnKorisnici.TabIndex = 8;
+            this.btnKorisnici.Text = "    Korisnici";
+            this.btnKorisnici.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKorisnici.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnKorisnici.UseVisualStyleBackColor = true;
+            this.btnKorisnici.Click += new System.EventHandler(this.btnKorisnici_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(714, 361);
+            this.Controls.Add(this.btnVozila);
+            this.Controls.Add(this.btnKorisnici);
             this.Controls.Add(this.menuStrip2);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Name = "frmIndex";
@@ -257,5 +297,7 @@
         private System.Windows.Forms.ToolStripMenuItem lokacijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem dodajLokacijuToolStripMenuItem;
+        private System.Windows.Forms.Button btnVozila;
+        private System.Windows.Forms.Button btnKorisnici;
     }
 }

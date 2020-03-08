@@ -83,5 +83,17 @@ namespace TravelEurope.WinUI
             var frm = new Rezervacije.frmRezervacije();
             frm.Show();
         }
+
+        private void btnKorisnici_Click(object sender, EventArgs e)
+        {
+            var frm = new Korisnici.frmKorisnici();
+            frm.Show();
+        }
+
+        private void btnVozila_Click(object sender, EventArgs e)
+        {
+            var frm = new TuristickeRute.frmTuristickeRute();
+            frm.Show();
+        }
     }
 }

@@ -83,6 +83,15 @@
                                    TextColor="Black"
                                    Grid.Row="2"
                                    Grid.Column="1"></Label>
+
+                            <Label Text="Tema :"
+                                   FontAttributes="Bold"
+                                       TextColor="Black"
+                                   Grid.Row="2"></Label>
+                            <Label Text="{Binding DatumVrijeme, Converter={StaticResource dtsConv}}"
+                                   TextColor="Black"
+                                   Grid.Row="2"
+                                   Grid.Column="1"></Label>
                         </Grid>
                     </Grid>
                 </Grid>

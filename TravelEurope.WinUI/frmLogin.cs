@@ -26,8 +26,15 @@ namespace TravelEurope.WinUI
             try
             {
                 APIService.PrijavljeniKorisnik = await _service.Get<Model.Korisnici>(null, "MyProfile");
+                if(APIService.PrijavljeniKorisnik.Uloga.Naziv == "Administrator")
+                {
+                    DialogResult = DialogResult.OK;
 
-                DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    throw new Exception("Unos nije ispravan");
+                }
             }
             catch (Exception ex)
             {
