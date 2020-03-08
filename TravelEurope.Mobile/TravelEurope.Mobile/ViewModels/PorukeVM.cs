@@ -47,12 +47,12 @@ namespace TravelEurope.Mobile.ViewModels
             foreach(var x in listaKorisnika)
             {
                 foreach(var y in listaRezervacija)
-                {
-                    if(x.KorisniciId == y.KorisnikId && y.TuristRuta.DatumPutovanja > DateTime.Now && x.KorisniciId!=1)//APIService.PrijavljeniKorisnik.KorisniciId)
+                {   //provjerava se za buduce rute
+                    if(x.KorisniciId == y.KorisnikId && y.TuristRuta.DatumPutovanja > DateTime.Now && x.KorisniciId != APIService.PrijavljeniKorisnik.KorisniciId)
                     {
                         listaKorisnikaSaIstogPutovanja.Add(y);
                     }
-                }
+                }   
             }
 
             var req = new PorukeSearchRequest();

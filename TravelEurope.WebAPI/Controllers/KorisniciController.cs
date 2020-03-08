@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TravelEurope.WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class KorisniciController : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace TravelEurope.WebAPI.Controllers
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public List<Model.Korisnici> Get([FromQuery]Model.Requests.KorisniciSearchRequest request)
         {
             return _service.Get(request);

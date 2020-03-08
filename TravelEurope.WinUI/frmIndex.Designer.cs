@@ -46,8 +46,6 @@
             this.dodajLokacijuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervacijeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledVozilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pregledVozačaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
@@ -179,14 +177,14 @@
             // pregledToolStripMenuItem2
             // 
             this.pregledToolStripMenuItem2.Name = "pregledToolStripMenuItem2";
-            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.pregledToolStripMenuItem2.Size = new System.Drawing.Size(165, 22);
             this.pregledToolStripMenuItem2.Text = "Pregled";
             this.pregledToolStripMenuItem2.Click += new System.EventHandler(this.pregledToolStripMenuItem2_Click);
             // 
             // dodajLokacijuToolStripMenuItem
             // 
             this.dodajLokacijuToolStripMenuItem.Name = "dodajLokacijuToolStripMenuItem";
-            this.dodajLokacijuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajLokacijuToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.dodajLokacijuToolStripMenuItem.Text = "Dodaj destinaciju";
             this.dodajLokacijuToolStripMenuItem.Click += new System.EventHandler(this.dodajLokacijuToolStripMenuItem_Click);
             // 
@@ -194,9 +192,7 @@
             // 
             this.rezervacijeToolStripMenuItem1.BackColor = System.Drawing.Color.Black;
             this.rezervacijeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledToolStripMenuItem6,
-            this.pregledVozilaToolStripMenuItem,
-            this.pregledVozačaToolStripMenuItem});
+            this.pregledToolStripMenuItem6});
             this.rezervacijeToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.rezervacijeToolStripMenuItem1.Name = "rezervacijeToolStripMenuItem1";
             this.rezervacijeToolStripMenuItem1.Size = new System.Drawing.Size(77, 20);
@@ -205,20 +201,9 @@
             // pregledToolStripMenuItem6
             // 
             this.pregledToolStripMenuItem6.Name = "pregledToolStripMenuItem6";
-            this.pregledToolStripMenuItem6.Size = new System.Drawing.Size(153, 22);
-            this.pregledToolStripMenuItem6.Text = "Pregled ruta";
-            // 
-            // pregledVozilaToolStripMenuItem
-            // 
-            this.pregledVozilaToolStripMenuItem.Name = "pregledVozilaToolStripMenuItem";
-            this.pregledVozilaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.pregledVozilaToolStripMenuItem.Text = "Pregled vozila";
-            // 
-            // pregledVozačaToolStripMenuItem
-            // 
-            this.pregledVozačaToolStripMenuItem.Name = "pregledVozačaToolStripMenuItem";
-            this.pregledVozačaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.pregledVozačaToolStripMenuItem.Text = "Pregled vozača";
+            this.pregledToolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.pregledToolStripMenuItem6.Text = "Pregled rezervacija";
+            this.pregledToolStripMenuItem6.Click += new System.EventHandler(this.pregledToolStripMenuItem6_Click);
             // 
             // rezervacijeToolStripMenuItem
             // 
@@ -269,8 +254,6 @@
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem rezervacijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem pregledVozilaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pregledVozačaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lokacijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem dodajLokacijuToolStripMenuItem;

@@ -25,5 +25,11 @@ namespace TravelEurope.Model
 
         public Uloge Uloga { get; set; }
         public int UlogaId { get; set; }
+
+        public override string ToString()
+        {
+            string ipg = (Ime + " " + Prezime);
+            return ipg.ToString();
+        }
     }
 }

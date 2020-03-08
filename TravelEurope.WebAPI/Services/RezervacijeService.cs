@@ -36,7 +36,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Rezervacije> Get(RezervacijeSearchRequest request)
         {
-            var query = _context.Rezervacije.Include(a=>a.Korisnik).Include(b=>b.TuristRuta).AsQueryable();
+            var query = _context.Rezervacije.Include(a=>a.Korisnik).Include(b=>b.TuristRuta).ThenInclude(c=>c.Kategorija).AsQueryable();
 
             if (request.TuristRutaId > 0)
             {
@@ -45,6 +45,10 @@ namespace TravelEurope.WebAPI.Services
             if (request.KorisnikId > 0)
             {
                 query = query.Where(x => x.KorisnikId == request.KorisnikId);
+            }
+            if (request.DatumRezervacije.HasValue)
+            {
+                query = query.Where(x => x.DatumRezervacije.Date == request.DatumRezervacije.Value.Date);
             }
 
             var list = query.ToList();

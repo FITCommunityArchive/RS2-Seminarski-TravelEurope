@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\KorisniciFriends.cs" />
     <Compile Remove="Migrations\20200103194007_inicijalna.cs" />
     <Compile Remove="Migrations\20200103194007_inicijalna.Designer.cs" />
     <Compile Remove="Migrations\20200208143544_x.cs" />

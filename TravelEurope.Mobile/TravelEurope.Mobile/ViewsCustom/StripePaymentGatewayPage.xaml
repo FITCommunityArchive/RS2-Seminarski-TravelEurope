@@ -20,7 +20,7 @@
                    FontAttributes="Bold"></Label>
             </StackLayout>
             <StackLayout>
-                <Label Text="Molimo unesite podatke za kreditnu karticu (Stripe API test credit cards.)"
+                <Label Text="Molimo unesite podatke za kreditnu karticu (Stripe API test credit cards.) Primjer kartice je 4242 4242 4242 sa bilo kojim buducim datumom vazenja i bilo kojim CV"
                        TextColor="Black"
                    Margin="10,0,0,0"
                    FontSize="16"

@@ -61,6 +61,17 @@ namespace TravelEurope.WebAPI.Services
                         item.SlikaThumb = entitySlika.SlikaThumb;
                     }
                 }
+
+                //Samo vozila sa cijenom iznajmljivanja u rangu +-20%
+                //foreach (var item in listaRuta)
+                //{
+                //    decimal posmatraniSaUmanjenomCijenom = item.CijenaPaketa * ((decimal)(0.2));
+                //    decimal donjaGranica = model.CijenaPaketa - posmatraniSaUmanjenomCijenom;
+                //    decimal gornjaGranica = model.CijenaPaketa + posmatraniSaUmanjenomCijenom;
+
+                //    if (!(item.CijenaPaketa > donjaGranica && item.CijenaPaketa < gornjaGranica))
+                //        listaRuta.Remove(item);
+                //}
                 return listaRuta;
             }
             catch

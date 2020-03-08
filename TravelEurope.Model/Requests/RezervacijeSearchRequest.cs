@@ -9,5 +9,7 @@ namespace TravelEurope.Model.Requests
         public int? RezervacijaId { get; set; }
         public int? KorisnikId { get; set; }
         public int? TuristRutaId { get; set; }
+        public int? KategorijaId { get; set; }
+        public DateTime? DatumRezervacije { get; set; }
     }
 }

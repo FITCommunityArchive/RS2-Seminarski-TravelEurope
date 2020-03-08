@@ -77,5 +77,11 @@ namespace TravelEurope.WinUI
             var frm = new Destinacije.frmDestinacijeDetalji();
             frm.Show();
         }
+
+        private void pregledToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            var frm = new Rezervacije.frmRezervacije();
+            frm.Show();
+        }
     }
 }

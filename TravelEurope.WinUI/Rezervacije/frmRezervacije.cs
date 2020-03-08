@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TravelEurope.WinUI.Rezervacija
+namespace TravelEurope.WinUI.Rezervacije
 {
-    public partial class frmRezervacija : Form
+    public partial class frmRezervacije : Form
     {
-        private readonly APIService _serviceRezervacija = new APIService("Rezervacija");
+        private readonly APIService _serviceRezervacije = new APIService("Rezervacije");
+        private readonly APIService _serviceKategorije = new APIService("Kategorije");
 
-        public frmRezervacija()
+        public frmRezervacije()
         {
             InitializeComponent();
         }
@@ -27,20 +28,29 @@ namespace TravelEurope.WinUI.Rezervacija
 
         private async Task UcitajFormu()
         {
-            var request = new Model.Requests.RezervacijeSearchRequest
+            var request = new Model.Requests.RezervacijeSearchRequest();
+            if (chBDK.Checked)
             {
-                Naziv = txtNazivRezervacije.Text
-            };
-
-            List<Model.Rezervacije> lista = await _serviceRezervacija.Get<List<Model.Rezervacije>>(request);
+                request.DatumRezervacije = dtpDatumKreiranja.Value;
+            }
+            List<Model.Rezervacije> lista = await _serviceRezervacije.Get<List<Model.Rezervacije>>(request);
 
             dgvRezervacija.AutoGenerateColumns = false;
             dgvRezervacija.DataSource = lista;
         }
 
-        private async void frmRezervacija_Load(object sender, EventArgs e)
+        private void frmRezervacija_Load(object sender, EventArgs e)
         {
-            await UcitajFormu();
+            dtpDatumKreiranja.MaxDate = DateTime.Now.Date;
+            dtpDatumKreiranja.Value = DateTime.Now.Date;
+        }
+
+        private void chBDK_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chBDK.Checked)
+                dtpDatumKreiranja.Enabled = true;
+            else
+                dtpDatumKreiranja.Enabled = false;
         }
 
         //private async void dgvRezervacija_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

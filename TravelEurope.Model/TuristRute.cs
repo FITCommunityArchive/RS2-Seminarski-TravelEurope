@@ -28,6 +28,11 @@ namespace TravelEurope.Model
         public Kategorije Kategorija { get; set; }
         public Lokacije Lokacija { get; set; }
         public TuristickiVodici TuristickiVodic { get; set; }
+        public override string ToString()
+        {
+            var atif = Naziv + " " + Opis + ", " + DatumPutovanja.ToShortDateString();
+            return atif.ToString();
+        }
 
         public ICollection<Ocjene> Ocjene { get; set; }
         public ICollection<RuteSlike> RuteSlike { get; set; }

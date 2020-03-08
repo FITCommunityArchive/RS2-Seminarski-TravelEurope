@@ -11,7 +11,7 @@ namespace TravelEurope.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class PreporukaController : ControllerBase
     {
         private readonly IPreporukaService _service;

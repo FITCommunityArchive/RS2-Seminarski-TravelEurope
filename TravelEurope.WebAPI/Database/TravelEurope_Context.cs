@@ -28,7 +28,6 @@ namespace TravelEurope.WebAPI.Database
         public virtual DbSet<Gradovi> Gradovi { get; set; }
         public virtual DbSet<Kategorije> Kategorije { get; set; }
         public virtual DbSet<Korisnici> Korisnici { get; set; }
-        public virtual DbSet<KorisniciFriends> KorisniciFriends { get; set; }
         public virtual DbSet<Lokacije> Lokacije { get; set; }
         public virtual DbSet<Ocjene> Ocjene { get; set; }
         public virtual DbSet<Poruke> Poruke { get; set; }
