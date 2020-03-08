@@ -35,9 +35,9 @@ namespace TravelEurope.Mobile.Views
                     case (int)MenuItemType.Rezervacije:
                         MenuPages.Add(id, new NavigationPage(new RezervacijePage(KorisnikId)));
                         break;
-                    //case (int)MenuItemType.Poruke:
-                    //    MenuPages.Add(id, new NavigationPage(new PorukePage()));
-                    //    break;
+                    case (int)MenuItemType.Poruke:
+                        MenuPages.Add(id, new NavigationPage(new SaputniciPorukePage(KorisnikId)));
+                        break;
                     case (int)MenuItemType.Profil:
                         MenuPages.Add(id, new NavigationPage(new ProfilePage()));
                         break;

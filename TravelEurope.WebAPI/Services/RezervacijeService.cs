@@ -36,7 +36,7 @@ namespace TravelEurope.WebAPI.Services
 
         public List<Model.Rezervacije> Get(RezervacijeSearchRequest request)
         {
-            var query = _context.Rezervacije.Include(a=>a.Korisnik).Include(b=>b.TuristRuta).ThenInclude(c=>c.RuteSlike).AsQueryable();
+            var query = _context.Rezervacije.Include(a=>a.Korisnik).Include(b=>b.TuristRuta).AsQueryable();
 
             if (request.TuristRutaId > 0)
             {
@@ -50,20 +50,6 @@ namespace TravelEurope.WebAPI.Services
             var list = query.ToList();
 
             List<Model.Rezervacije> listaRezervacija = _mapper.Map<List<Model.Rezervacije>>(list);
-            foreach (var item in listaRezervacija)
-            {
-                var querySlika = _context.RuteSlike.AsQueryable();
-
-                querySlika = querySlika.Where(x => x.TuristRutaId == item.TuristRutaId);
-
-                var entitySlika = querySlika.FirstOrDefault();
-
-                if (entitySlika != null)
-                {
-                    item.SlikaThumb = entitySlika.SlikaThumb;
-                }
-            }
-
             return listaRezervacija;
         }
 
@@ -132,7 +118,7 @@ namespace TravelEurope.WebAPI.Services
         {
             var query = _context.Rezervacije.AsQueryable();
 
-            query = query.Where(x => x.KorisnikId == 1);// Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId);
+            query = query.Where(x => x.KorisnikId == Security.BasicAuthenticationHandler.PrijavljeniKorisnik.KorisniciId);
 
             var list = query.ToList();
 

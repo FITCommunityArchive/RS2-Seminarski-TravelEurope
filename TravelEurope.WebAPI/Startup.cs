@@ -56,6 +56,7 @@ namespace TravelEurope.WebAPI
             services.AddScoped<IOcjeneService, OcjeneService>();
             services.AddScoped<IRezervacijeService, RezervacijeService>();
             services.AddScoped<IPreporukaService, PreporukaService>();
+            services.AddScoped<IPorukeService, PorukeService>();
 
 #pragma warning disable CS0618 // Type or member is obsolete
             services.AddAutoMapper();

@@ -16,5 +16,7 @@ namespace TravelEurope.Model
         public Korisnici Posiljalac { get; set; }
         public int PosiljalacId { get; set; }
         public DateTime DatumVrijeme { get; set; }
+        public string PosiljaocInfo { get; set; }
+        public string PrimaocInfo { get; set; }
     }
 }

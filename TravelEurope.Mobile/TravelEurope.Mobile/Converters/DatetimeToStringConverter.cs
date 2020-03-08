@@ -18,7 +18,7 @@ namespace TravelEurope.Mobile.Converters
             if (parameter != null)
                 return datetime.ToString("dd.MM.yyyy hh:mm");
             else
-                return datetime.ToShortDateString();
+                return datetime.ToString("dd.MM.yyyy hh:mm");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

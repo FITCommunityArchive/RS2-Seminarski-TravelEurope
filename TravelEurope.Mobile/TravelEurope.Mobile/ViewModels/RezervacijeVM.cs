@@ -62,7 +62,7 @@ namespace TravelEurope.Mobile.ViewModels
             List<RezervacijeMobile> listRezervacije;
             if (_KorisnikId != 0)
             {
-                listRezervacije = await _serviceRezervacije.GetById<List<RezervacijeMobile>>(_KorisnikId, "GetUserRezervacije");
+                listRezervacije = await _serviceRezervacije.GetById<List<RezervacijeMobile>>(APIService.PrijavljeniKorisnik.KorisniciId, "GetUserRezervacije");
             }
             else
             {
